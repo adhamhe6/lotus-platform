@@ -46,11 +46,19 @@ def job(name: str, stages: list[str], label: str = "") -> Callable:
     def deco(fn: Callable[[JobContext, dict[str, Any]], Awaitable[dict[str, Any] | None]]):
         JOB_TYPES[name] = JobSpec(name, stages, fn, label or name.replace("_", " "))
         return fn
+
     return deco
 
 
 class JobContext:
-    def __init__(self, job_id: uuid.UUID, sessionmaker: async_sessionmaker[AsyncSession], storage: Storage, settings: Settings, spec: JobSpec):
+    def __init__(
+        self,
+        job_id: uuid.UUID,
+        sessionmaker: async_sessionmaker[AsyncSession],
+        storage: Storage,
+        settings: Settings,
+        spec: JobSpec,
+    ):
         self.job_id = job_id
         self.sessionmaker = sessionmaker
         self.storage = storage
@@ -75,15 +83,37 @@ class JobContext:
             await s.commit()
 
 
-async def create_job(session: AsyncSession, *, project_id: uuid.UUID, user_id: uuid.UUID, type_: str, params: dict[str, Any],
-                     idempotency_key: str | None = None) -> AnalysisJob:
+async def create_job(
+    session: AsyncSession,
+    *,
+    project_id: uuid.UUID,
+    user_id: uuid.UUID,
+    type_: str,
+    params: dict[str, Any],
+    idempotency_key: str | None = None,
+) -> AnalysisJob:
     spec = JOB_TYPES[type_]
     if idempotency_key:
-        existing = (await session.execute(select(AnalysisJob).where(
-            AnalysisJob.project_id == project_id, AnalysisJob.idempotency_key == idempotency_key, AnalysisJob.status.in_(["PENDING", "RUNNING"])))).scalar_one_or_none()
+        existing = (
+            await session.execute(
+                select(AnalysisJob).where(
+                    AnalysisJob.project_id == project_id,
+                    AnalysisJob.idempotency_key == idempotency_key,
+                    AnalysisJob.status.in_(["PENDING", "RUNNING"]),
+                )
+            )
+        ).scalar_one_or_none()
         if existing:
             return existing
-    j = AnalysisJob(project_id=project_id, user_id=user_id, type=type_, params=params, total_stages=len(spec.stages), idempotency_key=idempotency_key, stage="Queued")
+    j = AnalysisJob(
+        project_id=project_id,
+        user_id=user_id,
+        type=type_,
+        params=params,
+        total_stages=len(spec.stages),
+        idempotency_key=idempotency_key,
+        stage="Queued",
+    )
     session.add(j)
     await session.flush()
     return j
@@ -100,8 +130,13 @@ async def dispatch(job_id: uuid.UUID) -> None:
     await enqueue(job_id)
 
 
-async def run_job(job_id: uuid.UUID, *, attempt_hint: int | None = None, sessionmaker: async_sessionmaker[AsyncSession] | None = None,
-                  storage: Storage | None = None) -> str:
+async def run_job(
+    job_id: uuid.UUID,
+    *,
+    attempt_hint: int | None = None,
+    sessionmaker: async_sessionmaker[AsyncSession] | None = None,
+    storage: Storage | None = None,
+) -> str:
     """Execute a job. Idempotent: jobs that are not PENDING are left alone. Returns the final status.
 
     Raises ``TransientError`` (to let arq retry) only while attempts remain."""
@@ -122,8 +157,19 @@ async def run_job(job_id: uuid.UUID, *, attempt_hint: int | None = None, session
                 j.status, j.completed_at, j.stage = "CANCELLED", datetime.now(UTC), "Cancelled"
                 await s.commit()
                 return "CANCELLED"
-            j.status, j.started_at, j.attempts, j.stage = "RUNNING", datetime.now(UTC), j.attempts + 1, "Starting"
-            type_, params, project_id, user_id, attempts = j.type, dict(j.params), j.project_id, j.user_id, j.attempts
+            j.status, j.started_at, j.attempts, j.stage = (
+                "RUNNING",
+                datetime.now(UTC),
+                j.attempts + 1,
+                "Starting",
+            )
+            type_, params, project_id, user_id, attempts = (
+                j.type,
+                dict(j.params),
+                j.project_id,
+                j.user_id,
+                j.attempts,
+            )
             await s.commit()
         spec = JOB_TYPES[type_]
         ctx = JobContext(job_id, sm, storage, settings, spec)
@@ -139,16 +185,33 @@ async def run_job(job_id: uuid.UUID, *, attempt_hint: int | None = None, session
                 async with sm() as s:
                     j = await s.get(AnalysisJob, job_id)
                     assert j is not None
-                    j.status, j.stage = "PENDING", f"Retrying after a temporary error (attempt {attempts + 1})"
+                    j.status, j.stage = (
+                        "PENDING",
+                        f"Retrying after a temporary error (attempt {attempts + 1})",
+                    )
                     await s.commit()
-                log.warning("job_retry", extra={"job_type": type_, "attempt": attempts, "error": str(e)[:200]})
+                log.warning(
+                    "job_retry", extra={"job_type": type_, "attempt": attempts, "error": str(e)[:200]}
+                )
                 raise
-            status, error = "FAILED", {"code": "TRANSIENT_ERROR", "message": "A required service was unavailable. Please try again later."}
+            status, error = (
+                "FAILED",
+                {
+                    "code": "TRANSIENT_ERROR",
+                    "message": "A required service was unavailable. Please try again later.",
+                },
+            )
         except LotusError as e:
             status, error = "FAILED", {"code": e.code, "message": e.message}
         except Exception:
             log.exception("job_crashed", extra={"job_type": type_})
-            status, error = "FAILED", {"code": "INTERNAL_ERROR", "message": "The job failed unexpectedly. The error has been logged."}
+            status, error = (
+                "FAILED",
+                {
+                    "code": "INTERNAL_ERROR",
+                    "message": "The job failed unexpectedly. The error has been logged.",
+                },
+            )
         async with sm() as s:
             j = await s.get(AnalysisJob, job_id)
             assert j is not None
@@ -162,11 +225,25 @@ async def run_job(job_id: uuid.UUID, *, attempt_hint: int | None = None, session
                 j.stage = "Failed"
             if status in ("COMPLETED", "FAILED"):
                 label = spec.label.capitalize()
-                s.add(Notification(user_id=user_id, project_id=project_id, kind=f"job_{status.lower()}",
-                                   title=f"{label} {'finished' if status == 'COMPLETED' else 'failed'}",
-                                   body=(error or {}).get("message", "") if error else "", link={"job_id": str(job_id), **(result_ref or {})}))
+                s.add(
+                    Notification(
+                        user_id=user_id,
+                        project_id=project_id,
+                        kind=f"job_{status.lower()}",
+                        title=f"{label} {'finished' if status == 'COMPLETED' else 'failed'}",
+                        body=(error or {}).get("message", "") if error else "",
+                        link={"job_id": str(job_id), **(result_ref or {})},
+                    )
+                )
             await s.commit()
-        log.info("job_finished", extra={"job_type": type_, "status": status, "duration_ms": int((time.perf_counter() - t0) * 1000)})
+        log.info(
+            "job_finished",
+            extra={
+                "job_type": type_,
+                "status": status,
+                "duration_ms": int((time.perf_counter() - t0) * 1000),
+            },
+        )
         return status
     finally:
         job_id_var.reset(token)

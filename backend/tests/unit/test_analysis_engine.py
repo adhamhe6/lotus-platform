@@ -1,4 +1,5 @@
 """Known-answer tests for the statistical engine. Expected values are derived by hand or from textbook examples."""
+
 from __future__ import annotations
 
 import math
@@ -27,7 +28,12 @@ def test_descriptive_known_values():
     assert row["n"] == 8 and row["mean"] == 5.0 and row["median"] == 4.5 and row["mode"] == 4.0
     assert row["std"] == pytest.approx(math.sqrt(32 / 7))  # sample SD, n-1
     assert row["variance"] == pytest.approx(32 / 7)
-    assert row["min"] == 2 and row["max"] == 9 and row["q1"] == pytest.approx(4.0) and row["q3"] == pytest.approx(5.5)
+    assert (
+        row["min"] == 2
+        and row["max"] == 9
+        and row["q1"] == pytest.approx(4.0)
+        and row["q3"] == pytest.approx(5.5)
+    )
 
 
 def test_descriptive_missing_and_non_numeric():
@@ -54,7 +60,11 @@ def test_correlation_edge_cases():
     with pytest.raises(ZeroVarianceError):
         run(pd.DataFrame({"x": [1, 1, 1, 1], "y": [1, 2, 3, 4]}), "correlation", variables=["x", "y"])
     with pytest.raises(InsufficientDataError):
-        run(pd.DataFrame({"x": [1.0, 2.0, np.nan], "y": [1.0, np.nan, 3.0]}), "correlation", variables=["x", "y"])
+        run(
+            pd.DataFrame({"x": [1.0, 2.0, np.nan], "y": [1.0, np.nan, 3.0]}),
+            "correlation",
+            variables=["x", "y"],
+        )
     with pytest.raises(AnalysisConfigurationError):
         run(pd.DataFrame({"x": [1, 2, 3], "y": ["a", "b", "c"]}), "correlation", variables=["x", "y"])
 
@@ -84,7 +94,9 @@ def test_group_comparison_two_groups_welch():
 
 def test_group_comparison_auto_chooses_nonparametric_for_skewed_small_groups():
     rng = np.random.default_rng(3)
-    df = pd.DataFrame({"y": np.r_[rng.exponential(1, 12), rng.exponential(3, 12)], "g": ["a"] * 12 + ["b"] * 12})
+    df = pd.DataFrame(
+        {"y": np.r_[rng.exponential(1, 12), rng.exponential(3, 12)], "g": ["a"] * 12 + ["b"] * 12}
+    )
     res, _ = run(df, "group_comparison", outcome="y", group="g")
     assert res["variables"]["test"] in ("mann_whitney", "welch_t")
     assert any("Automatic" in d for d in res["decisions"])
@@ -92,7 +104,12 @@ def test_group_comparison_auto_chooses_nonparametric_for_skewed_small_groups():
 
 def test_group_comparison_three_groups_with_posthoc_and_effect_size():
     rng = np.random.default_rng(5)
-    df = pd.DataFrame({"y": np.r_[rng.normal(10, 2, 40), rng.normal(12, 2, 40), rng.normal(10.2, 2, 40)], "g": ["x"] * 40 + ["y"] * 40 + ["z"] * 40})
+    df = pd.DataFrame(
+        {
+            "y": np.r_[rng.normal(10, 2, 40), rng.normal(12, 2, 40), rng.normal(10.2, 2, 40)],
+            "g": ["x"] * 40 + ["y"] * 40 + ["z"] * 40,
+        }
+    )
     res, _ = run(df, "group_comparison", outcome="y", group="g")
     assert res["variables"]["test"] == "welch_anova"
     pw = next(t for t in res["tables"] if t["name"] == "pairwise")["rows"]
@@ -103,7 +120,13 @@ def test_group_comparison_three_groups_with_posthoc_and_effect_size():
 
 def test_group_comparison_errors():
     with pytest.raises(AnalysisConfigurationError, match="exactly two"):
-        run(pd.DataFrame({"y": range(12), "g": list("abc") * 4}), "group_comparison", outcome="y", group="g", test="welch_t")
+        run(
+            pd.DataFrame({"y": range(12), "g": list("abc") * 4}),
+            "group_comparison",
+            outcome="y",
+            group="g",
+            test="welch_t",
+        )
     with pytest.raises(AnalysisConfigurationError, match="fewer than two"):
         run(pd.DataFrame({"y": range(12), "g": ["a"] * 12}), "group_comparison", outcome="y", group="g")
     with pytest.raises(AnalysisConfigurationError):
@@ -136,7 +159,11 @@ def test_frequency_percentages_sum_to_100_and_missing_reported():
     assert sum(r["percent"] for r in rows if r["percent"] is not None) == pytest.approx(100.0)
     assert rows[-1]["category"] == "(missing)" and rows[-1]["count"] == 1
     with pytest.raises(AnalysisConfigurationError):
-        run(pd.DataFrame({"t": [f"this is long free text number {i} with many words" for i in range(50)]}), "frequency", column="t")
+        run(
+            pd.DataFrame({"t": [f"this is long free text number {i} with many words" for i in range(50)]}),
+            "frequency",
+            column="t",
+        )
 
 
 def test_linear_regression_recovers_coefficients():
@@ -148,8 +175,12 @@ def test_linear_regression_recovers_coefficients():
     df = pd.DataFrame({"y": y, "x1": x1, "x2": x2, "g": g})
     res, _ = run(df, "linear_regression", outcome="y", predictors=["x1", "x2", "g"])
     coefs = {r["term"]: r for r in res["tables"][0]["rows"]}
-    assert coefs["x1"]["estimate"] == pytest.approx(2, abs=0.1) and coefs["x2"]["estimate"] == pytest.approx(-1, abs=0.1)
-    assert coefs["g[up]"]["estimate"] == pytest.approx(4, abs=0.2) and coefs["(Intercept)"]["estimate"] == pytest.approx(3, abs=0.2)
+    assert coefs["x1"]["estimate"] == pytest.approx(2, abs=0.1) and coefs["x2"]["estimate"] == pytest.approx(
+        -1, abs=0.1
+    )
+    assert coefs["g[up]"]["estimate"] == pytest.approx(4, abs=0.2) and coefs["(Intercept)"][
+        "estimate"
+    ] == pytest.approx(3, abs=0.2)
     assert metric(res, "r_squared") > 0.95
     # compare to closed-form least squares
     X = np.column_stack([np.ones(n), x1, x2, (g == "up").astype(float)])
@@ -187,7 +218,12 @@ def test_logistic_regression_odds_ratio_and_separation():
     with pytest.raises(AnalysisConfigurationError, match="separat"):
         run(sep, "logistic_regression", outcome="y", predictors=["x"])
     with pytest.raises(AnalysisConfigurationError, match="exactly two"):
-        run(pd.DataFrame({"y": list("abc") * 10, "x": range(30)}), "logistic_regression", outcome="y", predictors=["x"])
+        run(
+            pd.DataFrame({"y": list("abc") * 10, "x": range(30)}),
+            "logistic_regression",
+            outcome="y",
+            predictors=["x"],
+        )
 
 
 def test_time_series_linear_trend_exact():
@@ -215,6 +251,7 @@ def test_results_are_deterministic_and_json_safe():
     b, _ = run(df, "logistic_regression", outcome="y", predictors=["x", "z"])
     assert a == b
     import json
+
     json.dumps(a, allow_nan=False)
 
 

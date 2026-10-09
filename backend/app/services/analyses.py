@@ -57,36 +57,68 @@ def validate_roles(spec: AnalysisSpec, config: dict[str, Any], columns: list[Dat
             raise AnalysisConfigurationError(f"{r.label}: select at least {r.min_count}.")
         for name in vals:
             if name not in meta:
-                raise AnalysisConfigurationError(f"Column '{name}' does not exist in this dataset version.", code="UNKNOWN_COLUMN")
+                raise AnalysisConfigurationError(
+                    f"Column '{name}' does not exist in this dataset version.", code="UNKNOWN_COLUMN"
+                )
             if meta[name] not in r.accepts:
                 art = "an" if _accepts_label(r.accepts)[0] in "aeiou" else "a"
                 raise AnalysisConfigurationError(
                     f"The selected {r.label.lower()} '{name}' must be {art} {_accepts_label(r.accepts)} variable (it is {meta[name].replace('_', ' ')})."
-                    if _accepts_label(r.accepts) in ("numeric", "categorical") else
-                    f"'{name}' cannot be used as {r.label.lower()}: expected {_accepts_label(r.accepts)} (it is {meta[name].replace('_', ' ')}).")
+                    if _accepts_label(r.accepts) in ("numeric", "categorical")
+                    else f"'{name}' cannot be used as {r.label.lower()}: expected {_accepts_label(r.accepts)} (it is {meta[name].replace('_', ' ')})."
+                )
 
 
-async def create_run(session: AsyncSession, user_id: uuid.UUID, project_id: uuid.UUID, version: DatasetVersion, analysis_type: str, config: dict[str, Any],
-                     title: str | None) -> tuple[AnalysisRun, bool]:
+async def create_run(
+    session: AsyncSession,
+    user_id: uuid.UUID,
+    project_id: uuid.UUID,
+    version: DatasetVersion,
+    analysis_type: str,
+    config: dict[str, Any],
+    title: str | None,
+) -> tuple[AnalysisRun, bool]:
     spec = registry.get_spec(analysis_type)
     cfg = registry.parse_config(analysis_type, config)
     cols = await dataset_service.version_columns(session, version.id)
     validate_roles(spec, cfg.model_dump(mode="json"), cols)
     h = registry.config_hash(analysis_type, cfg)
-    existing = (await session.execute(select(AnalysisRun).where(
-        AnalysisRun.dataset_version_id == version.id, AnalysisRun.analysis_type == analysis_type, AnalysisRun.config_hash == h,
-        AnalysisRun.status.in_(["PENDING", "RUNNING", "COMPLETED"])))).scalar_one_or_none()
+    existing = (
+        await session.execute(
+            select(AnalysisRun).where(
+                AnalysisRun.dataset_version_id == version.id,
+                AnalysisRun.analysis_type == analysis_type,
+                AnalysisRun.config_hash == h,
+                AnalysisRun.status.in_(["PENDING", "RUNNING", "COMPLETED"]),
+            )
+        )
+    ).scalar_one_or_none()
     if existing:
         return existing, True
-    run = AnalysisRun(project_id=project_id, dataset_version_id=version.id, analysis_type=analysis_type, title=(title or spec.label)[:300], config=cfg.model_dump(mode="json"),
-                      config_hash=h, status="PENDING", created_by=user_id)
+    run = AnalysisRun(
+        project_id=project_id,
+        dataset_version_id=version.id,
+        analysis_type=analysis_type,
+        title=(title or spec.label)[:300],
+        config=cfg.model_dump(mode="json"),
+        config_hash=h,
+        status="PENDING",
+        created_by=user_id,
+    )
     session.add(run)
     try:
         await session.flush()
     except IntegrityError:  # concurrent identical request: the partial unique index guarantees a single run
         await session.rollback()
-        run = (await session.execute(select(AnalysisRun).where(AnalysisRun.dataset_version_id == version.id, AnalysisRun.config_hash == h,
-                                                               AnalysisRun.status.in_(["PENDING", "RUNNING", "COMPLETED"])))).scalar_one()
+        run = (
+            await session.execute(
+                select(AnalysisRun).where(
+                    AnalysisRun.dataset_version_id == version.id,
+                    AnalysisRun.config_hash == h,
+                    AnalysisRun.status.in_(["PENDING", "RUNNING", "COMPLETED"]),
+                )
+            )
+        ).scalar_one()
         return run, True
     return run, False
 
@@ -109,11 +141,22 @@ async def execute_run(session: AsyncSession, storage: Storage, run_id: uuid.UUID
         await stage("Computing statistics")
         result, prov = await asyncio.to_thread(registry.execute, df, run.analysis_type, run.config)
         await stage("Preparing charts and tables")
-        prov = {**prov, "dataset_version_id": str(version.id), "dataset_content_hash": version.content_hash, "rows_in_version": version.row_count}
+        prov = {
+            **prov,
+            "dataset_version_id": str(version.id),
+            "dataset_content_hash": version.content_hash,
+            "rows_in_version": version.row_count,
+        }
         run.result, run.provenance, run.error, run.status = result, prov, None, "COMPLETED"
         run.title = run.title if run.title != spec.label else result["title"][:300]
         run.duration_ms = prov["compute_ms"]
         run.completed_at = datetime.now(UTC)
+        try:
+            from app.services import insights as insight_service
+
+            await insight_service.create_for_run(session, run)
+        except Exception:  # insight extraction must never fail an otherwise successful analysis
+            log.exception("insight_extraction_failed")
         await bump_project(session, run.project_id)
         await session.commit()
         await cache_set(f"run:{run.id}", {"result": result}, get_settings().cache_ttl_result)
@@ -122,14 +165,22 @@ async def execute_run(session: AsyncSession, storage: Storage, run_id: uuid.UUID
         await session.rollback()
         run = await session.get(AnalysisRun, run_id)
         assert run is not None
-        run.status, run.error, run.completed_at = "FAILED", {"code": e.code, "message": e.message}, datetime.now(UTC)
+        run.status, run.error, run.completed_at = (
+            "FAILED",
+            {"code": e.code, "message": e.message},
+            datetime.now(UTC),
+        )
         await session.commit()
         raise
     except Exception:
         await session.rollback()
         run = await session.get(AnalysisRun, run_id)
         assert run is not None
-        run.status, run.error, run.completed_at = "FAILED", {"code": "ANALYSIS_FAILED", "message": "The analysis could not be completed with this data."}, datetime.now(UTC)
+        run.status, run.error, run.completed_at = (
+            "FAILED",
+            {"code": "ANALYSIS_FAILED", "message": "The analysis could not be completed with this data."},
+            datetime.now(UTC),
+        )
         await session.commit()
         raise
 

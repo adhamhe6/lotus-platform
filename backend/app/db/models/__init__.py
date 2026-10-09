@@ -1,5 +1,13 @@
 from app.db.models.base import Base
-from app.db.models.core import Dataset, DatasetColumn, DatasetVersion, Project, ProjectMember, RefreshToken, User
+from app.db.models.core import (
+    Dataset,
+    DatasetColumn,
+    DatasetVersion,
+    Project,
+    ProjectMember,
+    RefreshToken,
+    User,
+)
 from app.db.models.research import (
     AIConversation,
     AIMessage,
@@ -19,8 +27,27 @@ from app.db.models.research import (
 )
 
 __all__ = [
-    "AIConversation", "AIMessage", "AnalysisJob", "AnalysisRun", "Base", "Dataset", "DatasetColumn", "DatasetVersion",
-    "Insight", "MixedMethodRun", "Notification", "Project", "ProjectMember", "QualitativeAnnotation", "QualitativeCode",
-    "QualitativeSegment", "QualitativeTheme", "RefreshToken", "Report", "SavedVisualization", "ThemeDetectionRun",
-    "ThemeSegment", "User",
+    "AIConversation",
+    "AIMessage",
+    "AnalysisJob",
+    "AnalysisRun",
+    "Base",
+    "Dataset",
+    "DatasetColumn",
+    "DatasetVersion",
+    "Insight",
+    "MixedMethodRun",
+    "Notification",
+    "Project",
+    "ProjectMember",
+    "QualitativeAnnotation",
+    "QualitativeCode",
+    "QualitativeSegment",
+    "QualitativeTheme",
+    "RefreshToken",
+    "Report",
+    "SavedVisualization",
+    "ThemeDetectionRun",
+    "ThemeSegment",
+    "User",
 ]

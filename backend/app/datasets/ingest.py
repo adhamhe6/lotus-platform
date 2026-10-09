@@ -75,9 +75,15 @@ def _decode(raw: bytes, warnings: list[dict[str, Any]]) -> str:
         text = raw.decode("cp1252")
     except UnicodeDecodeError as e:
         raise DatasetProcessingError(
-            "The file encoding could not be determined. Save it as UTF-8 and upload again.", code="INVALID_ENCODING"
+            "The file encoding could not be determined. Save it as UTF-8 and upload again.",
+            code="INVALID_ENCODING",
         ) from e
-    warnings.append(_warn("ENCODING_FALLBACK", "The file is not valid UTF-8; it was decoded as Windows-1252. Check accented/Arabic text."))
+    warnings.append(
+        _warn(
+            "ENCODING_FALLBACK",
+            "The file is not valid UTF-8; it was decoded as Windows-1252. Check accented/Arabic text.",
+        )
+    )
     return text
 
 
@@ -95,16 +101,28 @@ def _dedupe_header(raw_header: list[Any], warnings: list[dict[str, Any]]) -> lis
     names: list[str] = []
     seen: dict[str, int] = {}
     for i, h in enumerate(raw_header):
-        name = re.sub(r"\s+", " ", str(h).strip()) if h is not None and not (isinstance(h, float) and np.isnan(h)) else ""
+        name = (
+            re.sub(r"\s+", " ", str(h).strip())
+            if h is not None and not (isinstance(h, float) and np.isnan(h))
+            else ""
+        )
         if name == "":
             name = f"column_{i + 1}"
-            warnings.append(_warn("BLANK_COLUMN_NAME", f"Column {i + 1} had no name and was called '{name}'."))
+            warnings.append(
+                _warn("BLANK_COLUMN_NAME", f"Column {i + 1} had no name and was called '{name}'.")
+            )
         base, k = name, seen.get(name, 0)
         if k:
             while f"{base}_{k + 1}" in seen:
                 k += 1
             name = f"{base}_{k + 1}"
-            warnings.append(_warn("DUPLICATE_COLUMN", f"Duplicate column name '{base}' was renamed to '{name}'.", column=name))
+            warnings.append(
+                _warn(
+                    "DUPLICATE_COLUMN",
+                    f"Duplicate column name '{base}' was renamed to '{name}'.",
+                    column=name,
+                )
+            )
         seen[base] = seen.get(base, 0) + 1
         seen[name] = seen.get(name, 0) + (0 if name == base else 1)
         names.append(name)
@@ -119,23 +137,39 @@ def read_table(path: Path, file_type: str, *, max_rows: int, max_columns: int) -
             text = _decode(raw, warnings)
             delim = _sniff_delimiter(text[:65536])
             df = pd.read_csv(
-                io.StringIO(text), sep=delim, header=None, dtype=str, keep_default_na=False, na_filter=False,
-                nrows=max_rows + 2, skip_blank_lines=True, engine="python" if len(delim) > 1 else "c",
-                on_bad_lines="error", quotechar='"',
+                io.StringIO(text),
+                sep=delim,
+                header=None,
+                dtype=str,
+                keep_default_na=False,
+                na_filter=False,
+                nrows=max_rows + 2,
+                skip_blank_lines=True,
+                engine="python" if len(delim) > 1 else "c",
+                on_bad_lines="error",
+                quotechar='"',
             )
         elif file_type == "xlsx":
             _check_zip_bomb(path)
-            df = pd.read_excel(path, sheet_name=0, header=None, dtype=object, engine="openpyxl", nrows=max_rows + 2)
+            df = pd.read_excel(
+                path, sheet_name=0, header=None, dtype=object, engine="openpyxl", nrows=max_rows + 2
+            )
             if len(pd.ExcelFile(path, engine="openpyxl").sheet_names) > 1:
-                warnings.append(_warn("MULTIPLE_SHEETS", "The workbook has several sheets; only the first was imported."))
+                warnings.append(
+                    _warn("MULTIPLE_SHEETS", "The workbook has several sheets; only the first was imported.")
+                )
         else:
             raise UnsupportedFile("Unsupported file type.")
     except pd.errors.EmptyDataError as e:
         raise DatasetProcessingError("The file contains no data.", code="EMPTY_DATASET") from e
     except (pd.errors.ParserError, UnicodeDecodeError) as e:
-        raise DatasetProcessingError(f"The file could not be parsed: {_short(e)}", code="MALFORMED_FILE") from e
+        raise DatasetProcessingError(
+            f"The file could not be parsed: {_short(e)}", code="MALFORMED_FILE"
+        ) from e
     except zipfile.BadZipFile as e:
-        raise DatasetProcessingError("The workbook is corrupted and could not be opened.", code="MALFORMED_FILE") from e
+        raise DatasetProcessingError(
+            "The workbook is corrupted and could not be opened.", code="MALFORMED_FILE"
+        ) from e
     except (KeyError, ValueError, OSError) as e:
         raise DatasetProcessingError(f"The file could not be read: {_short(e)}", code="MALFORMED_FILE") from e
 
@@ -146,13 +180,17 @@ def read_table(path: Path, file_type: str, *, max_rows: int, max_columns: int) -
         )
     df = df.dropna(axis=1, how="all") if file_type == "xlsx" else df
     if df.shape[1] > max_columns:
-        raise DatasetProcessingError(f"The dataset has {df.shape[1]} columns; the limit is {max_columns}.", code="TOO_MANY_COLUMNS")
+        raise DatasetProcessingError(
+            f"The dataset has {df.shape[1]} columns; the limit is {max_columns}.", code="TOO_MANY_COLUMNS"
+        )
     original = [str(x) for x in df.iloc[0].tolist()]
     header = _dedupe_header(df.iloc[0].tolist(), warnings)
     body = df.iloc[1:].reset_index(drop=True)
     body.columns = header
     if len(body) > max_rows:
-        raise DatasetProcessingError(f"The dataset has more than {max_rows:,} rows, the current limit.", code="TOO_MANY_ROWS")
+        raise DatasetProcessingError(
+            f"The dataset has more than {max_rows:,} rows, the current limit.", code="TOO_MANY_ROWS"
+        )
     typed, type_warnings = infer_types(body)
     warnings.extend(type_warnings)
     return IngestResult(typed, warnings, original)
@@ -162,7 +200,9 @@ def _check_zip_bomb(path: Path) -> None:
     with zipfile.ZipFile(path) as z:
         total = sum(i.file_size for i in z.infolist())
         if total > MAX_ZIP_UNCOMPRESSED:
-            raise DatasetProcessingError("The workbook expands to an unreasonable size.", code="MALFORMED_FILE")
+            raise DatasetProcessingError(
+                "The workbook expands to an unreasonable size.", code="MALFORMED_FILE"
+            )
         names = {i.filename for i in z.infolist()}
         if any(n.lower().endswith("vbaproject.bin") for n in names):
             raise UnsupportedFile("Macro-enabled workbooks are not accepted.")
@@ -175,7 +215,9 @@ def _short(e: Exception) -> str:
 
 
 # ------------------------------------------------------------------ type inference
-_DATE_HINT = re.compile(r"^\s*\d{1,4}[-/.]\d{1,2}[-/.]\d{1,4}([ T]\d{1,2}:\d{2}(:\d{2}(\.\d+)?)?(Z|[+-]\d{2}:?\d{2})?)?\s*$|^\s*\d{4}-\d{2}\s*$")
+_DATE_HINT = re.compile(
+    r"^\s*\d{1,4}[-/.]\d{1,2}[-/.]\d{1,4}([ T]\d{1,2}:\d{2}(:\d{2}(\.\d+)?)?(Z|[+-]\d{2}:?\d{2})?)?\s*$|^\s*\d{4}-\d{2}\s*$"
+)
 _NUM_CLEAN = re.compile(r"[,\s_]")
 
 
@@ -201,7 +243,9 @@ def _infer_series(s: pd.Series, name: str) -> tuple[pd.Series, list[dict[str, An
             return s.astype("boolean"), warns
         if kinds <= {int, float, np.integer, np.floating}:
             return _numeric_series(pd.to_numeric(s, errors="coerce")), warns
-        if all(isinstance(v, (pd.Timestamp, np.datetime64)) or hasattr(v, "isoformat") for v in non_null) and not (kinds <= {str}):
+        if all(
+            isinstance(v, (pd.Timestamp, np.datetime64)) or hasattr(v, "isoformat") for v in non_null
+        ) and not (kinds <= {str}):
             return pd.to_datetime(s, errors="coerce"), warns
     # String path
     st = s.astype("string")
@@ -212,7 +256,9 @@ def _infer_series(s: pd.Series, name: str) -> tuple[pd.Series, list[dict[str, An
         return st, warns
     low = nn.str.lower()
     if low.isin(TRUE_TOKENS | FALSE_TOKENS).all():
-        return low.reindex(st.index).map(lambda v: pd.NA if v is pd.NA or pd.isna(v) else v in TRUE_TOKENS).astype("boolean"), warns
+        return low.reindex(st.index).map(
+            lambda v: pd.NA if v is pd.NA or pd.isna(v) else v in TRUE_TOKENS
+        ).astype("boolean"), warns
     cleaned = nn.str.replace(_NUM_CLEAN, "", regex=True).str.replace(r"%$", "", regex=True)
     num = pd.to_numeric(cleaned, errors="coerce")
     ok = num.notna().mean()
@@ -223,12 +269,15 @@ def _infer_series(s: pd.Series, name: str) -> tuple[pd.Series, list[dict[str, An
     if ok >= 0.9 and ok < 1.0:
         bad = nn[num.isna()]
         examples = ", ".join(repr(x) for x in bad.unique()[:3])
-        warns.append(_warn(
-            "MIXED_NUMERIC_TEXT",
-            f"Column '{name}' is {ok:.0%} numeric but has {len(bad)} non-numeric value(s) ({examples}); kept as text. "
-            "Use the 'cast to numeric' cleaning step to convert (invalid values become missing).",
-            column=name, invalid_count=int(len(bad)),
-        ))
+        warns.append(
+            _warn(
+                "MIXED_NUMERIC_TEXT",
+                f"Column '{name}' is {ok:.0%} numeric but has {len(bad)} non-numeric value(s) ({examples}); kept as text. "
+                "Use the 'cast to numeric' cleaning step to convert (invalid values become missing).",
+                column=name,
+                invalid_count=len(bad),
+            )
+        )
     if nn.str.match(_DATE_HINT).all():
         parsed = _parse_dates(nn)
         if parsed is not None:

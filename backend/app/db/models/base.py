@@ -19,7 +19,11 @@ NAMING = {
 
 class Base(DeclarativeBase):
     metadata = MetaData(naming_convention=NAMING)
-    type_annotation_map = {dict[str, Any]: JSONB, uuid.UUID: UUID(as_uuid=True), datetime: DateTime(timezone=True)}
+    type_annotation_map = {
+        dict[str, Any]: JSONB,
+        uuid.UUID: UUID(as_uuid=True),
+        datetime: DateTime(timezone=True),
+    }
 
 
 def uuid_pk() -> Mapped[uuid.UUID]:
@@ -31,4 +35,6 @@ def created_at_col() -> Mapped[datetime]:
 
 
 def updated_at_col() -> Mapped[datetime]:
-    return mapped_column(DateTime(timezone=True), server_default=func.now(), onupdate=func.now(), nullable=False)
+    return mapped_column(
+        DateTime(timezone=True), server_default=func.now(), onupdate=func.now(), nullable=False
+    )

@@ -37,4 +37,7 @@ def to_jsonable(v: Any) -> Any:
 
 def frame_records(df: pd.DataFrame) -> list[dict[str, Any]]:
     cols = list(df.columns)
-    return [{c: to_jsonable(v) for c, v in zip(cols, row, strict=True)} for row in df.itertuples(index=False, name=None)]
+    return [
+        {c: to_jsonable(v) for c, v in zip(cols, row, strict=True)}
+        for row in df.itertuples(index=False, name=None)
+    ]

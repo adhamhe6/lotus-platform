@@ -4,7 +4,6 @@ import pandas as pd
 import pytest
 
 from tests.helpers import csv_bytes, survey_frame, xlsx_bytes
-from tests.integration.conftest import make_user
 
 pytestmark = pytest.mark.integration
 
@@ -23,27 +22,59 @@ async def test_csv_upload_ingestion_profile_and_preview(alice):
     r = await upload(alice, p["id"], csv_bytes(df), name="Survey")
     assert r.status_code == 202, r.text
     body = r.json()
-    assert body["job"]["status"] == "COMPLETED" and body["job"]["progress"] == 1.0  # inline backend finished synchronously
+    assert (
+        body["job"]["status"] == "COMPLETED" and body["job"]["progress"] == 1.0
+    )  # inline backend finished synchronously
     ds = body["dataset"]
-    assert ds["status"] == "READY" and ds["latest_version"]["row_count"] == len(df) and ds["latest_version"]["kind"] == "original"
+    assert (
+        ds["status"] == "READY"
+        and ds["latest_version"]["row_count"] == len(df)
+        and ds["latest_version"]["kind"] == "original"
+    )
     prof = (await alice.get(f"/datasets/{ds['id']}/profile")).json()
     cols = {c["name"]: c for c in prof["columns"]}
     assert cols["delivery_time"]["semantic_type"] == "numeric_continuous"
-    assert cols["region"]["semantic_type"] == "categorical" and cols["survey_date"]["semantic_type"] == "datetime"
-    assert cols["customer_id"]["semantic_type"] == "identifier" and cols["support_rating"]["semantic_type"] == "numeric_discrete"
+    assert (
+        cols["region"]["semantic_type"] == "categorical"
+        and cols["survey_date"]["semantic_type"] == "datetime"
+    )
+    assert (
+        cols["customer_id"]["semantic_type"] == "identifier"
+        and cols["support_rating"]["semantic_type"] == "numeric_discrete"
+    )
     # profile numbers are the real statistics of the data
     d = cols["delivery_time"]["profile"]
-    assert d["mean"] == pytest.approx(df["delivery_time"].mean()) and d["median"] == pytest.approx(df["delivery_time"].median())
+    assert d["mean"] == pytest.approx(df["delivery_time"].mean()) and d["median"] == pytest.approx(
+        df["delivery_time"].median()
+    )
     assert d["std"] == pytest.approx(df["delivery_time"].std(ddof=1)) and d["count"] == len(df)
     assert sum(d["histogram"]["counts"]) == len(df)
-    assert {t["value"]: t["count"] for t in cols["region"]["profile"]["top_values"]} == df["region"].value_counts().to_dict()
+    assert {t["value"]: t["count"] for t in cols["region"]["profile"]["top_values"]} == df[
+        "region"
+    ].value_counts().to_dict()
     # preview pagination / sort / filter
     pv = (await alice.get(f"/datasets/{ds['id']}/preview", params={"page": 2, "page_size": 25})).json()
-    assert pv["total"] == len(df) and len(pv["rows"]) == 25 and pv["rows"][0]["customer_id"] == "C0025" and pv["row_offset"] == 25
-    srt = (await alice.get(f"/datasets/{ds['id']}/preview", params={"sort": "satisfaction", "order": "desc", "page_size": 3})).json()
+    assert (
+        pv["total"] == len(df)
+        and len(pv["rows"]) == 25
+        and pv["rows"][0]["customer_id"] == "C0025"
+        and pv["row_offset"] == 25
+    )
+    srt = (
+        await alice.get(
+            f"/datasets/{ds['id']}/preview", params={"sort": "satisfaction", "order": "desc", "page_size": 3}
+        )
+    ).json()
     assert srt["rows"][0]["satisfaction"] == df["satisfaction"].max()
-    flt = (await alice.get(f"/datasets/{ds['id']}/preview", params={"filters": '[{"column":"region","operator":"eq","value":"West"}]', "page_size": 200})).json()
-    assert flt["total"] == int((df["region"] == "West").sum()) and all(r["region"] == "West" for r in flt["rows"])
+    flt = (
+        await alice.get(
+            f"/datasets/{ds['id']}/preview",
+            params={"filters": '[{"column":"region","operator":"eq","value":"West"}]', "page_size": 200},
+        )
+    ).json()
+    assert flt["total"] == int((df["region"] == "West").sum()) and all(
+        r["region"] == "West" for r in flt["rows"]
+    )
     bad = await alice.get(f"/datasets/{ds['id']}/preview", params={"sort": "nope"})
     assert bad.status_code == 422 and bad.json()["error"]["code"] == "UNKNOWN_COLUMN"
 
@@ -51,19 +82,31 @@ async def test_csv_upload_ingestion_profile_and_preview(alice):
 async def test_xlsx_upload(alice):
     p = await new_project(alice)
     df = survey_frame(60)
-    r = await upload(alice, p["id"], xlsx_bytes(df), "survey.xlsx", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
+    r = await upload(
+        alice,
+        p["id"],
+        xlsx_bytes(df),
+        "survey.xlsx",
+        "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+    )
     assert r.status_code == 202 and r.json()["dataset"]["status"] == "READY"
     prof = (await alice.get(f"/datasets/{r.json()['dataset']['id']}/profile")).json()
-    assert prof["version"]["row_count"] == 60 and {c["name"]: c["semantic_type"] for c in prof["columns"]}["survey_date"] == "datetime"
+    assert (
+        prof["version"]["row_count"] == 60
+        and {c["name"]: c["semantic_type"] for c in prof["columns"]}["survey_date"] == "datetime"
+    )
 
 
-@pytest.mark.parametrize(("name", "content", "status", "code"), [
-    ("empty.csv", b"", 422, "EMPTY_FILE"),
-    ("notes.pdf", b"%PDF-1.4 hello", 415, "UNSUPPORTED_FILE"),
-    ("evil.csv", b"%PDF-1.4 binary", 415, "UNSUPPORTED_FILE"),
-    ("fake.xlsx", b"a,b\n1,2\n", 415, "UNSUPPORTED_FILE"),
-    ("blob.csv", b"a,b\x00\x01\x02\n", 415, "UNSUPPORTED_FILE"),
-])
+@pytest.mark.parametrize(
+    ("name", "content", "status", "code"),
+    [
+        ("empty.csv", b"", 422, "EMPTY_FILE"),
+        ("notes.pdf", b"%PDF-1.4 hello", 415, "UNSUPPORTED_FILE"),
+        ("evil.csv", b"%PDF-1.4 binary", 415, "UNSUPPORTED_FILE"),
+        ("fake.xlsx", b"a,b\n1,2\n", 415, "UNSUPPORTED_FILE"),
+        ("blob.csv", b"a,b\x00\x01\x02\n", 415, "UNSUPPORTED_FILE"),
+    ],
+)
 async def test_rejected_uploads(alice, name, content, status, code):
     p = await new_project(alice)
     r = await upload(alice, p["id"], content, name)
@@ -71,11 +114,14 @@ async def test_rejected_uploads(alice, name, content, status, code):
     assert (await alice.get(f"/projects/{p['id']}/datasets")).json() == []  # nothing half-created
 
 
-@pytest.mark.parametrize(("content", "code"), [
-    (b"a,b,c\n", "EMPTY_DATASET"),
-    (b"a,b\n1,2\n3,4,5,6\n", "MALFORMED_FILE"),
-    (b"\n\n\n", "EMPTY_DATASET"),
-])
+@pytest.mark.parametrize(
+    ("content", "code"),
+    [
+        (b"a,b,c\n", "EMPTY_DATASET"),
+        (b"a,b\n1,2\n3,4,5,6\n", "MALFORMED_FILE"),
+        (b"\n\n\n", "EMPTY_DATASET"),
+    ],
+)
 async def test_processing_failures_are_reported_not_raised(alice, content, code):
     p = await new_project(alice)
     r = await upload(alice, p["id"], content)
@@ -89,7 +135,9 @@ async def test_processing_failures_are_reported_not_raised(alice, content, code)
 
 async def test_duplicate_columns_invalid_numbers_and_cp1252(alice):
     p = await new_project(alice)
-    raw = "name;score;score;note\nAna;1,5;2;caf\xe9\nBob;x;3;ok\nCy;3;4;ok\nDi;4;5;ok\nEd;5;6;ok\nFay;6;7;ok\n".encode("cp1252")
+    raw = "name;score;score;note\nAna;1,5;2;caf\xe9\nBob;x;3;ok\nCy;3;4;ok\nDi;4;5;ok\nEd;5;6;ok\nFay;6;7;ok\n".encode(
+        "cp1252"
+    )
     r = await upload(alice, p["id"], raw)
     ds = r.json()["dataset"]
     assert ds["status"] == "READY"
@@ -129,38 +177,64 @@ async def test_versions_are_non_destructive_and_reproducible(alice):
     ds = (await upload(alice, p["id"], csv_bytes(dup))).json()["dataset"]
     v1 = ds["latest_version"]
     assert v1["quality"]["duplicate_rows"] == 5
-    ops = [{"op": "drop_duplicates"}, {"op": "fill_missing", "column": "satisfaction", "strategy": "median"},
-           {"op": "normalize_categories", "column": "region", "case": "upper"}]
-    dry = (await alice.post(f"/datasets/{ds['id']}/versions", json={"operations": ops, "dry_run": True})).json()
+    ops = [
+        {"op": "drop_duplicates"},
+        {"op": "fill_missing", "column": "satisfaction", "strategy": "median"},
+        {"op": "normalize_categories", "column": "region", "case": "upper"},
+    ]
+    dry = (
+        await alice.post(f"/datasets/{ds['id']}/versions", json={"operations": ops, "dry_run": True})
+    ).json()
     assert dry["rows_before"] == 105 and dry["rows_after"] == 100
     r = await alice.post(f"/datasets/{ds['id']}/versions", json={"operations": ops, "label": "Cleaned"})
     assert r.status_code == 202 and r.json()["status"] == "COMPLETED"
     versions = (await alice.get(f"/datasets/{ds['id']}/versions")).json()
     assert [v["version_number"] for v in versions] == [1, 2]
     v2 = versions[1]
-    assert v2["parent_version_id"] == v1["id"] and v2["row_count"] == 100 and v2["kind"] == "transformed" and v2["label"] == "Cleaned"
+    assert (
+        v2["parent_version_id"] == v1["id"]
+        and v2["row_count"] == 100
+        and v2["kind"] == "transformed"
+        and v2["label"] == "Cleaned"
+    )
     assert v2["transformation"]["operations"] == ops and v2["transformation"]["log"][0]["rows_after"] == 100
     assert v2["quality"]["missing_cells"] < v1["quality"]["missing_cells"]
     # original untouched
     p1 = (await alice.get(f"/datasets/{ds['id']}/preview", params={"version_id": v1["id"]})).json()
     assert p1["total"] == 105
-    p2 = (await alice.get(f"/datasets/{ds['id']}/preview", params={"version_id": v2["id"], "page_size": 200})).json()
+    p2 = (
+        await alice.get(f"/datasets/{ds['id']}/preview", params={"version_id": v2["id"], "page_size": 200})
+    ).json()
     assert all(r["region"] in ("NORTH", "SOUTH", "WEST") for r in p2["rows"])
     # idempotent: same ops on same parent → same version, no duplicate
-    again = await alice.post(f"/datasets/{ds['id']}/versions", json={"operations": ops, "label": "Cleaned", "parent_version_id": v1["id"]})
+    again = await alice.post(
+        f"/datasets/{ds['id']}/versions",
+        json={"operations": ops, "label": "Cleaned", "parent_version_id": v1["id"]},
+    )
     assert again.status_code == 202 and again.json()["result_ref"]["version_id"] == v2["id"]
     assert len((await alice.get(f"/datasets/{ds['id']}/versions")).json()) == 2
     # invalid op
     bad = await alice.post(f"/datasets/{ds['id']}/versions", json={"operations": [{"op": "explode"}]})
     assert bad.status_code == 422 and bad.json()["error"]["code"] == "INVALID_TRANSFORMATION"
-    bad2 = await alice.post(f"/datasets/{ds['id']}/versions", json={"operations": [{"op": "filter_rows", "column": "region", "operator": "eq", "value": "Nowhere"}]})
+    bad2 = await alice.post(
+        f"/datasets/{ds['id']}/versions",
+        json={
+            "operations": [{"op": "filter_rows", "column": "region", "operator": "eq", "value": "Nowhere"}]
+        },
+    )
     assert bad2.json()["status"] == "FAILED" and bad2.json()["error"]["code"] == "EMPTY_RESULT"
 
 
 async def test_dataset_isolation_between_users(client, alice, bob):
     p = await new_project(alice)
     ds = (await upload(alice, p["id"], csv_bytes(survey_frame(50)))).json()["dataset"]
-    for path in (f"/datasets/{ds['id']}", f"/datasets/{ds['id']}/profile", f"/datasets/{ds['id']}/preview", f"/datasets/{ds['id']}/versions", f"/projects/{p['id']}/datasets"):
+    for path in (
+        f"/datasets/{ds['id']}",
+        f"/datasets/{ds['id']}/profile",
+        f"/datasets/{ds['id']}/preview",
+        f"/datasets/{ds['id']}/versions",
+        f"/projects/{p['id']}/datasets",
+    ):
         assert (await bob.get(path)).status_code == 404, path
     assert (await bob.delete(f"/datasets/{ds['id']}")).status_code == 404
     assert (await upload(bob, p["id"], csv_bytes(survey_frame(50)))).status_code == 404

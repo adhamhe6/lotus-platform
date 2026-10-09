@@ -6,7 +6,18 @@ import uuid
 from datetime import datetime
 from typing import Any
 
-from sqlalchemy import BigInteger, CheckConstraint, DateTime, ForeignKey, Index, Integer, String, Text, UniqueConstraint, func
+from sqlalchemy import (
+    BigInteger,
+    CheckConstraint,
+    DateTime,
+    ForeignKey,
+    Index,
+    Integer,
+    String,
+    Text,
+    UniqueConstraint,
+    func,
+)
 from sqlalchemy.dialects.postgresql import JSONB, UUID
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
@@ -43,16 +54,24 @@ class Project(Base):
     description: Mapped[str] = mapped_column(Text, default="", nullable=False)
     objective: Mapped[str] = mapped_column(Text, default="", nullable=False)
     owner_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("users.id", ondelete="RESTRICT"), index=True)
-    revision: Mapped[int] = mapped_column(Integer, default=0, nullable=False)  # bumped on content change (cache busting)
+    revision: Mapped[int] = mapped_column(
+        Integer, default=0, nullable=False
+    )  # bumped on content change (cache busting)
     created_at: Mapped[datetime] = created_at_col()
     updated_at: Mapped[datetime] = updated_at_col()
-    members: Mapped[list[ProjectMember]] = relationship(back_populates="project", cascade="all, delete-orphan")
+    members: Mapped[list[ProjectMember]] = relationship(
+        back_populates="project", cascade="all, delete-orphan"
+    )
 
 
 class ProjectMember(Base):
     __tablename__ = "project_members"
-    project_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("projects.id", ondelete="CASCADE"), primary_key=True)
-    user_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("users.id", ondelete="CASCADE"), primary_key=True, index=True)
+    project_id: Mapped[uuid.UUID] = mapped_column(
+        ForeignKey("projects.id", ondelete="CASCADE"), primary_key=True
+    )
+    user_id: Mapped[uuid.UUID] = mapped_column(
+        ForeignKey("users.id", ondelete="CASCADE"), primary_key=True, index=True
+    )
     role: Mapped[str] = mapped_column(String(10), nullable=False)
     created_at: Mapped[datetime] = created_at_col()
     project: Mapped[Project] = relationship(back_populates="members")
@@ -89,7 +108,9 @@ class DatasetVersion(Base):
     id: Mapped[uuid.UUID] = uuid_pk()
     dataset_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("datasets.id", ondelete="CASCADE"), index=True)
     version_number: Mapped[int] = mapped_column(Integer, nullable=False)
-    parent_version_id: Mapped[uuid.UUID | None] = mapped_column(ForeignKey("dataset_versions.id", ondelete="SET NULL"))
+    parent_version_id: Mapped[uuid.UUID | None] = mapped_column(
+        ForeignKey("dataset_versions.id", ondelete="SET NULL")
+    )
     kind: Mapped[str] = mapped_column(String(12), nullable=False)  # original | transformed
     label: Mapped[str] = mapped_column(String(200), nullable=False)
     transformation: Mapped[dict[str, Any] | None] = mapped_column(JSONB)
@@ -114,7 +135,9 @@ class DatasetVersion(Base):
 class DatasetColumn(Base):
     __tablename__ = "dataset_columns"
     id: Mapped[uuid.UUID] = uuid_pk()
-    version_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("dataset_versions.id", ondelete="CASCADE"), index=True)
+    version_id: Mapped[uuid.UUID] = mapped_column(
+        ForeignKey("dataset_versions.id", ondelete="CASCADE"), index=True
+    )
     position: Mapped[int] = mapped_column(Integer, nullable=False)
     name: Mapped[str] = mapped_column(String(300), nullable=False)
     dtype: Mapped[str] = mapped_column(String(40), nullable=False)
@@ -127,4 +150,13 @@ class DatasetColumn(Base):
     __table_args__ = (UniqueConstraint("version_id", "name", name="uq_dataset_columns_version_name"),)
 
 
-__all__ = ["Dataset", "DatasetColumn", "DatasetVersion", "Project", "ProjectMember", "RefreshToken", "User", "UUID"]
+__all__ = [
+    "UUID",
+    "Dataset",
+    "DatasetColumn",
+    "DatasetVersion",
+    "Project",
+    "ProjectMember",
+    "RefreshToken",
+    "User",
+]

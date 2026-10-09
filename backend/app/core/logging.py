@@ -15,6 +15,7 @@ job_id_var: contextvars.ContextVar[str | None] = contextvars.ContextVar("job_id"
 _REDACT = re.compile(
     r"(?i)(authorization|password|passwd|secret|token|api[_-]?key|cookie)(['\"]?\s*[:=]\s*['\"]?)([^\s,'\"}]+)"
 )
+_SENSITIVE_KEY = re.compile(r"(?i)(password|passwd|secret|token|api[_-]?key|authorization|cookie|credential)")
 _RESERVED = set(logging.LogRecord("", 0, "", 0, "", (), None).__dict__) | {"message", "asctime", "taskName"}
 
 
@@ -36,7 +37,9 @@ class JsonFormatter(logging.Formatter):
             payload["job_id"] = jid
         for k, v in record.__dict__.items():
             if k not in _RESERVED and not k.startswith("_"):
-                payload[k] = redact(v) if isinstance(v, str) else v
+                payload[k] = (
+                    "[REDACTED]" if _SENSITIVE_KEY.search(k) else (redact(v) if isinstance(v, str) else v)
+                )
         if record.exc_info:
             payload["exc"] = redact(self.formatException(record.exc_info))
         return json.dumps(payload, default=str)
@@ -51,7 +54,9 @@ class _PlainFormatter(logging.Formatter):
 
 def configure_logging(level: str = "INFO", json_logs: bool = True) -> None:
     handler = logging.StreamHandler(sys.stdout)
-    handler.setFormatter(JsonFormatter() if json_logs else _PlainFormatter("%(asctime)s %(levelname)s %(name)s: %(message)s"))
+    handler.setFormatter(
+        JsonFormatter() if json_logs else _PlainFormatter("%(asctime)s %(levelname)s %(name)s: %(message)s")
+    )
     root = logging.getLogger()
     root.handlers[:] = [handler]
     root.setLevel(level.upper())

@@ -61,7 +61,7 @@ class Settings(BaseSettings):
 
     # --- demo -----------------------------------------------------------------------------
     seed_demo_data: bool = False
-    demo_user_email: str = "demo@lotus.local"
+    demo_user_email: str = "demo@lotus-demo.org"
     demo_user_password: SecretStr | None = None
 
     @field_validator("secret_key")
@@ -86,4 +86,4 @@ class Settings(BaseSettings):
 
 @lru_cache
 def get_settings() -> Settings:
-    return Settings()  # type: ignore[call-arg]
+    return Settings()

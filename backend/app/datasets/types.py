@@ -15,4 +15,9 @@ class SemanticType(StrEnum):
 
 
 NUMERIC_TYPES = {SemanticType.NUMERIC_CONTINUOUS, SemanticType.NUMERIC_DISCRETE, SemanticType.BINARY}
-GROUPING_TYPES = {SemanticType.CATEGORICAL, SemanticType.BOOLEAN, SemanticType.BINARY, SemanticType.NUMERIC_DISCRETE}
+GROUPING_TYPES = {
+    SemanticType.CATEGORICAL,
+    SemanticType.BOOLEAN,
+    SemanticType.BINARY,
+    SemanticType.NUMERIC_DISCRETE,
+}

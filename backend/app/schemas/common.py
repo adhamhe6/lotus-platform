@@ -32,7 +32,10 @@ class ErrorResponse(BaseModel):
 
 ERRORS: dict[int | str, dict[str, Any]] = {
     401: {"model": ErrorResponse, "description": "Not authenticated or token expired."},
-    403: {"model": ErrorResponse, "description": "Authenticated but not allowed (insufficient project role)."},
+    403: {
+        "model": ErrorResponse,
+        "description": "Authenticated but not allowed (insufficient project role).",
+    },
     404: {"model": ErrorResponse, "description": "Not found — or not visible to the caller."},
     422: {"model": ErrorResponse, "description": "Validation error or invalid analysis configuration."},
 }

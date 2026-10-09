@@ -19,7 +19,9 @@ bearer = HTTPBearer(auto_error=False, description="Access token from `POST /api/
 Session = Annotated[AsyncSession, Depends(get_session)]
 
 
-async def current_user(session: Session, creds: Annotated[HTTPAuthorizationCredentials | None, Depends(bearer)]) -> User:
+async def current_user(
+    session: Session, creds: Annotated[HTTPAuthorizationCredentials | None, Depends(bearer)]
+) -> User:
     if creds is None:
         raise AuthenticationError("Authentication required.", code="NOT_AUTHENTICATED")
     user_id = decode_access_token(creds.credentials)
@@ -46,7 +48,7 @@ StorageDep = Annotated[Storage, Depends(get_storage)]
 
 def client_ip(request: Request) -> str:
     fwd = request.headers.get("x-forwarded-for")
-    return (fwd.split(",")[0].strip() if fwd else (request.client.host if request.client else "unknown"))
+    return fwd.split(",")[0].strip() if fwd else (request.client.host if request.client else "unknown")
 
 
 async def auth_rate_limit(request: Request) -> None:

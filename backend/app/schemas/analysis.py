@@ -42,6 +42,7 @@ class AnalysisSummary(ORM):
 class AnalysisDetail(AnalysisSummary):
     result: dict[str, Any] | None
     provenance: dict[str, Any]
+    interpretation: dict[str, Any] | None = None
     dataset_name: str | None = None
     version_label: str | None = None
     version_number: int | None = None

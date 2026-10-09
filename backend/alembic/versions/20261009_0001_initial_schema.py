@@ -2,7 +2,7 @@
 
 Revision ID: 0001
 Revises: 
-Create Date: 2026-10-09 23:25:25.938115
+Create Date: 2026-10-09 23:39:59.745898
 """
 from alembic import op
 import sqlalchemy as sa
@@ -217,6 +217,7 @@ def upgrade() -> None:
     sa.Column('result', postgresql.JSONB(astext_type=sa.Text()), nullable=True),
     sa.Column('error', postgresql.JSONB(astext_type=sa.Text()), nullable=True),
     sa.Column('provenance', postgresql.JSONB(astext_type=sa.Text()), nullable=False),
+    sa.Column('interpretation', postgresql.JSONB(astext_type=sa.Text()), nullable=True),
     sa.Column('duration_ms', sa.Integer(), nullable=True),
     sa.Column('saved', sa.Boolean(), nullable=False),
     sa.Column('created_by', sa.UUID(), nullable=False),

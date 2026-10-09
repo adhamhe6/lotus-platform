@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import importlib
 import logging
 import time
 import uuid
@@ -32,7 +33,10 @@ TAGS = [
     {"name": "Authentication", "description": "Registration, login, refresh-token rotation."},
     {"name": "Projects", "description": "Research projects, membership and roles (OWNER / EDITOR / VIEWER)."},
     {"name": "Datasets", "description": "Upload, profile, preview, clean and version datasets."},
-    {"name": "Analysis", "description": "Statistical analyses and chart specifications computed from the data."},
+    {
+        "name": "Analysis",
+        "description": "Statistical analyses and chart specifications computed from the data.",
+    },
     {"name": "Jobs & notifications", "description": "Background job status and notifications."},
 ]
 
@@ -51,13 +55,27 @@ async def lifespan(app: FastAPI):
 
 
 def create_app() -> FastAPI:
-    import app.workers.jobs  # noqa: F401  (register job handlers; required for the inline backend)
+    importlib.import_module("app.workers.jobs")  # registers job handlers; required for the inline backend
 
     s = get_settings()
-    app = FastAPI(title="Lotus Platform API", version="1.0.0", description=DESCRIPTION, openapi_tags=TAGS, lifespan=lifespan, docs_url="/api/docs", redoc_url="/api/redoc",
-                  openapi_url="/api/openapi.json")
-    app.add_middleware(CORSMiddleware, allow_origins=s.cors_origin_list, allow_credentials=True, allow_methods=["GET", "POST", "PATCH", "PUT", "DELETE"],
-                       allow_headers=["Authorization", "Content-Type"], max_age=600)
+    app = FastAPI(
+        title="Lotus Platform API",
+        version="1.0.0",
+        description=DESCRIPTION,
+        openapi_tags=TAGS,
+        lifespan=lifespan,
+        docs_url="/api/docs",
+        redoc_url="/api/redoc",
+        openapi_url="/api/openapi.json",
+    )
+    app.add_middleware(
+        CORSMiddleware,
+        allow_origins=s.cors_origin_list,
+        allow_credentials=True,
+        allow_methods=["GET", "POST", "PATCH", "PUT", "DELETE"],
+        allow_headers=["Authorization", "Content-Type"],
+        max_age=600,
+    )
     install_exception_handlers(app)
 
     @app.middleware("http")
@@ -75,7 +93,15 @@ def create_app() -> FastAPI:
         response.headers["referrer-policy"] = "no-referrer"
         response.headers["cache-control"] = "no-store"
         if not request.url.path.endswith("/health"):
-            log.info("request", extra={"method": request.method, "path": request.url.path, "status": response.status_code, "duration_ms": ms})
+            log.info(
+                "request",
+                extra={
+                    "method": request.method,
+                    "path": request.url.path,
+                    "status": response.status_code,
+                    "duration_ms": ms,
+                },
+            )
         return response
 
     api = "/api/v1"
@@ -100,8 +126,12 @@ def create_app() -> FastAPI:
             checks["database"] = "unavailable"
         checks["redis"] = "ok" if await redis_ping() else "unavailable"
         checks["storage"] = "ok" if s.storage_dir.exists() else "unavailable"
-        ok = checks["database"] == "ok" and checks["storage"] == "ok"  # Redis degradation is tolerated (cache fail-open) but reported
-        return JSONResponse({"status": "ready" if ok else "unavailable", "checks": checks}, status_code=200 if ok else 503)
+        ok = (
+            checks["database"] == "ok" and checks["storage"] == "ok"
+        )  # Redis degradation is tolerated (cache fail-open) but reported
+        return JSONResponse(
+            {"status": "ready" if ok else "unavailable", "checks": checks}, status_code=200 if ok else 503
+        )
 
     return app
 

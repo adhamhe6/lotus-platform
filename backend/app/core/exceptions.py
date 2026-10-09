@@ -21,7 +21,9 @@ class LotusError(Exception):
     status_code = 400
     code = "BAD_REQUEST"
 
-    def __init__(self, message: str, *, code: str | None = None, details: Any = None, status_code: int | None = None):
+    def __init__(
+        self, message: str, *, code: str | None = None, details: Any = None, status_code: int | None = None
+    ):
         super().__init__(message)
         self.message = message
         if code:
@@ -115,7 +117,10 @@ def install_exception_handlers(app: FastAPI) -> None:
     @app.exception_handler(RequestValidationError)
     async def _validation(_: Request, exc: RequestValidationError) -> JSONResponse:
         fields = [
-            {"field": ".".join(str(p) for p in e["loc"] if p not in ("body", "query", "path")), "message": e["msg"]}
+            {
+                "field": ".".join(str(p) for p in e["loc"] if p not in ("body", "query", "path")),
+                "message": e["msg"],
+            }
             for e in exc.errors()
         ]
         return JSONResponse(_body("VALIDATION_ERROR", "The request is invalid.", fields), status_code=422)

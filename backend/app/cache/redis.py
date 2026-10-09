@@ -35,7 +35,9 @@ _down_until = 0.0
 def get_redis() -> aioredis.Redis:
     global _client
     if _client is None:
-        _client = aioredis.from_url(get_settings().redis_url, decode_responses=True, socket_timeout=1.5, socket_connect_timeout=1.5)
+        _client = aioredis.from_url(
+            get_settings().redis_url, decode_responses=True, socket_timeout=1.5, socket_connect_timeout=1.5
+        )
     return _client
 
 

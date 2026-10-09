@@ -6,7 +6,9 @@ from typing import Any, Literal
 
 from pydantic import BaseModel, Field
 
-ChartKind = Literal["bar", "hbar", "stacked_bar", "line", "scatter", "histogram", "box", "heatmap", "donut", "coef", "roc"]
+ChartKind = Literal[
+    "bar", "hbar", "stacked_bar", "line", "scatter", "histogram", "box", "heatmap", "donut", "coef", "roc"
+]
 
 
 class ChartSpec(BaseModel):

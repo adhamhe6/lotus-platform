@@ -38,19 +38,34 @@ def create_access_token(user_id: uuid.UUID) -> tuple[str, int]:
     s = get_settings()
     now = datetime.now(UTC)
     exp = now + timedelta(minutes=s.access_token_expire_minutes)
-    payload: dict[str, Any] = {"sub": str(user_id), "iat": now, "exp": exp, "typ": "access", "jti": uuid.uuid4().hex}
-    return jwt.encode(payload, s.secret_key.get_secret_value(), algorithm=ALGORITHM), s.access_token_expire_minutes * 60
+    payload: dict[str, Any] = {
+        "sub": str(user_id),
+        "iat": now,
+        "exp": exp,
+        "typ": "access",
+        "jti": uuid.uuid4().hex,
+    }
+    return jwt.encode(
+        payload, s.secret_key.get_secret_value(), algorithm=ALGORITHM
+    ), s.access_token_expire_minutes * 60
 
 
 def decode_access_token(token: str) -> uuid.UUID:
     s = get_settings()
     try:
-        data = jwt.decode(token, s.secret_key.get_secret_value(), algorithms=[ALGORITHM], options={"require": ["exp", "sub"]})
+        data = jwt.decode(
+            token,
+            s.secret_key.get_secret_value(),
+            algorithms=[ALGORITHM],
+            options={"require": ["exp", "sub"]},
+        )
         if data.get("typ") != "access":
             raise AuthenticationError("Invalid token type.", code="INVALID_TOKEN")
         return uuid.UUID(data["sub"])
     except jwt.ExpiredSignatureError as e:
-        raise AuthenticationError("Your session has expired. Please sign in again.", code="TOKEN_EXPIRED") from e
+        raise AuthenticationError(
+            "Your session has expired. Please sign in again.", code="TOKEN_EXPIRED"
+        ) from e
     except (jwt.PyJWTError, ValueError) as e:
         raise AuthenticationError("Invalid authentication credentials.", code="INVALID_TOKEN") from e
 

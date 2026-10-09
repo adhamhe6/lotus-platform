@@ -57,7 +57,9 @@ class Storage:
         return rel, frame_hash(df)
 
     def read_frame(self, rel: str, columns: Iterable[str] | None = None) -> pd.DataFrame:
-        return pq.read_table(self.resolve(rel), columns=list(columns) if columns is not None else None).to_pandas()
+        return pq.read_table(
+            self.resolve(rel), columns=list(columns) if columns is not None else None
+        ).to_pandas()
 
     def read_slice(self, rel: str, offset: int, limit: int, columns: list[str] | None = None) -> pd.DataFrame:
         """Read rows [offset, offset+limit) touching only the needed row groups."""
@@ -71,7 +73,7 @@ class Storage:
             end = start + n
             if end > offset and start < need_end:
                 g = pf.read_row_group(i, columns=columns).to_pandas()
-                parts.append(g.iloc[max(offset - start, 0): min(need_end - start, n)])
+                parts.append(g.iloc[max(offset - start, 0) : min(need_end - start, n)])
             start = end
             if start >= need_end:
                 break

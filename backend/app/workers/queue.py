@@ -23,7 +23,9 @@ _pool: ArqRedis | None = None
 async def _get_pool() -> ArqRedis:
     global _pool
     if _pool is None:
-        _pool = await create_pool(RedisSettings.from_dsn(get_settings().redis_url), default_queue_name="lotus:jobs")
+        _pool = await create_pool(
+            RedisSettings.from_dsn(get_settings().redis_url), default_queue_name="lotus:jobs"
+        )
     return _pool
 
 
@@ -37,20 +39,28 @@ async def close_pool() -> None:
 async def enqueue(job_id: uuid.UUID) -> None:
     try:
         pool = await _get_pool()
-        await pool.enqueue_job("execute_job", str(job_id), _job_id=f"lotus-{job_id}", _queue_name="lotus:jobs")
+        await pool.enqueue_job(
+            "execute_job", str(job_id), _job_id=f"lotus-{job_id}", _queue_name="lotus:jobs"
+        )
     except Exception as e:  # Redis down: the job row exists but cannot be delivered
         log.error("enqueue_failed", extra={"error": type(e).__name__})
+        from datetime import UTC, datetime
+
         from app.db.database import get_sessionmaker
         from app.db.models import AnalysisJob
-        from datetime import UTC, datetime
 
         async with get_sessionmaker()() as s:
             j = await s.get(AnalysisJob, job_id)
             if j:
                 j.status, j.completed_at, j.stage = "FAILED", datetime.now(UTC), "Failed"
-                j.error = {"code": "QUEUE_UNAVAILABLE", "message": "The background queue is unavailable. Please try again shortly."}
+                j.error = {
+                    "code": "QUEUE_UNAVAILABLE",
+                    "message": "The background queue is unavailable. Please try again shortly.",
+                }
                 await s.commit()
-        raise ServiceUnavailable("The background job queue is unavailable. Please try again shortly.", code="QUEUE_UNAVAILABLE") from e
+        raise ServiceUnavailable(
+            "The background job queue is unavailable. Please try again shortly.", code="QUEUE_UNAVAILABLE"
+        ) from e
 
 
 async def execute_job(ctx: dict[str, Any], job_id: str) -> str:

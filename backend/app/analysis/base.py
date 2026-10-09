@@ -109,7 +109,9 @@ class AnalysisSpec:
 def require_columns(df: pd.DataFrame, *cols: str) -> None:
     missing = [c for c in cols if c not in df.columns]
     if missing:
-        raise AnalysisConfigurationError(f"Column(s) not found in this dataset version: {', '.join(missing)}.")
+        raise AnalysisConfigurationError(
+            f"Column(s) not found in this dataset version: {', '.join(missing)}."
+        )
 
 
 def semantic(df: pd.DataFrame, col: str) -> SemanticType:
@@ -120,31 +122,49 @@ def require_numeric(df: pd.DataFrame, col: str, role: str = "variable") -> pd.Se
     require_columns(df, col)
     sem = semantic(df, col)
     if sem not in NUMERIC_TYPES:
-        raise AnalysisConfigurationError(f"The {role} '{col}' must be numeric (it is {sem.value.replace('_', ' ')}).")
+        raise AnalysisConfigurationError(
+            f"The {role} '{col}' must be numeric (it is {sem.value.replace('_', ' ')})."
+        )
     return pd.to_numeric(df[col], errors="coerce").astype("float64")
 
 
-def require_grouping(df: pd.DataFrame, col: str, role: str = "grouping variable", *, max_levels: int = 30) -> pd.Series:
+def require_grouping(
+    df: pd.DataFrame, col: str, role: str = "grouping variable", *, max_levels: int = 30
+) -> pd.Series:
     require_columns(df, col)
     sem = semantic(df, col)
     if sem not in GROUPING_TYPES:
-        raise AnalysisConfigurationError(f"The {role} '{col}' must be categorical (it is {sem.value.replace('_', ' ')}).")
+        raise AnalysisConfigurationError(
+            f"The {role} '{col}' must be categorical (it is {sem.value.replace('_', ' ')})."
+        )
     s = df[col]
     k = int(s.nunique(dropna=True))
     if k < 2:
         raise AnalysisConfigurationError(f"The {role} '{col}' has fewer than two distinct values.")
     if k > max_levels:
-        raise AnalysisConfigurationError(f"The {role} '{col}' has {k} levels (limit {max_levels}); group rare levels first.")
-    return s.astype("string") if not pd.api.types.is_numeric_dtype(s) else s.map(lambda v: _level_name(v) if pd.notna(v) else pd.NA).astype("string")
+        raise AnalysisConfigurationError(
+            f"The {role} '{col}' has {k} levels (limit {max_levels}); group rare levels first."
+        )
+    return (
+        s.astype("string")
+        if not pd.api.types.is_numeric_dtype(s)
+        else s.map(lambda v: _level_name(v) if pd.notna(v) else pd.NA).astype("string")
+    )
 
 
 def _level_name(v: Any) -> str:
-    return str(int(v)) if isinstance(v, (int, float, np.integer, np.floating)) and float(v).is_integer() else str(v)
+    return (
+        str(int(v))
+        if isinstance(v, (int, float, np.integer, np.floating)) and float(v).is_integer()
+        else str(v)
+    )
 
 
 def require_n(n: int, minimum: int, what: str = "observations") -> None:
     if n < minimum:
-        raise InsufficientDataError(f"Only {n} complete {what} are available; at least {minimum} are required.")
+        raise InsufficientDataError(
+            f"Only {n} complete {what} are available; at least {minimum} are required."
+        )
 
 
 def require_variance(x: np.ndarray | pd.Series, name: str) -> None:
@@ -162,7 +182,11 @@ def listwise(df: pd.DataFrame, cols: list[str]) -> tuple[pd.DataFrame, int, int]
 
 def drop_note(n_total: int, n_used: int) -> str | None:
     d = n_total - n_used
-    return None if d == 0 else f"{d} of {n_total} rows ({d / n_total:.1%}) were excluded because of missing values in the selected variables."
+    return (
+        None
+        if d == 0
+        else f"{d} of {n_total} rows ({d / n_total:.1%}) were excluded because of missing values in the selected variables."
+    )
 
 
 # --------------------------------------------------------------------------- statistics helpers
@@ -222,7 +246,9 @@ def effect_label(kind: str, value: float) -> str:
 def normality_assumption(x: np.ndarray, label: str) -> Assumption:
     n = len(x)
     if n < 3:
-        return Assumption(name=f"Normality of {label}", status="unknown", detail=f"n={n} is too small to test normality.")
+        return Assumption(
+            name=f"Normality of {label}", status="unknown", detail=f"n={n} is too small to test normality."
+        )
     if np.ptp(x) == 0:
         return Assumption(name=f"Normality of {label}", status="not_applicable", detail="Constant values.")
     if n > 5000:
@@ -232,11 +258,19 @@ def normality_assumption(x: np.ndarray, label: str) -> Assumption:
         stat, p = stats.shapiro(x)
         test = "Shapiro–Wilk"
     ok = p >= 0.05
-    detail = f"{test} p = {p:.3g} (n = {n}). " + ("No evidence against normality." if ok else "Distribution departs from normality.")
+    detail = f"{test} p = {p:.3g} (n = {n}). " + (
+        "No evidence against normality." if ok else "Distribution departs from normality."
+    )
     if n >= 200 and not ok:
         detail += " With large samples small departures are flagged; inspect the histogram."
-    return Assumption(name=f"Normality of {label}", status="met" if ok else "violated", detail=detail, test=test,
-                      statistic=float(stat), p_value=float(p))
+    return Assumption(
+        name=f"Normality of {label}",
+        status="met" if ok else "violated",
+        detail=detail,
+        test=test,
+        statistic=float(stat),
+        p_value=float(p),
+    )
 
 
 def sf(v: Any) -> float | None:
@@ -251,5 +285,11 @@ def library_versions() -> dict[str, str]:
     import sklearn
     import statsmodels
 
-    return {"numpy": np.__version__, "pandas": pd.__version__, "scipy": __import__("scipy").__version__,
-            "statsmodels": statsmodels.__version__, "scikit-learn": sklearn.__version__, "engine": ENGINE_VERSION}
+    return {
+        "numpy": np.__version__,
+        "pandas": pd.__version__,
+        "scipy": __import__("scipy").__version__,
+        "statsmodels": statsmodels.__version__,
+        "scikit-learn": sklearn.__version__,
+        "engine": ENGINE_VERSION,
+    }

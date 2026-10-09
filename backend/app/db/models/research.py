@@ -7,10 +7,22 @@ from datetime import datetime
 from typing import Any
 
 from pgvector.sqlalchemy import Vector
-from sqlalchemy import BigInteger, Boolean, CheckConstraint, Float, ForeignKey, Index, Integer, String, Text, UniqueConstraint, text
+from sqlalchemy import (
+    BigInteger,
+    Boolean,
+    CheckConstraint,
+    DateTime,
+    Float,
+    ForeignKey,
+    Index,
+    Integer,
+    String,
+    Text,
+    UniqueConstraint,
+    text,
+)
 from sqlalchemy.dialects.postgresql import JSONB
 from sqlalchemy.orm import Mapped, mapped_column, relationship
-from sqlalchemy import DateTime
 
 from app.db.models.base import Base, created_at_col, uuid_pk
 
@@ -32,6 +44,9 @@ class AnalysisRun(Base):
     result: Mapped[dict[str, Any] | None] = mapped_column(JSONB)
     error: Mapped[dict[str, Any] | None] = mapped_column(JSONB)
     provenance: Mapped[dict[str, Any]] = mapped_column(JSONB, default=dict, nullable=False)
+    interpretation: Mapped[dict[str, Any] | None] = mapped_column(
+        JSONB
+    )  # AI/rule-based explanation, stored apart from `result`
     duration_ms: Mapped[int | None] = mapped_column(Integer)
     saved: Mapped[bool] = mapped_column(Boolean, default=False, nullable=False)
     created_by: Mapped[uuid.UUID] = _fk("users.id", ondelete="RESTRICT")
@@ -39,12 +54,18 @@ class AnalysisRun(Base):
     started_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
     completed_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
     __table_args__ = (
-        CheckConstraint("status in ('PENDING','RUNNING','COMPLETED','FAILED','CANCELLED')", name="status_valid"),
+        CheckConstraint(
+            "status in ('PENDING','RUNNING','COMPLETED','FAILED','CANCELLED')", name="status_valid"
+        ),
         Index("ix_analysis_runs_project_created", "project_id", "created_at"),
         # Idempotency: one live/completed run per (version, type, config). Failed runs may be retried.
         Index(
-            "uq_analysis_runs_idempotent", "dataset_version_id", "analysis_type", "config_hash",
-            unique=True, postgresql_where=text("status in ('PENDING','RUNNING','COMPLETED')"),
+            "uq_analysis_runs_idempotent",
+            "dataset_version_id",
+            "analysis_type",
+            "config_hash",
+            unique=True,
+            postgresql_where=text("status in ('PENDING','RUNNING','COMPLETED')"),
         ),
     )
 
@@ -55,7 +76,9 @@ class Insight(Base):
     project_id: Mapped[uuid.UUID] = _fk("projects.id")
     analysis_run_id: Mapped[uuid.UUID | None] = _fk("analysis_runs.id", nullable=True)
     mixed_run_id: Mapped[uuid.UUID | None] = _fk("mixed_method_runs.id", nullable=True)
-    kind: Mapped[str] = mapped_column(String(24), nullable=False)  # association | group_difference | trend | theme | mixed | ...
+    kind: Mapped[str] = mapped_column(
+        String(24), nullable=False
+    )  # association | group_difference | trend | theme | mixed | ...
     title: Mapped[str] = mapped_column(String(300), nullable=False)
     statement: Mapped[str] = mapped_column(Text, nullable=False)
     evidence: Mapped[list[Any]] = mapped_column(JSONB, nullable=False)
@@ -97,7 +120,9 @@ class ThemeDetectionRun(Base):
     stats: Mapped[dict[str, Any]] = mapped_column(JSONB, default=dict, nullable=False)
     created_by: Mapped[uuid.UUID] = _fk("users.id", ondelete="RESTRICT")
     created_at: Mapped[datetime] = created_at_col()
-    __table_args__ = (UniqueConstraint("dataset_version_id", "column_name", "params_hash", name="uq_theme_runs_params"),)
+    __table_args__ = (
+        UniqueConstraint("dataset_version_id", "column_name", "params_hash", name="uq_theme_runs_params"),
+    )
 
 
 class QualitativeSegment(Base):
@@ -112,7 +137,9 @@ class QualitativeSegment(Base):
     embedding: Mapped[Any] = mapped_column(Vector(), nullable=True)
     embedding_model: Mapped[str | None] = mapped_column(String(120))
     __table_args__ = (
-        UniqueConstraint("dataset_version_id", "column_name", "row_index", "seg_index", name="uq_segments_position"),
+        UniqueConstraint(
+            "dataset_version_id", "column_name", "row_index", "seg_index", name="uq_segments_position"
+        ),
     )
 
 
@@ -157,7 +184,9 @@ class QualitativeTheme(Base):
     name: Mapped[str] = mapped_column(String(160), nullable=False)
     description: Mapped[str] = mapped_column(Text, default="", nullable=False)
     keywords: Mapped[list[Any]] = mapped_column(JSONB, default=list, nullable=False)
-    summary: Mapped[dict[str, Any] | None] = mapped_column(JSONB)  # {text, origin: deterministic|ai, model, ...}
+    summary: Mapped[dict[str, Any] | None] = mapped_column(
+        JSONB
+    )  # {text, origin: deterministic|ai, model, ...}
     origin: Mapped[str] = mapped_column(String(10), default="auto", nullable=False)  # auto | manual | merged
     position: Mapped[int] = mapped_column(Integer, default=0, nullable=False)
     created_by: Mapped[uuid.UUID | None] = _fk("users.id", ondelete="SET NULL", nullable=True)
@@ -167,7 +196,9 @@ class QualitativeTheme(Base):
 
 class ThemeSegment(Base):
     __tablename__ = "theme_segments"
-    theme_id: Mapped[uuid.UUID] = mapped_column(ForeignKey("qualitative_themes.id", ondelete="CASCADE"), primary_key=True)
+    theme_id: Mapped[uuid.UUID] = mapped_column(
+        ForeignKey("qualitative_themes.id", ondelete="CASCADE"), primary_key=True
+    )
     segment_id: Mapped[uuid.UUID] = mapped_column(
         ForeignKey("qualitative_segments.id", ondelete="CASCADE"), primary_key=True, index=True
     )
@@ -186,7 +217,9 @@ class MixedMethodRun(Base):
     group_column: Mapped[str | None] = mapped_column(String(300))
     config: Mapped[dict[str, Any]] = mapped_column(JSONB, nullable=False)
     config_hash: Mapped[str] = mapped_column(String(64), nullable=False)
-    theme_snapshot: Mapped[list[Any]] = mapped_column(JSONB, nullable=False)  # theme ids+names+counts at run time
+    theme_snapshot: Mapped[list[Any]] = mapped_column(
+        JSONB, nullable=False
+    )  # theme ids+names+counts at run time
     result: Mapped[dict[str, Any]] = mapped_column(JSONB, nullable=False)
     synthesis: Mapped[dict[str, Any] | None] = mapped_column(JSONB)
     created_by: Mapped[uuid.UUID] = _fk("users.id", ondelete="RESTRICT")
@@ -204,12 +237,16 @@ class Report(Base):
     title: Mapped[str] = mapped_column(String(300), nullable=False)
     objective: Mapped[str] = mapped_column(Text, default="", nullable=False)
     sections: Mapped[list[Any]] = mapped_column(JSONB, default=list, nullable=False)
-    sources: Mapped[dict[str, Any]] = mapped_column(JSONB, default=dict, nullable=False)  # runs / versions / insights referenced
+    sources: Mapped[dict[str, Any]] = mapped_column(
+        JSONB, default=dict, nullable=False
+    )  # runs / versions / insights referenced
     status: Mapped[str] = mapped_column(String(10), default="DRAFT", nullable=False)
     generation: Mapped[dict[str, Any]] = mapped_column(JSONB, default=dict, nullable=False)
     created_by: Mapped[uuid.UUID] = _fk("users.id", ondelete="RESTRICT")
     created_at: Mapped[datetime] = created_at_col()
-    updated_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=text("now()"), onupdate=text("now()"))
+    updated_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), server_default=text("now()"), onupdate=text("now()")
+    )
 
 
 class AIConversation(Base):
@@ -217,7 +254,9 @@ class AIConversation(Base):
     id: Mapped[uuid.UUID] = uuid_pk()
     project_id: Mapped[uuid.UUID] = _fk("projects.id")
     user_id: Mapped[uuid.UUID] = _fk("users.id")
-    dataset_version_id: Mapped[uuid.UUID | None] = _fk("dataset_versions.id", ondelete="SET NULL", nullable=True)
+    dataset_version_id: Mapped[uuid.UUID | None] = _fk(
+        "dataset_versions.id", ondelete="SET NULL", nullable=True
+    )
     title: Mapped[str] = mapped_column(String(200), nullable=False)
     created_at: Mapped[datetime] = created_at_col()
     messages: Mapped[list[AIMessage]] = relationship(
@@ -233,7 +272,9 @@ class AIMessage(Base):
     content: Mapped[str] = mapped_column(Text, nullable=False)
     blocks: Mapped[list[Any]] = mapped_column(JSONB, default=list, nullable=False)
     evidence: Mapped[list[Any]] = mapped_column(JSONB, default=list, nullable=False)
-    meta: Mapped[dict[str, Any]] = mapped_column(JSONB, default=dict, nullable=False)  # provider, model, prompt_version, validation
+    meta: Mapped[dict[str, Any]] = mapped_column(
+        JSONB, default=dict, nullable=False
+    )  # provider, model, prompt_version, validation
     created_at: Mapped[datetime] = created_at_col()
     conversation: Mapped[AIConversation] = relationship(back_populates="messages")
     __table_args__ = (CheckConstraint("role in ('user','assistant')", name="role_valid"),)
@@ -259,11 +300,16 @@ class AnalysisJob(Base):
     started_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
     completed_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))
     __table_args__ = (
-        CheckConstraint("status in ('PENDING','RUNNING','COMPLETED','FAILED','CANCELLED')", name="status_valid"),
+        CheckConstraint(
+            "status in ('PENDING','RUNNING','COMPLETED','FAILED','CANCELLED')", name="status_valid"
+        ),
         Index("ix_jobs_project_created", "project_id", "created_at"),
         Index(
-            "uq_jobs_idempotency_active", "project_id", "idempotency_key",
-            unique=True, postgresql_where=text("idempotency_key is not null and status in ('PENDING','RUNNING')"),
+            "uq_jobs_idempotency_active",
+            "project_id",
+            "idempotency_key",
+            unique=True,
+            postgresql_where=text("idempotency_key is not null and status in ('PENDING','RUNNING')"),
         ),
     )
 
