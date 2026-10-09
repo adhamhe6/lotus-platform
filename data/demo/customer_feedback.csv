@@ -1,0 +1,609 @@
+customer_id,survey_date,age,region,plan,channel,delivery_time,support_rating,satisfaction_score,purchase_frequency,monthly_spend,retained,comment
+C0001,2025-06-12,45,West,Basic,Mobile,6.5,2,77.7,8,67.74,0,"In my experience, support promised a call back and never called. Good value for money and a smooth experience overall."
+C0002,2025-08-11,48,East,Standard,Mobile,6.8,3,68.3,0,85.67,1,"Just to say: loyalty discounts make this worth it. Very satisfied. Slow responses from support, I had to chase them repeatedly."
+C0003,2025-02-26,35,Central,Premium,Store,4.4,3,81.0,2,162.23,0,
+C0004,2025-08-16,19,West,Standard,Mobile,7.7,5,71.6,11,119.5,0,
+C0005,2025-12-04,34,North,Premium,Web,4.2,2,74.3,4,154.97,0,"Too many hidden charges at checkout. Fast delivery and easy to track, no complaints at all. Thanks for asking."
+C0006,2025-02-19,28,Central,Standard,Web,4.1,2,84.8,3,149.03,0,"To be fair, reliable as always, I have recommended it to friends. That is my feedback."
+C0007,2025-04-30,24,West,Premium,Mobile,6.2,4,87.9,4,269.24,1,"Honestly, delivery estimates are unreliable; what they say and what happens are very different."
+C0008,2025-09-11,62,West,Basic,Mobile,8.5,5,77.4,4,85.45,1,The parcel was delivered to the wrong address and it took days to get it sorted out. Not sure I will keep my account.
+C0009,2025-08-14,44,North,Standard,Web,7.4,4,76.9,4,74.13,0,
+C0010,2025-09-04,46,East,Basic,Mobile,6.1,3,68.3,2,69.02,0,"To be fair, waiting time on the helpline is unacceptable, over 40 minutes. Hope this improves."
+C0011,2025-07-24,37,South,Standard,Mobile,6.8,3,66.2,2,83.5,1,"In my experience, prices keep going up and the value for money is not there anymore. Search results are poor and the filters do not work properly."
+C0012,2025-09-07,39,Central,Standard,Store,8.9,2,58.2,2,68.88,0,"Slow responses from support, I had to chase them repeatedly. Not sure I will keep my account."
+C0013,2025-08-11,53,West,Premium,Mobile,7.4,3,67.2,5,124.3,1,"In my experience, the device overheats and the battery barely lasts a day. The parcel was delivered to the wrong address and it took days to get it sorted out."
+C0014,2025-01-28,41,West,Premium,Web,8.3,3,66.1,5,169.76,0,"Overall, delivery took far too long, the parcel sat in a depot for almost a week. Good value for money and a smooth experience overall. Not sure I will keep my account."
+C0015,2025-10-02,47,East,Basic,Web,5.8,1,64.8,3,135.0,0,
+C0016,2025-06-13,39,South,Standard,Mobile,4.0,4,84.1,4,145.96,0,"Overall, product exactly as described and it came a day early. Please fix this."
+C0017,2025-01-19,37,East,Standard,Web,3.4,1,74.6,3,206.61,0,"Nobody answered the phone line, and the chat bot just kept repeating itself. Hope this improves."
+C0018,2025-05-30,24,North,Basic,Mobile,6.4,4,78.7,2,97.0,1,"Honestly, the mobile app keeps crashing when I try to check out. Good value for money and a smooth experience overall. Please fix this."
+C0019,2025-06-08,18,West,Basic,Mobile,5.6,2,71.4,7,61.39,0,The support team was polite but could not actually fix anything. That is my feedback.
+C0020,2025-02-01,38,West,Basic,Web,6.5,4,71.6,5,130.59,1,"In my experience, support promised a call back and never called. The shipping was really slow compared with what was promised at checkout. Hope this improves."
+C0021,2025-12-30,42,West,Standard,Web,8.6,3,67.7,8,62.02,1,"To be fair, shipping delays have made me think twice about ordering again."
+C0022,2025-03-23,26,South,Basic,Web,5.6,5,86.5,7,95.6,1,"Overall, loyalty discounts make this worth it. Very satisfied."
+C0023,2025-05-01,41,Central,Premium,Store,5.0,4,80.7,3,161.92,1,"In my experience, my order arrived 5 days late and nobody told me why."
+C0024,2025-06-10,42,Central,Basic,Mobile,5.6,5,83.9,3,111.23,1,Just to say: the courier missed the delivery window twice and I had to stay home for nothing. That is my feedback.
+C0025,2025-10-31,18,West,Premium,Web,7.6,,72.8,1,122.21,0,"Overall, waiting time on the helpline is unacceptable, over 40 minutes. The shipping was really slow compared with what was promised at checkout. Hope this improves."
+C0026,2025-09-29,30,North,Basic,Store,6.8,3,,6,76.0,1,"In my experience, reliable as always, I have recommended it to friends. Not sure I will keep my account."
+C0027,2025-10-09,46,East,Standard,Mobile,5.0,2,73.6,7,111.7,1,"Overall, the support team was polite but could not actually fix anything."
+C0028,2025-03-28,46,North,Basic,Mobile,4.9,3,82.6,2,149.19,0,My refund request was ignored until I complained on social media. Please fix this.
+C0029,2025-11-05,27,North,Standard,Store,4.5,3,79.2,6,120.55,1,
+C0030,2025-10-30,43,West,Standard,Web,6.5,3,72.7,3,87.8,0,The shipping was really slow compared with what was promised at checkout. The agent did not seem to understand my complaint and closed the ticket.
+C0031,2025-06-19,53,West,Premium,Web,6.4,3,75.2,4,93.28,0,"Honestly, really friendly support team, they went out of their way to help."
+C0032,2025-07-19,50,Central,Standard,Mobile,6.7,2,60.5,3,74.69,0,"To be fair, tracking information was missing for most of the journey, so I had no idea when it would come. The support team was polite but could not actually fix anything."
+C0033,2025-01-14,40,South,Basic,Web,6.4,1,57.6,6,86.66,0,"Overall, customer support took days to reply to my email and never solved the problem. Hope this improves."
+C0034,2025-10-05,35,South,Basic,Mobile,5.2,2,69.0,8,103.05,0,"To be fair, the shipping was really slow compared with what was promised at checkout. Please fix this."
+C0035,2025-12-17,,East,Basic,Web,3.4,3,89.7,9,97.97,1,It was impossible to reach a real person about my refund. Please fix this.
+C0036,2025-06-22,47,North,Basic,Web,4.0,2,75.8,5,55.53,0,"Really friendly support team, they went out of their way to help. Not sure I will keep my account."
+C0037,2025-07-17,43,North,Standard,Web,5.8,2,68.6,4,118.15,0,"Honestly, delivery took far too long, the parcel sat in a depot for almost a week."
+C0038,2025-07-02,49,East,Standard,Mobile,9.5,4,73.7,3,87.25,1,"Navigation is cluttered, I need too many taps just to reorder something."
+C0039,2025-01-31,43,South,Standard,Web,7.7,3,80.7,3,147.94,0,"To be fair, shipping delays have made me think twice about ordering again."
+C0040,2025-08-15,51,West,Premium,Web,8.5,4,82.7,7,115.54,0,"To be fair, i had to return the product because it stopped working within a month. Please fix this."
+C0041,2025-09-21,42,East,Standard,Store,5.8,3,66.8,5,77.75,1,
+C0042,2025-12-05,50,West,Standard,Web,11.0,4,58.0,4,94.15,0,"Honestly, the mobile app keeps crashing when I try to check out. That is my feedback."
+C0043,2025-12-06,51,West,Basic,Web,5.8,2,82.4,7,217.43,0,"In my experience, fast delivery and easy to track, no complaints at all. Not sure I will keep my account."
+C0044,2025-06-29,31,South,Basic,Web,4.3,3,70.2,4,117.51,0,"Honestly, shipping fees are expensive, they should be free over a reasonable amount."
+C0045,2025-12-17,19,West,Standard,Web,7.9,2,63.8,2,102.14,0,Just to say: the courier missed the delivery window twice and I had to stay home for nothing. I was transferred between three agents and had to explain my issue every time.
+C0046,2025-07-12,60,West,Premium,Web,9.9,5,79.5,2,152.92,1,Package arrived damaged and a week after the promised date. That is my feedback.
+C0047,2025-08-23,44,South,Basic,Mobile,6.9,2,70.8,4,58.87,1,"The subscription fee is too high for what is included in the Basic plan. Tracking information was missing for most of the journey, so I had no idea when it would come. Thanks for asking."
+C0048,2025-08-08,20,South,Standard,Web,6.2,2,66.9,4,74.98,0,My order arrived 6 days late and nobody told me why. It was impossible to reach a real person about my refund.
+C0049,2025-12-31,32,West,Standard,Store,6.2,2,72.0,7,54.36,0,"To be fair, slow responses from support, I had to chase them repeatedly."
+C0050,2025-09-27,50,North,Basic,Store,6.7,2,73.9,8,163.06,0,"Slow responses from support, I had to chase them repeatedly. My order arrived 7 days late and nobody told me why. Please fix this."
+C0051,2025-02-13,38,North,Basic,Web,3.6,5,83.2,5,174.04,1,"Overall, the courier missed the delivery window twice and I had to stay home for nothing. Please fix this."
+C0052,2025-01-27,35,North,Premium,Web,4.9,5,89.9,5,170.63,1,"Express delivery was supposed to be 2 days, it took 5. Please fix this."
+C0053,2025-05-30,58,West,Standard,Web,7.7,3,59.4,6,95.71,0,"Tracking information was missing for most of the journey, so I had no idea when it would come. Thanks for asking."
+C0054,2025-07-08,28,West,Basic,Mobile,7.5,2,59.1,4,51.64,0,"To be fair, my order arrived 8 days late and nobody told me why."
+C0055,2025-09-02,31,West,Premium,Web,9.7,2,58.2,3,102.02,0,
+C0056,2025-06-25,44,West,Basic,Store,,3,,5,175.19,1,
+C0057,2025-07-07,46,East,Premium,Mobile,9.3,3,65.5,3,123.15,1,I waited 9 days for my package and the tracking page never updated.
+C0058,2025-12-03,47,East,Basic,Store,5.5,2,67.3,5,77.88,0,Just to say: the support team was polite but could not actually fix anything. Loyalty discounts make this worth it. Very satisfied. Not sure I will keep my account.
+C0059,2025-05-03,52,North,Standard,Mobile,5.2,4,78.9,8,73.02,0,Product exactly as described and it came a day early.
+C0060,2025-06-30,43,North,Basic,Store,4.4,4,68.3,3,136.32,0,"Overall, really friendly support team, they went out of their way to help. Hope this improves."
+C0061,2025-07-23,47,West,Basic,Web,13.5,4,56.3,3,74.35,0,"Delivery took far too long, the parcel sat in a depot for almost a week. Thanks for asking."
+C0062,2025-06-20,38,East,Premium,Mobile,4.1,3,86.6,5,90.64,1,Just to say: it was impossible to reach a real person about my refund. Thanks for asking.
+C0063,2025-12-20,42,East,Basic,Web,3.7,2,72.4,1,75.93,0,Just to say: search results are poor and the filters do not work properly.
+C0064,2025-12-18,42,West,Basic,Store,6.0,4,77.7,7,73.97,1,"Honestly, i waited 6 days for my package and the tracking page never updated."
+C0065,2025-07-07,44,West,Basic,Mobile,10.0,3,64.9,6,84.68,0,
+C0066,2025-06-14,50,East,Standard,Store,4.6,3,66.7,3,108.5,0,"To be fair, the courier missed the delivery window twice and I had to stay home for nothing. Please fix this."
+C0067,2025-08-03,48,East,Standard,Web,,,77.7,3,102.3,0,"Honestly, my order arrived 6 days late and nobody told me why."
+C0068,2025-03-08,42,South,Premium,Store,4.6,3,100.0,4,207.59,0,"In my experience, waiting time on the helpline is unacceptable, over 40 minutes. Everything arrived on time and the packaging was neat, very happy."
+C0069,2025-06-05,31,North,Basic,Mobile,4.4,2,74.0,5,102.84,0,"To be fair, my order arrived 4 days late and nobody told me why."
+C0070,2025-03-21,42,East,Basic,Mobile,4.1,2,74.9,4,137.15,1,"In my experience, shipping delays have made me think twice about ordering again."
+C0071,2025-02-22,41,North,Basic,Store,5.4,2,65.6,3,80.38,1,"In my experience, support promised a call back and never called. Not sure I will keep my account."
+C0072,2025-02-04,43,East,Standard,Web,4.3,3,91.5,9,321.63,1,Good value for money and a smooth experience overall. Hope this improves.
+C0073,2025-08-03,67,Central,Premium,Web,6.0,4,88.3,5,128.6,0,The courier missed the delivery window twice and I had to stay home for nothing. Not sure I will keep my account.
+C0074,2025-01-01,35,South,Standard,Mobile,6.3,4,65.3,2,77.98,0,Late delivery again. This is the second time this quarter. Please fix this.
+C0075,2025-08-24,46,North,Standard,Web,5.8,4,84.5,3,95.51,0,"Reliable as always, I have recommended it to friends. Thanks for asking."
+C0076,2025-06-07,54,South,Basic,Web,5.1,4,98.4,2,127.03,0,Loyalty discounts make this worth it. Very satisfied. Hope this improves.
+C0077,2025-05-14,42,South,Premium,Web,3.9,5,88.8,9,93.5,0,"Excellent quality for the price, I will order again. Item looked nothing like the photos and the material feels cheap. That is my feedback."
+C0078,2025-10-08,69,West,Basic,Web,5.6,4,72.7,3,107.27,0,"In my experience, fast delivery and easy to track, no complaints at all. Please fix this."
+C0079,2025-07-16,36,East,Basic,Store,6.2,3,67.7,6,53.83,0,I waited 6 days for my package and the tracking page never updated. Customer support took days to reply to my email and never solved the problem. Not sure I will keep my account.
+C0080,2025-09-25,45,West,Basic,Mobile,8.1,5,68.9,6,97.79,0,"To be fair, the shipping was really slow compared with what was promised at checkout. Product exactly as described and it came a day early. Not sure I will keep my account."
+C0081,2025-09-16,31,West,Basic,Web,8.1,4,80.7,2,75.34,0,"Express delivery was supposed to be 2 days, it took 8. That is my feedback."
+C0082,2025-01-12,37,East,Basic,Mobile,5.5,2,65.3,4,79.47,1,"Honestly, support promised a call back and never called. That is my feedback."
+C0083,2025-03-20,44,West,Basic,Mobile,7.6,3,70.2,6,112.85,1,"The parcel was delivered to the wrong address and it took days to get it sorted out. Nobody answered the phone line, and the chat bot just kept repeating itself."
+C0084,2025-07-28,51,North,Basic,Mobile,6.9,4,63.7,2,164.28,0,"Overall, late delivery again. This is the second time this quarter."
+C0085,2025-12-23,45,North,Standard,Store,3.7,5,88.0,6,97.76,1,"To be fair, reliable as always, I have recommended it to friends. Not sure I will keep my account."
+C0086,2025-02-26,56,North,Basic,Store,4.4,3,89.0,6,116.59,1,"In my experience, loyalty discounts make this worth it. Very satisfied. Thanks for asking."
+C0087,2025-02-08,40,West,Basic,Web,9.7,5,69.1,6,76.54,1,Checkout page froze twice and I was charged once without a confirmation. The shipping was really slow compared with what was promised at checkout. Thanks for asking.
+C0088,2025-12-10,37,East,Premium,Web,9.1,1,52.6,3,78.88,0,"To be fair, delivery estimates are unreliable; what they say and what happens are very different. Not sure I will keep my account."
+C0089,2025-12-19,73,North,Standard,Mobile,5.8,3,68.9,2,86.33,0,
+C0090,2025-03-03,46,East,Standard,Mobile,3.7,2,62.9,2,122.25,0,
+C0091,2025-05-27,32,North,Basic,Mobile,,3,71.2,4,84.33,1,"Honestly, it was impossible to reach a real person about my refund. Thanks for asking."
+C0092,2025-08-17,33,West,Premium,Mobile,8.8,5,78.8,6,257.78,1,"Honestly, tracking information was missing for most of the journey, so I had no idea when it would come. That is my feedback."
+C0093,2025-03-13,30,East,Basic,Mobile,4.6,2,72.6,6,110.82,0,"Delivery took far too long, the parcel sat in a depot for almost a week."
+C0094,2025-04-30,52,South,Basic,Web,6.5,3,69.4,1,70.97,0,"In my experience, my refund request was ignored until I complained on social media. My order arrived 6 days late and nobody told me why."
+C0095,2025-05-25,37,South,Premium,Web,5.9,4,92.5,9,141.23,1,"Really friendly support team, they went out of their way to help."
+C0096,2025-08-23,43,West,Standard,Web,7.7,2,61.4,3,75.86,0,The courier missed the delivery window twice and I had to stay home for nothing. Thanks for asking.
+C0097,2025-04-23,40,South,Standard,Web,4.5,3,75.7,8,143.85,1,"To be fair, prices keep going up and the value for money is not there anymore."
+C0098,2025-05-31,50,North,Standard,Web,5.8,4,73.8,6,70.99,1,"In my experience, tracking information was missing for most of the journey, so I had no idea when it would come. That is my feedback."
+C0099,2025-04-16,31,North,Standard,Mobile,6.6,3,72.3,2,75.72,1,Just to say: the device overheats and the battery barely lasts a day. Please fix this.
+C0100,2025-10-05,28,Central,Basic,Web,4.8,3,91.7,5,106.24,1,"Just to say: reliable as always, I have recommended it to friends."
+C0101,2025-02-25,44,Central,Basic,Web,6.9,5,65.3,1,107.05,0,"In my experience, the courier missed the delivery window twice and I had to stay home for nothing."
+C0102,2025-03-26,48,West,Basic,Mobile,,5,79.1,2,152.17,1,Just to say: checkout page froze twice and I was charged once without a confirmation. Product exactly as described and it came a day early. Hope this improves.
+C0103,2025-04-02,45,South,Basic,Mobile,4.3,4,92.3,7,185.78,1,"Overall, good value for money and a smooth experience overall. Please fix this."
+C0104,2025-11-27,31,Central,Premium,Web,5.3,3,70.2,5,145.31,1,"Honestly, nobody answered the phone line, and the chat bot just kept repeating itself. The shipping was really slow compared with what was promised at checkout. Please fix this."
+C0105,2025-12-11,49,West,Basic,Store,12.8,3,57.8,1,76.13,1,
+C0106,2025-07-02,32,West,Standard,Store,7.6,3,78.8,6,149.05,0,"Honestly, waiting time on the helpline is unacceptable, over 40 minutes. Not sure I will keep my account."
+C0107,2025-02-27,35,East,Standard,Mobile,6.8,2,69.3,5,76.95,1,
+C0108,2025-10-03,30,South,Standard,Mobile,5.7,2,67.7,3,61.92,1,"To be fair, one of the parts was missing from the box and the finish was scratched. That is my feedback."
+C0109,2025-06-29,57,North,Basic,Web,3.9,3,89.2,7,137.73,0,
+C0110,2025-11-07,49,Central,Basic,Store,3.4,2,87.5,3,90.17,1,"Overall, customer support took days to reply to my email and never solved the problem. The app is simple and checkout takes seconds."
+C0111,2025-05-12,48,East,Premium,Web,3.3,2,80.7,5,137.44,0,"In my experience, my refund request was ignored until I complained on social media. That is my feedback."
+C0112,2025-12-31,56,North,Standard,Store,4.1,4,74.4,5,117.01,0,"Really friendly support team, they went out of their way to help. The product quality is lower than I expected, it broke after two weeks."
+C0113,2025-10-22,75,South,Standard,Mobile,5.5,4,75.7,11,123.25,0,"Overall, delivery took far too long, the parcel sat in a depot for almost a week."
+C0114,2025-03-23,20,East,Premium,Web,5.7,5,85.8,8,191.3,1,Item looked nothing like the photos and the material feels cheap.
+C0115,2025-09-22,32,North,Standard,Web,8.1,3,60.5,4,118.28,1,Just to say: the shipping was really slow compared with what was promised at checkout. The agent did not seem to understand my complaint and closed the ticket. Not sure I will keep my account.
+C0116,2025-04-15,34,Central,Basic,Mobile,4.9,4,80.7,6,116.15,0,"In my experience, shipping delays have made me think twice about ordering again."
+C0117,2025-05-08,31,West,Standard,Mobile,6.7,4,70.8,4,95.53,0,
+C0118,2025-04-02,28,West,Basic,Web,6.2,3,70.6,6,98.78,1,"Honestly, express delivery was supposed to be 2 days, it took 6. Hope this improves."
+C0119,2025-09-07,37,East,Standard,Mobile,7.0,3,74.5,4,95.88,0,Delivery estimates are unreliable; what they say and what happens are very different. The app is simple and checkout takes seconds. Hope this improves.
+C0120,2025-04-06,26,West,Premium,Store,6.0,5,100.0,6,158.06,1,"Excellent quality for the price, I will order again. Hope this improves."
+C0121,2025-08-22,45,East,Standard,Mobile,5.6,3,69.1,5,220.1,0,"Honestly, the parcel was delivered to the wrong address and it took days to get it sorted out. Premium is pricey, but at least you get faster delivery."
+C0122,2025-08-01,42,West,Basic,Mobile,8.6,3,63.9,4,90.99,0,"Waiting time on the helpline is unacceptable, over 40 minutes. Delivery estimates are unreliable; what they say and what happens are very different. Hope this improves."
+C0123,2025-10-02,47,North,Basic,Web,5.6,,79.3,7,122.53,1,"In my experience, delivery estimates are unreliable; what they say and what happens are very different. Please fix this."
+C0124,2025-12-29,47,East,Premium,Mobile,3.5,2,82.1,7,116.5,0,"To be fair, my refund request was ignored until I complained on social media."
+C0125,2025-01-04,48,North,Basic,Web,4.1,3,86.6,9,157.33,0,"Great service, the support agent solved my issue in minutes. That is my feedback."
+C0126,2025-12-28,37,East,Basic,Store,4.6,2,75.3,5,126.72,0,"Just to say: slow responses from support, I had to chase them repeatedly. Thanks for asking."
+C0127,2025-02-09,66,South,Basic,Web,5.1,2,71.1,3,119.68,1,
+C0128,2025-07-12,44,North,Basic,Mobile,7.2,4,63.8,3,91.67,0,"Honestly, search results are poor and the filters do not work properly. My order arrived 7 days late and nobody told me why. Thanks for asking."
+C0129,2025-05-05,19,North,Basic,Web,7.6,4,63.7,3,115.12,0,"In my experience, package arrived damaged and a week after the promised date. Thanks for asking."
+C0130,2025-08-22,29,East,Standard,Web,5.3,2,58.4,3,129.58,0,
+C0131,2025-09-21,20,North,Basic,Mobile,,4,70.4,5,103.44,0,"Great service, the support agent solved my issue in minutes."
+C0132,2025-11-10,41,Central,Basic,Mobile,,2,53.6,1,69.76,0,"The courier missed the delivery window twice and I had to stay home for nothing. Shipping fees are expensive, they should be free over a reasonable amount. Please fix this."
+C0133,2025-05-27,40,East,Basic,Mobile,5.7,2,79.1,4,138.41,0,The support team was polite but could not actually fix anything. The app is simple and checkout takes seconds.
+C0134,2025-12-07,35,South,Basic,Store,5.3,3,76.8,2,81.14,0,"Reliable as always, I have recommended it to friends. That is my feedback."
+C0135,2025-04-28,65,East,Basic,Store,4.0,3,75.9,4,84.46,1,"Everything arrived on time and the packaging was neat, very happy. Not sure I will keep my account."
+C0136,2025-03-16,48,North,Standard,Store,5.7,3,71.1,4,106.93,0,
+C0137,2025-05-19,50,Central,Basic,Web,4.8,4,83.6,5,70.03,1,"Just to say: excellent quality for the price, I will order again."
+C0138,2025-07-12,30,East,Basic,Mobile,6.2,2,61.2,6,104.24,0,"In my experience, i felt misled by the discounts, the regular price seems inflated."
+C0139,2025-09-01,29,West,Basic,Store,9.6,,57.3,5,58.97,0,
+C0140,2025-10-31,41,North,Basic,Web,,2,74.0,5,88.16,1,It was impossible to reach a real person about my refund.
+C0141,2025-03-24,43,East,Basic,Web,6.6,3,75.0,5,96.09,0,"In my experience, late delivery again. This is the second time this quarter."
+C0142,2025-04-21,19,East,Basic,Store,3.9,3,71.3,1,97.89,0,Quality control seems to have slipped; earlier orders were much better. Not sure I will keep my account.
+C0143,2025-12-09,39,Central,Premium,Mobile,6.3,4,85.3,5,132.99,0,The app is simple and checkout takes seconds. Please fix this.
+C0144,2025-06-10,41,East,Basic,Mobile,4.3,5,84.7,5,113.42,0,
+C0145,2025-03-30,38,East,Standard,Store,4.8,4,86.3,5,127.67,0,"Honestly, the parcel was delivered to the wrong address and it took days to get it sorted out. Please fix this."
+C0146,2025-12-26,31,South,Basic,Mobile,5.5,3,70.7,7,84.69,1,It was impossible to reach a real person about my refund. Hope this improves.
+C0147,2025-06-13,35,South,Basic,Mobile,6.6,3,83.2,6,91.39,0,Delivery estimates are unreliable; what they say and what happens are very different. Thanks for asking.
+C0148,2025-12-26,39,East,Basic,Web,5.5,3,72.2,4,132.77,1,"Reliable as always, I have recommended it to friends. That is my feedback."
+C0149,2025-12-02,42,East,Standard,Mobile,4.2,2,86.7,5,72.33,0,Product exactly as described and it came a day early.
+C0150,2025-11-27,48,North,Standard,Web,3.3,4,87.1,5,123.61,1,"Really friendly support team, they went out of their way to help. That is my feedback."
+C0151,2025-08-01,54,West,Basic,Mobile,9.2,4,74.6,7,88.96,0,"Overall, the courier missed the delivery window twice and I had to stay home for nothing. Please fix this."
+C0152,2025-10-19,37,Central,Basic,Store,4.7,4,83.7,5,128.39,1,"Reliable as always, I have recommended it to friends."
+C0153,2025-12-17,36,North,Basic,Web,3.6,4,93.7,7,85.31,1,"Honestly, delivery took far too long, the parcel sat in a depot for almost a week. Not sure I will keep my account."
+C0154,2025-04-09,46,East,Basic,Web,4.9,4,76.8,4,90.87,0,The shipping was really slow compared with what was promised at checkout. That is my feedback.
+C0155,2025-01-14,48,North,Standard,Store,4.6,4,,4,133.09,1,Good value for money and a smooth experience overall.
+C0156,2025-04-28,36,West,Basic,Web,8.6,3,78.7,6,144.62,0,
+C0157,2025-08-21,50,South,Basic,Mobile,10.4,5,65.6,4,97.5,0,Just to say: shipping delays have made me think twice about ordering again.
+C0158,2025-07-19,53,West,Premium,Mobile,9.9,5,75.0,2,94.77,0,The courier missed the delivery window twice and I had to stay home for nothing. That is my feedback.
+C0159,2025-01-30,57,West,Basic,Mobile,6.5,3,65.6,3,77.51,0,"Overall, great idea but the interface is clumsy on small screens. That is my feedback."
+C0160,2025-07-24,62,West,Basic,Web,8.7,3,56.1,3,96.81,0,Just to say: i was transferred between three agents and had to explain my issue every time. Hope this improves.
+C0161,2025-03-05,31,North,Standard,Mobile,3.9,4,93.6,2,100.05,0,The app logs me out all the time and the password reset email is slow.
+C0162,2025-07-04,41,Central,Basic,Web,6.0,4,72.5,6,96.35,0,"In my experience, everything arrived on time and the packaging was neat, very happy. Not sure I will keep my account."
+C0163,2025-07-30,,South,Basic,Mobile,6.9,2,61.2,0,82.47,0,
+C0164,2025-08-21,40,North,Basic,Web,6.3,2,79.6,3,97.34,0,"Late delivery again. This is the second time this quarter. Excellent quality for the price, I will order again. Thanks for asking."
+C0165,2025-05-31,33,East,Premium,Mobile,3.6,2,81.3,6,299.55,1,"Customer support took days to reply to my email and never solved the problem. I felt misled by the discounts, the regular price seems inflated. Thanks for asking."
+C0166,2025-05-30,23,South,Basic,Mobile,7.1,3,85.0,4,103.34,1,"Really friendly support team, they went out of their way to help. Please fix this."
+C0167,2025-09-05,42,West,Basic,Web,10.9,3,56.9,5,86.95,0,"In my experience, delivery took far too long, the parcel sat in a depot for almost a week."
+C0168,2025-10-01,32,West,Basic,Web,8.5,4,72.3,7,79.25,0,"Honestly, i waited 8 days for my package and the tracking page never updated."
+C0169,2025-10-22,42,South,Basic,Web,7.5,3,65.7,5,103.15,0,"Honestly, support promised a call back and never called. The courier missed the delivery window twice and I had to stay home for nothing."
+C0170,2025-05-02,31,Central,Standard,Web,8.8,4,72.7,7,141.37,1,"In my experience, late delivery again. This is the second time this quarter."
+C0171,2025-06-04,28,South,Basic,Web,4.4,,63.3,2,72.62,1,"To be fair, shipping delays have made me think twice about ordering again. It was impossible to reach a real person about my refund."
+C0172,2025-05-01,44,East,Standard,Store,8.7,2,,3,102.06,1,"To be fair, tracking information was missing for most of the journey, so I had no idea when it would come."
+C0173,2025-07-12,43,South,Standard,Mobile,6.7,4,72.2,3,85.67,1,
+C0174,2025-02-16,48,Central,Standard,Store,5.4,4,81.6,3,89.45,0,"Fast delivery and easy to track, no complaints at all. I felt misled by the discounts, the regular price seems inflated. That is my feedback."
+C0175,2025-06-06,67,North,Basic,Store,3.5,3,79.5,6,144.78,1,"To be fair, customer support took days to reply to my email and never solved the problem."
+C0176,2025-03-10,44,North,Premium,Web,4.1,4,81.9,5,121.31,1,"Honestly, product exactly as described and it came a day early. Thanks for asking."
+C0177,2025-07-14,47,East,Standard,Mobile,8.0,4,74.9,4,57.93,0,"Tracking information was missing for most of the journey, so I had no idea when it would come. Not sure I will keep my account."
+C0178,2025-11-07,,Central,Basic,Store,5.5,3,65.4,3,145.18,1,
+C0179,2025-12-26,26,Central,Standard,Mobile,4.2,3,84.4,5,101.58,1,"Overall, everything arrived on time and the packaging was neat, very happy. Shipping delays have made me think twice about ordering again. Please fix this."
+C0180,2025-06-12,60,West,Premium,Mobile,6.7,4,82.4,2,132.87,0,One of the parts was missing from the box and the finish was scratched. Product exactly as described and it came a day early.
+C0181,2025-01-21,30,Central,Basic,Mobile,4.0,3,78.2,1,168.58,1,Package arrived damaged and a week after the promised date. The app is simple and checkout takes seconds. Not sure I will keep my account.
+C0182,2025-03-25,28,Central,Premium,Web,6.0,4,69.2,11,119.06,0,
+C0183,2025-02-08,41,East,Basic,Mobile,6.8,2,64.1,6,82.86,0,"In my experience, i waited 7 days for my package and the tracking page never updated. Please fix this."
+C0184,2025-10-05,40,South,Standard,Store,4.4,2,78.7,3,84.5,1,Product exactly as described and it came a day early. Please fix this.
+C0185,2025-12-26,30,West,Premium,Store,6.5,3,67.5,5,76.87,1,"Overall, packaging was fine but the item itself felt flimsy. Delivery took far too long, the parcel sat in a depot for almost a week."
+C0186,2025-07-22,37,West,Basic,Web,7.6,3,60.6,0,78.11,1,"To be fair, express delivery was supposed to be 2 days, it took 8."
+C0187,2025-03-06,56,South,Standard,Mobile,5.3,,80.3,10,134.4,1,"Overall, the app is simple and checkout takes seconds. Not sure I will keep my account."
+C0188,2025-01-08,31,North,Basic,Web,5.2,3,76.8,5,113.85,0,Just to say: my order arrived 5 days late and nobody told me why. Loyalty discounts make this worth it. Very satisfied. Thanks for asking.
+C0189,2025-12-23,24,West,Standard,Store,6.9,3,82.4,5,108.68,1,Support promised a call back and never called. That is my feedback.
+C0190,2025-04-26,52,South,Standard,Web,5.6,3,75.3,7,115.07,1,Just to say: late delivery again. This is the second time this quarter.
+C0191,2025-02-10,47,Central,Basic,Store,4.4,4,91.4,5,74.71,1,"Great service, the support agent solved my issue in minutes. That is my feedback."
+C0192,2025-03-06,34,South,Basic,Store,5.0,3,69.3,7,106.95,0,"Overall, the agent did not seem to understand my complaint and closed the ticket. Hope this improves."
+C0193,2025-04-04,22,North,Basic,Web,4.4,4,74.1,8,105.4,1,
+C0194,2025-08-28,32,West,Basic,Web,8.1,,64.9,7,152.68,0,Late delivery again. This is the second time this quarter. The device overheats and the battery barely lasts a day. Thanks for asking.
+C0195,2025-11-22,40,North,Basic,Store,4.2,4,91.4,5,125.22,1,"The website is confusing, I could not find where to change my address. Please fix this."
+C0196,2025-04-11,55,North,Basic,Web,5.1,4,72.5,4,75.65,0,"In my experience, i waited 5 days for my package and the tracking page never updated. Shipping fees are expensive, they should be free over a reasonable amount. Please fix this."
+C0197,2025-09-08,29,East,Basic,Mobile,8.6,3,59.9,4,79.72,0,"To be fair, slow responses from support, I had to chase them repeatedly. Great idea but the interface is clumsy on small screens. That is my feedback."
+C0198,2025-01-24,40,Central,Basic,Store,3.8,,76.6,2,95.1,1,The courier missed the delivery window twice and I had to stay home for nothing. Not sure I will keep my account.
+C0199,2025-01-04,49,North,Standard,Mobile,4.5,4,83.5,5,142.2,1,"Overall, excellent quality for the price, I will order again. Thanks for asking."
+C0200,2025-01-21,18,South,Standard,Web,4.2,,86.5,3,131.08,1,The app is simple and checkout takes seconds. Packaging was fine but the item itself felt flimsy. Not sure I will keep my account.
+C0201,2025-12-03,53,West,Standard,Mobile,6.1,4,77.1,5,82.18,0,
+C0202,2025-08-01,27,Central,Basic,Web,6.2,4,76.8,4,66.11,0,"To be fair, the parcel was delivered to the wrong address and it took days to get it sorted out."
+C0203,2025-10-21,45,East,Premium,Store,4.7,2,69.6,5,133.95,0,"To be fair, tracking information was missing for most of the journey, so I had no idea when it would come."
+C0204,2025-01-08,44,North,Standard,Web,4.7,3,75.4,6,168.74,1,Shipping delays have made me think twice about ordering again. I was transferred between three agents and had to explain my issue every time.
+C0205,2025-01-09,54,North,Basic,Web,4.5,4,94.9,9,132.78,1,
+C0206,2025-11-06,48,South,Basic,Web,5.5,4,81.0,8,138.63,1,"Really friendly support team, they went out of their way to help."
+C0207,2025-02-07,18,North,Standard,Store,3.8,3,72.8,4,147.29,0,"To be fair, support promised a call back and never called. Hope this improves."
+C0208,2025-02-26,32,West,Basic,Web,6.8,3,58.1,3,84.42,0,"Overall, quality control seems to have slipped; earlier orders were much better. Thanks for asking."
+C0209,2025-07-09,43,North,Standard,Store,7.5,3,60.8,2,74.93,0,"Honestly, nobody answered the phone line, and the chat bot just kept repeating itself. The shipping was really slow compared with what was promised at checkout."
+C0210,2025-08-10,39,East,Premium,Mobile,5.8,1,54.5,6,109.11,0,"In my experience, the shipping was really slow compared with what was promised at checkout. Please fix this."
+C0211,2025-03-25,47,West,Basic,Store,5.4,3,77.1,3,147.14,0,"Honestly, stitching came apart after the first wash, poor build quality. Not sure I will keep my account."
+C0212,2025-06-12,50,East,Basic,Store,5.9,2,69.4,3,109.22,0,"To be fair, shipping delays have made me think twice about ordering again. Thanks for asking."
+C0213,2025-09-04,48,North,Premium,Store,5.7,4,87.2,9,183.83,1,"Just to say: reliable as always, I have recommended it to friends."
+C0214,2025-06-11,38,West,Standard,Store,6.1,5,83.8,8,110.98,0,Good value for money and a smooth experience overall. Package arrived damaged and a week after the promised date. Not sure I will keep my account.
+C0215,2025-05-20,19,West,Basic,Web,7.5,2,65.3,6,83.55,0,I waited 8 days for my package and the tracking page never updated. It was impossible to reach a real person about my refund. Not sure I will keep my account.
+C0216,2025-01-27,36,West,Premium,Mobile,5.8,3,82.3,6,137.57,1,Good value for money and a smooth experience overall.
+C0217,2025-06-14,46,North,Premium,Mobile,5.8,2,56.2,2,104.17,0,"Just to say: delivery took far too long, the parcel sat in a depot for almost a week."
+C0218,2025-10-21,28,North,Standard,Mobile,4.0,3,83.0,6,173.63,1,
+C0219,2025-08-17,49,Central,Standard,Store,5.9,3,75.7,7,59.59,0,
+C0220,2025-11-22,52,South,Basic,Store,4.2,3,89.6,9,123.49,1,"Really friendly support team, they went out of their way to help. Please fix this."
+C0221,2025-02-16,43,South,Basic,Mobile,4.5,4,89.8,7,120.02,1,"Honestly, i was transferred between three agents and had to explain my issue every time. The app is simple and checkout takes seconds. Thanks for asking."
+C0222,2025-01-05,18,East,Standard,Mobile,5.2,3,63.7,4,66.87,0,"Shipping fees are expensive, they should be free over a reasonable amount. Thanks for asking."
+C0223,2025-07-20,26,West,Basic,Mobile,8.1,3,72.3,4,118.55,1,The agent did not seem to understand my complaint and closed the ticket.
+C0224,2025-03-07,64,Central,Standard,Web,5.9,3,74.3,3,92.27,0,Good value for money and a smooth experience overall. That is my feedback.
+C0225,2025-08-05,34,South,Standard,Web,7.1,4,,2,98.09,0,
+C0226,2025-11-26,18,Central,Basic,Web,,3,76.7,5,175.16,0,
+C0227,2025-05-04,56,North,Standard,Web,3.9,3,72.7,4,146.99,1,"Stitching came apart after the first wash, poor build quality."
+C0228,2025-07-20,41,East,Basic,Web,8.2,1,68.9,8,109.77,0,"Overall, delivery took far too long, the parcel sat in a depot for almost a week. It was impossible to reach a real person about my refund."
+C0229,2025-09-06,54,West,Premium,Mobile,9.5,4,73.7,4,144.83,1,"In my experience, late delivery again. This is the second time this quarter. That is my feedback."
+C0230,2025-02-24,44,North,Basic,Mobile,5.5,4,81.8,7,106.49,1,"Overall, loyalty discounts make this worth it. Very satisfied."
+C0231,2025-11-24,47,North,Standard,Store,4.4,5,95.4,5,249.53,1,"Overall, product exactly as described and it came a day early. Delivery estimates are unreliable; what they say and what happens are very different. Not sure I will keep my account."
+C0232,2025-03-16,45,East,Standard,Mobile,3.6,3,90.0,3,169.0,1,"Express delivery was supposed to be 2 days, it took 4. Not sure I will keep my account."
+C0233,2025-10-23,49,Central,Basic,Web,4.7,3,83.5,4,92.34,1,"Honestly, product exactly as described and it came a day early. Hope this improves."
+C0234,2025-08-29,68,East,Standard,Web,7.2,1,72.3,4,74.47,1,"Honestly, tracking information was missing for most of the journey, so I had no idea when it would come. It was impossible to reach a real person about my refund. Not sure I will keep my account."
+C0235,2025-02-21,53,Central,Standard,Web,5.2,4,82.6,7,146.08,1,"In my experience, delivery estimates are unreliable; what they say and what happens are very different."
+C0236,2025-09-22,22,West,Standard,Store,9.0,2,63.3,0,96.1,0,"In my experience, tracking information was missing for most of the journey, so I had no idea when it would come. I was transferred between three agents and had to explain my issue every time. Hope this improves."
+C0237,2025-03-13,46,East,Standard,Web,5.0,3,86.8,6,87.48,1,"Honestly, really friendly support team, they went out of their way to help."
+C0238,2025-08-07,55,West,Premium,Mobile,8.0,5,71.9,2,143.94,1,"To be fair, tracking information was missing for most of the journey, so I had no idea when it would come. Please fix this."
+C0239,2025-12-17,55,North,Basic,Store,4.0,,82.2,7,103.95,1,"Honestly, the support team was polite but could not actually fix anything."
+C0240,2025-12-14,36,North,Standard,Store,3.7,3,93.8,6,162.8,1,"Slow responses from support, I had to chase them repeatedly."
+C0241,2025-11-15,55,West,Basic,Web,8.0,4,83.5,6,128.9,0,Late delivery again. This is the second time this quarter.
+C0242,2025-06-30,52,West,Standard,Web,,4,68.7,3,88.71,0,"In my experience, the support team was polite but could not actually fix anything."
+C0243,2025-07-24,72,South,Standard,Web,13.3,3,50.9,0,95.82,0,
+C0244,2025-04-20,32,East,Basic,Web,4.8,4,92.1,9,109.55,1,"Honestly, really friendly support team, they went out of their way to help. That is my feedback."
+C0245,2025-12-03,35,West,Basic,Web,7.0,3,76.7,6,92.47,1,"Honestly, shipping delays have made me think twice about ordering again."
+C0246,2025-06-24,37,Central,Premium,Mobile,4.4,5,93.4,5,135.92,0,"Just to say: fast delivery and easy to track, no complaints at all. Hope this improves."
+C0247,2025-10-09,35,West,Basic,Store,6.8,1,61.0,5,113.1,0,
+C0248,2025-05-12,30,East,Standard,Mobile,3.8,4,86.0,4,119.62,1,"Just to say: the app is simple and checkout takes seconds. Competitors offer the same thing for less, hard to justify the cost. Please fix this."
+C0249,2025-09-28,18,South,Basic,Mobile,6.9,5,76.7,5,153.29,1,Package arrived damaged and a week after the promised date. That is my feedback.
+C0250,2025-03-23,36,East,Premium,Web,3.9,3,79.5,4,227.88,1,"In my experience, search results are poor and the filters do not work properly. Not sure I will keep my account."
+C0251,2025-09-25,45,West,Basic,Store,8.3,4,61.9,6,68.03,0,"To be fair, shipping delays have made me think twice about ordering again. Please fix this."
+C0252,2025-01-17,35,Central,Basic,Mobile,3.9,4,80.0,10,48.11,1,Just to say: the subscription fee is too high for what is included in the Basic plan.
+C0253,2025-02-08,64,East,Premium,Store,5.2,2,73.0,5,173.09,1,"Overall, the support team was polite but could not actually fix anything."
+C0254,2025-05-09,41,South,Premium,Store,5.9,4,88.2,6,136.74,1,
+C0255,2025-06-25,56,South,Basic,Web,5.4,3,84.7,4,90.69,0,"Fast delivery and easy to track, no complaints at all. Please fix this."
+C0256,2025-09-17,44,West,Basic,Web,8.0,3,74.8,3,86.26,0,Checkout page froze twice and I was charged once without a confirmation. That is my feedback.
+C0257,2025-05-12,51,West,Standard,Web,5.6,4,79.6,7,107.23,0,"Overall, it was impossible to reach a real person about my refund. Hope this improves."
+C0258,2025-01-07,44,North,Premium,Mobile,5.4,5,93.2,5,226.45,0,"Just to say: great service, the support agent solved my issue in minutes. Express delivery was supposed to be 2 days, it took 5. That is my feedback."
+C0259,2025-04-29,57,North,Basic,Store,4.6,3,75.2,3,106.96,0,"Great service, the support agent solved my issue in minutes. Thanks for asking."
+C0260,2025-06-10,42,East,Standard,Web,3.4,2,71.0,2,155.28,0,"Overall, the agent did not seem to understand my complaint and closed the ticket."
+C0261,2025-07-18,47,North,Standard,Mobile,,3,78.0,11,135.74,1,"To be fair, slow responses from support, I had to chase them repeatedly. The app is simple and checkout takes seconds. Please fix this."
+C0262,2025-08-24,45,West,Standard,Mobile,9.0,4,72.1,5,100.82,1,"To be fair, nobody answered the phone line, and the chat bot just kept repeating itself. Please fix this."
+C0263,2025-04-01,38,South,Standard,Web,4.0,3,98.6,6,131.82,1,"Waiting time on the helpline is unacceptable, over 40 minutes. Please fix this."
+C0264,2025-08-11,,North,Standard,Web,7.2,4,86.1,6,151.6,0,"Just to say: reliable as always, I have recommended it to friends."
+C0265,2025-08-19,68,Central,Basic,Mobile,5.6,4,81.8,8,140.32,1,"In my experience, delivery took far too long, the parcel sat in a depot for almost a week. Thanks for asking."
+C0266,2025-10-11,38,North,Premium,Mobile,3.9,4,89.9,3,202.07,1,"To be fair, really friendly support team, they went out of their way to help. Thanks for asking."
+C0267,2025-07-10,,South,Premium,Mobile,6.1,5,87.3,6,138.68,1,"Excellent quality for the price, I will order again. My order arrived 6 days late and nobody told me why. Not sure I will keep my account."
+C0268,2025-10-23,56,North,Standard,Web,3.9,3,75.5,9,120.47,1,
+C0269,2025-03-22,55,North,Basic,Mobile,3.6,3,67.4,3,107.59,1,The courier missed the delivery window twice and I had to stay home for nothing.
+C0270,2025-09-17,41,North,Basic,Web,8.0,3,62.8,5,76.26,1,"In my experience, delivery took far too long, the parcel sat in a depot for almost a week. Hope this improves."
+C0271,2025-01-17,18,North,Standard,Store,,4,85.0,4,93.15,0,"Excellent quality for the price, I will order again. Please fix this."
+C0272,2025-02-07,47,North,Basic,Web,4.1,3,58.5,3,62.96,1,Item looked nothing like the photos and the material feels cheap.
+C0273,2025-11-12,18,North,Premium,Web,6.1,4,70.2,3,117.1,1,Late delivery again. This is the second time this quarter.
+C0274,2025-06-23,59,East,Basic,Mobile,6.0,2,68.4,0,111.66,1,"Overall, my order arrived 6 days late and nobody told me why. I was transferred between three agents and had to explain my issue every time."
+C0275,2025-08-15,43,West,Standard,Mobile,8.2,2,59.2,4,130.71,0,Great idea but the interface is clumsy on small screens. I waited 8 days for my package and the tracking page never updated.
+C0276,2025-08-09,53,South,Premium,Mobile,7.4,3,65.0,8,80.72,1,The mobile app keeps crashing when I try to check out. I waited 7 days for my package and the tracking page never updated.
+C0277,2025-09-11,30,South,Basic,Mobile,6.5,5,76.8,5,88.42,1,"Great service, the support agent solved my issue in minutes."
+C0278,2025-03-31,22,East,Basic,Store,4.5,3,90.2,11,111.53,0,Just to say: product exactly as described and it came a day early. Thanks for asking.
+C0279,2025-03-07,44,Central,Standard,Mobile,3.7,2,82.4,3,155.35,0,"In my experience, excellent quality for the price, I will order again. Hope this improves."
+C0280,2025-01-16,41,Central,Standard,Mobile,5.1,4,79.3,5,103.52,1,"Late delivery again. This is the second time this quarter. Excellent quality for the price, I will order again."
+C0281,2025-11-12,35,North,Basic,Mobile,6.2,3,73.5,4,88.57,1,"In my experience, the agent did not seem to understand my complaint and closed the ticket."
+C0282,2025-03-23,42,North,Standard,Web,5.9,5,84.8,5,86.01,1,"In my experience, product exactly as described and it came a day early. Thanks for asking."
+C0283,2025-07-29,74,South,Premium,Mobile,7.1,4,73.7,6,149.05,0,"The shipping was really slow compared with what was promised at checkout. Great service, the support agent solved my issue in minutes. Not sure I will keep my account."
+C0284,2025-06-16,51,South,Basic,Web,3.9,3,75.8,6,98.56,1,"Just to say: great service, the support agent solved my issue in minutes. Please fix this."
+C0285,2025-03-01,54,East,Basic,Mobile,4.0,4,91.6,4,104.28,0,Late delivery again. This is the second time this quarter.
+C0286,2025-06-01,51,East,Basic,Web,4.5,,63.3,3,79.62,0,"Honestly, it was impossible to reach a real person about my refund."
+C0287,2025-01-31,59,North,Basic,Store,3.6,3,74.6,5,139.08,0,"Overall, product exactly as described and it came a day early. I was transferred between three agents and had to explain my issue every time. That is my feedback."
+C0288,2025-03-06,39,South,Basic,Mobile,4.0,5,89.2,4,91.99,1,
+C0289,2025-02-20,18,East,Basic,Store,6.8,,68.4,3,73.28,0,"Honestly, the parcel was delivered to the wrong address and it took days to get it sorted out."
+C0290,2025-10-28,39,North,Standard,Mobile,5.6,2,48.6,1,109.39,0,
+C0291,2025-07-27,51,West,Basic,Web,9.2,3,61.6,3,85.02,0,"Tracking information was missing for most of the journey, so I had no idea when it would come. That is my feedback."
+C0292,2025-12-04,29,North,Premium,Store,5.5,5,93.6,3,190.64,1,"Honestly, package arrived damaged and a week after the promised date. Hope this improves."
+C0293,2025-06-09,39,Central,Basic,Mobile,3.7,4,88.8,5,135.76,1,Just to say: product exactly as described and it came a day early. Hope this improves.
+C0294,2025-03-15,33,North,Basic,Mobile,3.8,3,83.6,6,112.92,0,
+C0295,2025-08-11,59,West,Standard,Mobile,8.8,3,71.4,4,98.84,0,
+C0296,2025-12-06,50,Central,Premium,Mobile,,3,90.2,7,193.47,1,"Fast delivery and easy to track, no complaints at all."
+C0297,2025-07-14,49,Central,Basic,Store,5.6,4,98.4,5,186.6,1,"Overall, i waited 6 days for my package and the tracking page never updated."
+C0298,2025-01-07,48,West,Basic,Mobile,6.7,5,79.3,9,146.33,1,"Honestly, i waited 7 days for my package and the tracking page never updated. Thanks for asking."
+C0299,2025-04-21,41,West,Basic,Web,6.5,4,78.6,3,76.81,0,"Just to say: the product quality is lower than I expected, it broke after two weeks. Thanks for asking."
+C0300,2025-12-04,43,West,Standard,Mobile,,4,77.1,3,168.52,0,"Overall, great idea but the interface is clumsy on small screens."
+C0301,2025-07-09,27,West,Basic,Mobile,8.9,2,49.7,0,60.23,0,Just to say: i waited 9 days for my package and the tracking page never updated.
+C0302,2025-12-14,18,North,Basic,Store,7.1,2,67.4,3,73.95,1,"It was impossible to reach a real person about my refund. Tracking information was missing for most of the journey, so I had no idea when it would come. Please fix this."
+C0303,2025-07-05,43,East,Basic,Web,6.2,3,69.7,1,90.2,1,"Waiting time on the helpline is unacceptable, over 40 minutes. Delivery took far too long, the parcel sat in a depot for almost a week."
+C0304,2025-01-05,45,East,Basic,Mobile,3.7,1,75.0,3,128.73,0,"Just to say: really friendly support team, they went out of their way to help. Thanks for asking."
+C0305,2025-11-15,56,Central,Premium,Store,7.0,4,74.8,3,153.24,0,Shipping delays have made me think twice about ordering again. I had to return the product because it stopped working within a month. Not sure I will keep my account.
+C0306,2025-10-06,60,East,Standard,Mobile,5.0,3,74.2,1,105.09,1,"Express delivery was supposed to be 2 days, it took 5."
+C0307,2025-09-19,60,South,Basic,Mobile,7.0,2,62.7,4,107.19,0,"In my experience, delivery estimates are unreliable; what they say and what happens are very different. Not sure I will keep my account."
+C0308,2025-12-21,29,West,Basic,Mobile,5.9,2,,1,93.55,0,"To be fair, tracking information was missing for most of the journey, so I had no idea when it would come."
+C0309,2025-03-13,37,South,Basic,Web,4.7,3,65.9,2,76.03,0,"In my experience, i was transferred between three agents and had to explain my issue every time. My order arrived 5 days late and nobody told me why."
+C0310,2025-11-27,47,North,Basic,Mobile,4.2,4,74.9,8,83.54,1,"To be fair, shipping delays have made me think twice about ordering again. Not sure I will keep my account."
+C0311,2025-03-26,71,East,Standard,Web,3.7,3,75.1,4,128.03,1,"To be fair, really friendly support team, they went out of their way to help. The courier missed the delivery window twice and I had to stay home for nothing. Thanks for asking."
+C0312,2025-12-21,59,East,Premium,Web,3.3,4,84.4,6,141.84,1,"In my experience, the courier missed the delivery window twice and I had to stay home for nothing. Please fix this."
+C0313,2025-03-11,54,South,Premium,Mobile,4.7,4,88.6,9,102.76,1,The shipping was really slow compared with what was promised at checkout.
+C0314,2025-07-20,36,South,Premium,Mobile,8.0,3,72.9,4,163.61,0,
+C0315,2025-10-16,30,South,Premium,Store,6.9,3,81.7,3,123.59,1,
+C0316,2025-01-29,50,South,Premium,Web,6.4,3,77.2,4,210.96,0,"Just to say: navigation is cluttered, I need too many taps just to reorder something. Not sure I will keep my account."
+C0317,2025-01-25,28,South,Basic,Web,6.5,4,,5,71.23,0,"To be fair, delivery took far too long, the parcel sat in a depot for almost a week."
+C0318,2025-11-07,38,West,Basic,Store,5.7,4,83.9,8,108.81,1,"I waited 6 days for my package and the tracking page never updated. Great service, the support agent solved my issue in minutes. Please fix this."
+C0319,2025-01-23,40,South,Basic,Web,5.3,2,70.5,4,78.67,1,"Overall, customer support took days to reply to my email and never solved the problem. That is my feedback."
+C0320,2025-08-13,60,Central,Standard,Web,7.2,3,79.2,7,91.23,1,"It was impossible to reach a real person about my refund. Fast delivery and easy to track, no complaints at all."
+C0321,2025-12-09,37,Central,Basic,Web,5.3,4,87.1,6,103.78,1,"Overall, everything arrived on time and the packaging was neat, very happy. Hope this improves."
+C0322,2025-08-13,18,East,Standard,Mobile,6.5,3,68.6,2,172.45,0,"Honestly, the support team was polite but could not actually fix anything. That is my feedback."
+C0323,2025-06-25,47,South,Standard,Store,5.2,2,81.9,3,128.73,1,"To be fair, the shipping was really slow compared with what was promised at checkout. Hope this improves."
+C0324,2025-06-02,33,East,Standard,Mobile,5.8,,70.1,13,85.84,0,"Excellent quality for the price, I will order again."
+C0325,2025-08-21,42,West,Basic,Mobile,9.1,3,63.3,7,51.31,1,"Waiting time on the helpline is unacceptable, over 40 minutes. Express delivery was supposed to be 2 days, it took 9. That is my feedback."
+C0326,2025-07-28,40,West,Basic,Web,9.4,4,63.8,3,53.31,1,Package arrived damaged and a week after the promised date.
+C0327,2025-07-03,38,West,Basic,Web,8.1,4,77.2,4,90.42,1,"To be fair, excellent quality for the price, I will order again. Prices keep going up and the value for money is not there anymore. Thanks for asking."
+C0328,2025-02-26,50,East,Premium,Mobile,5.3,3,89.8,3,127.89,1,Product exactly as described and it came a day early. Not sure I will keep my account.
+C0329,2025-08-30,23,West,Standard,Web,8.7,3,58.2,3,84.98,0,"To be fair, shipping delays have made me think twice about ordering again. My refund request was ignored until I complained on social media."
+C0330,2025-09-28,35,South,Standard,Web,8.1,5,87.6,6,69.68,0,
+C0331,2025-09-16,49,West,Basic,Web,8.0,4,65.4,5,86.32,1,"To be fair, late delivery again. This is the second time this quarter. Please fix this."
+C0332,2025-01-28,34,North,Basic,Web,5.5,4,70.1,2,126.86,0,Shipping delays have made me think twice about ordering again.
+C0333,2025-09-14,22,West,Basic,Mobile,8.2,4,70.9,3,151.63,0,"In my experience, i waited 8 days for my package and the tracking page never updated."
+C0334,2025-09-24,,Central,Standard,Mobile,7.5,2,60.6,1,55.21,0,"Honestly, the agent did not seem to understand my complaint and closed the ticket."
+C0335,2025-03-08,54,North,Standard,Web,4.8,5,78.2,4,94.67,1,"Overall, the courier missed the delivery window twice and I had to stay home for nothing. Hope this improves."
+C0336,2025-11-06,40,West,Basic,Mobile,6.6,3,72.9,2,77.99,1,"Overall, the mobile app keeps crashing when I try to check out."
+C0337,2025-07-11,18,North,Premium,Mobile,6.3,4,85.5,7,152.81,1,Just to say: the parcel was delivered to the wrong address and it took days to get it sorted out.
+C0338,2025-06-22,49,West,Basic,Mobile,6.5,2,71.4,2,68.91,0,"Just to say: the website is confusing, I could not find where to change my address. Hope this improves."
+C0339,2025-09-21,21,North,Premium,Store,6.2,2,69.6,2,199.31,1,"In my experience, the support team was polite but could not actually fix anything. The shipping was really slow compared with what was promised at checkout."
+C0340,2025-07-06,45,Central,Basic,Mobile,6.3,,77.8,5,107.22,1,"Overall, really friendly support team, they went out of their way to help. Tracking information was missing for most of the journey, so I had no idea when it would come. Please fix this."
+C0341,2025-07-18,30,North,Basic,Store,7.1,3,71.0,3,93.13,0,"Delivery took far too long, the parcel sat in a depot for almost a week. Slow responses from support, I had to chase them repeatedly. Please fix this."
+C0342,2025-04-24,27,Central,Standard,Web,3.5,,89.7,8,210.21,1,"In my experience, nobody answered the phone line, and the chat bot just kept repeating itself. That is my feedback."
+C0343,2025-12-05,36,West,Basic,Web,7.5,4,53.1,2,71.02,0,"In my experience, my order arrived 8 days late and nobody told me why. Hope this improves."
+C0344,2025-12-20,39,East,Basic,Web,5.5,4,74.3,5,113.0,1,"Overall, the shipping was really slow compared with what was promised at checkout. That is my feedback."
+C0345,2025-02-17,33,West,Basic,Mobile,6.3,5,82.6,4,91.28,1,Product exactly as described and it came a day early. Hope this improves.
+C0346,2025-09-25,48,West,Basic,Web,8.7,3,56.3,3,51.66,1,"Honestly, the subscription fee is too high for what is included in the Basic plan. That is my feedback."
+C0347,2025-01-09,36,Central,Standard,Web,3.8,3,80.6,5,102.7,1,"To be fair, i felt misled by the discounts, the regular price seems inflated. Hope this improves."
+C0348,2025-05-15,53,South,Premium,Mobile,5.5,5,87.2,4,275.02,1,"Overall, product exactly as described and it came a day early. Express delivery was supposed to be 2 days, it took 6."
+C0349,2025-12-21,44,East,Premium,Web,3.9,4,84.0,4,172.64,0,"In my experience, good value for money and a smooth experience overall. One of the parts was missing from the box and the finish was scratched. Hope this improves."
+C0350,2025-03-05,33,North,Basic,Web,3.2,3,83.3,6,122.7,0,"Waiting time on the helpline is unacceptable, over 40 minutes. Great service, the support agent solved my issue in minutes. Hope this improves."
+C0351,2025-05-18,31,West,Standard,Web,8.3,3,72.9,5,84.49,0,Late delivery again. This is the second time this quarter. Please fix this.
+C0352,2025-03-22,21,North,Basic,Mobile,3.7,4,80.4,2,141.4,1,
+C0353,2025-09-23,44,East,Basic,Web,6.5,3,67.1,4,62.18,0,
+C0354,2025-06-19,37,East,Basic,Web,4.8,2,72.5,3,63.52,1,"Overall, great service, the support agent solved my issue in minutes."
+C0355,2025-08-05,18,East,Premium,Web,7.1,3,71.2,5,108.33,0,"Honestly, really friendly support team, they went out of their way to help. Shipping fees are expensive, they should be free over a reasonable amount. Not sure I will keep my account."
+C0356,2025-12-11,35,East,Premium,Mobile,4.6,4,71.9,2,220.66,0,"To be fair, prices keep going up and the value for money is not there anymore."
+C0357,2025-07-10,30,West,Standard,Store,8.9,4,74.5,9,192.76,0,
+C0358,2025-09-25,60,West,Standard,Mobile,8.3,4,70.4,2,94.79,0,"To be fair, my order arrived 8 days late and nobody told me why."
+C0359,2025-02-05,21,East,Basic,Mobile,3.5,4,94.7,7,107.29,1,"To be fair, the shipping was really slow compared with what was promised at checkout."
+C0360,2025-03-20,24,East,Standard,Store,4.5,2,79.5,5,76.0,0,"To be fair, really friendly support team, they went out of their way to help. Not sure I will keep my account."
+C0361,2025-12-12,54,Central,Standard,Store,5.3,5,94.4,2,144.28,1,"Overall, my order arrived 5 days late and nobody told me why."
+C0362,2025-11-10,57,North,Basic,Mobile,3.8,4,79.0,3,112.59,0,"Everything arrived on time and the packaging was neat, very happy. My refund request was ignored until I complained on social media."
+C0363,2025-08-28,32,North,Basic,Store,6.8,5,75.7,9,128.46,1,Just to say: prices keep going up and the value for money is not there anymore. Please fix this.
+C0364,2025-05-19,33,North,Basic,Store,7.6,2,57.1,7,99.29,0,"Honestly, late delivery again. This is the second time this quarter. That is my feedback."
+C0365,2025-03-14,48,West,Premium,Mobile,6.5,3,71.4,3,120.13,0,The agent did not seem to understand my complaint and closed the ticket.
+C0366,2025-11-07,18,East,Basic,Mobile,4.5,3,87.1,6,138.98,0,"Really friendly support team, they went out of their way to help. Not sure I will keep my account."
+C0367,2025-10-14,19,West,Premium,Web,5.5,4,,4,129.43,1,The app is simple and checkout takes seconds.
+C0368,2025-03-30,38,West,Basic,Web,5.7,5,76.9,2,121.64,1,"Just to say: excellent quality for the price, I will order again. Late delivery again. This is the second time this quarter. Hope this improves."
+C0369,2025-08-04,60,South,Standard,Mobile,6.4,3,71.5,5,94.66,0,"In my experience, package arrived damaged and a week after the promised date. Hope this improves."
+C0370,2025-08-14,36,Central,Basic,Mobile,7.2,4,74.9,6,115.84,1,Late delivery again. This is the second time this quarter.
+C0371,2025-06-24,42,West,Basic,Mobile,5.8,,83.4,8,126.48,1,
+C0372,2025-12-05,55,South,Basic,Mobile,5.5,4,69.1,5,95.56,0,
+C0373,2025-02-15,66,South,Basic,Mobile,4.4,3,68.9,2,116.75,0,
+C0374,2025-04-05,34,South,Premium,Store,4.0,5,95.7,4,103.71,1,"Just to say: great service, the support agent solved my issue in minutes. Not sure I will keep my account."
+C0375,2025-02-04,41,North,Basic,Web,5.4,5,68.6,1,69.05,1,"Overall, navigation is cluttered, I need too many taps just to reorder something. Not sure I will keep my account."
+C0376,2025-09-10,63,North,Standard,Web,6.2,4,76.7,6,107.9,1,"To be fair, tracking information was missing for most of the journey, so I had no idea when it would come."
+C0377,2025-08-24,23,Central,Basic,Mobile,7.1,4,65.8,3,59.49,1,
+C0378,2025-12-27,53,East,Basic,Store,3.5,3,81.7,8,99.39,1,"Just to say: really friendly support team, they went out of their way to help. Thanks for asking."
+C0379,2025-07-17,29,South,Standard,Store,5.8,3,75.4,5,103.15,1,
+C0380,2025-02-24,42,West,Basic,Store,6.7,4,74.5,5,146.17,0,Late delivery again. This is the second time this quarter. Please fix this.
+C0381,2025-06-14,38,East,Premium,Store,3.7,3,89.9,11,159.08,1,"Honestly, the parcel was delivered to the wrong address and it took days to get it sorted out. Product exactly as described and it came a day early. Please fix this."
+C0382,2025-02-02,30,Central,Standard,Web,4.7,3,81.5,4,164.22,1,"Honestly, my order arrived 5 days late and nobody told me why."
+C0383,2025-09-02,29,West,Standard,Mobile,8.7,2,58.9,4,99.52,0,"Honestly, support promised a call back and never called."
+C0384,2025-09-04,,East,Basic,Web,6.5,2,68.7,4,80.2,0,"Honestly, tracking information was missing for most of the journey, so I had no idea when it would come. Not sure I will keep my account."
+C0385,2025-11-10,53,South,Basic,Mobile,6.5,4,80.0,4,113.16,1,
+C0386,2025-05-05,39,Central,Premium,Store,5.0,4,96.2,7,198.32,1,
+C0387,2025-04-24,42,West,Basic,Web,9.6,4,69.3,4,131.32,1,The mobile app keeps crashing when I try to check out.
+C0388,2025-01-27,48,Central,Basic,Mobile,4.2,4,92.3,5,121.63,1,"In my experience, good value for money and a smooth experience overall."
+C0389,2025-06-01,29,North,Basic,Web,3.6,,77.7,3,66.69,0,"Overall, the support team was polite but could not actually fix anything. Thanks for asking."
+C0390,2025-06-23,50,Central,Standard,Web,4.0,5,87.3,6,81.12,1,
+C0391,2025-10-03,51,West,Standard,Web,6.3,3,73.3,4,101.87,1,"Honestly, delivery took far too long, the parcel sat in a depot for almost a week. Good value for money and a smooth experience overall."
+C0392,2025-10-03,72,North,Standard,Web,7.8,3,69.4,7,55.17,1,"Express delivery was supposed to be 2 days, it took 8."
+C0393,2025-02-21,36,East,Standard,Store,4.6,3,70.3,3,177.57,1,Delivery estimates are unreliable; what they say and what happens are very different. That is my feedback.
+C0394,2025-04-15,36,West,Basic,Mobile,8.0,2,69.2,3,110.96,0,"In my experience, i waited 8 days for my package and the tracking page never updated."
+C0395,2025-07-06,50,North,Premium,Store,6.1,3,82.9,3,119.73,1,"Just to say: the app is simple and checkout takes seconds. Tracking information was missing for most of the journey, so I had no idea when it would come. That is my feedback."
+C0396,2025-05-03,51,East,Basic,Mobile,4.1,3,78.2,7,78.04,1,
+C0397,2025-01-10,35,West,Standard,Web,5.5,2,76.9,1,155.58,1,"Honestly, the parcel was delivered to the wrong address and it took days to get it sorted out. Not sure I will keep my account."
+C0398,2025-11-05,36,South,Basic,Web,8.2,4,73.8,7,73.45,1,Late delivery again. This is the second time this quarter. Please fix this.
+C0399,2025-09-24,47,East,Premium,Store,8.7,4,78.6,6,103.05,1,"Honestly, delivery estimates are unreliable; what they say and what happens are very different."
+C0400,2025-07-09,31,East,Basic,Web,6.8,2,58.9,2,64.12,0,"To be fair, i was transferred between three agents and had to explain my issue every time. Thanks for asking."
+C0401,2025-04-26,36,South,Basic,Store,4.8,4,73.7,3,103.43,1,"One of the parts was missing from the box and the finish was scratched. Navigation is cluttered, I need too many taps just to reorder something."
+C0402,2025-11-04,42,Central,Basic,Web,4.6,4,82.8,5,134.36,1,"Everything arrived on time and the packaging was neat, very happy. That is my feedback."
+C0403,2025-01-13,53,West,Basic,Mobile,5.6,3,75.8,4,144.0,0,The app logs me out all the time and the password reset email is slow. Please fix this.
+C0404,2025-06-12,34,North,Basic,Store,5.1,4,69.6,7,126.54,0,"In my experience, late delivery again. This is the second time this quarter. Quality control seems to have slipped; earlier orders were much better."
+C0405,2025-10-20,19,Central,Standard,Web,6.5,3,58.0,5,90.22,1,"Everything arrived on time and the packaging was neat, very happy. Please fix this."
+C0406,2025-12-14,18,Central,Basic,Web,6.6,3,65.7,5,118.41,0,"To be fair, express delivery was supposed to be 2 days, it took 7."
+C0407,2025-04-02,26,South,Premium,Store,4.0,3,71.1,6,104.87,1,Package arrived damaged and a week after the promised date. Search results are poor and the filters do not work properly.
+C0408,2025-08-26,25,West,Basic,Web,10.0,4,67.4,2,54.87,0,The shipping was really slow compared with what was promised at checkout.
+C0409,2025-03-11,39,North,Standard,Mobile,3.6,4,98.3,7,121.5,0,"In my experience, fast delivery and easy to track, no complaints at all."
+C0410,2025-02-12,27,Central,Basic,Mobile,3.3,3,86.4,6,94.12,1,"Honestly, reliable as always, I have recommended it to friends. Not sure I will keep my account."
+C0411,2025-05-09,33,West,Standard,Web,,2,65.4,1,84.25,1,"In my experience, it was impossible to reach a real person about my refund."
+C0412,2025-11-20,32,West,Standard,Mobile,6.1,2,70.7,4,82.54,0,"To be fair, good value for money and a smooth experience overall."
+C0413,2025-09-09,36,North,Basic,Mobile,7.8,4,80.8,4,96.78,1,"I waited 8 days for my package and the tracking page never updated. Excellent quality for the price, I will order again."
+C0414,2025-06-28,57,Central,Premium,Web,5.7,5,83.6,7,171.35,1,Just to say: loyalty discounts make this worth it. Very satisfied. Thanks for asking.
+C0415,2025-04-14,49,North,Basic,Store,5.4,4,79.9,6,175.97,1,"To be fair, really friendly support team, they went out of their way to help."
+C0416,2025-02-21,41,South,Basic,Web,5.1,3,67.1,3,56.1,0,
+C0417,2025-04-09,35,North,Standard,Web,3.6,4,96.6,4,100.58,0,"In my experience, great service, the support agent solved my issue in minutes. Support promised a call back and never called. That is my feedback."
+C0418,2025-02-25,36,West,Standard,Mobile,6.3,3,77.4,3,94.03,0,Good value for money and a smooth experience overall. Thanks for asking.
+C0419,2025-03-10,45,North,Basic,Store,6.6,3,68.1,6,114.42,0,"Overall, product exactly as described and it came a day early. The shipping was really slow compared with what was promised at checkout. Thanks for asking."
+C0420,2025-09-08,48,Central,Basic,Web,7.9,3,68.1,1,87.19,0,"Overall, delivery estimates are unreliable; what they say and what happens are very different. It was impossible to reach a real person about my refund."
+C0421,2025-02-18,30,West,Premium,Web,6.3,5,88.9,7,123.66,1,Good value for money and a smooth experience overall. My order arrived 6 days late and nobody told me why. That is my feedback.
+C0422,2025-01-18,41,North,Standard,Mobile,4.3,1,70.2,7,131.12,0,"To be fair, i was transferred between three agents and had to explain my issue every time. Hope this improves."
+C0423,2025-07-17,18,North,Premium,Store,7.3,5,79.1,3,180.04,0,
+C0424,2025-04-15,44,North,Standard,Web,4.7,3,75.3,9,113.82,0,"Honestly, i waited 5 days for my package and the tracking page never updated. Hope this improves."
+C0425,2025-06-15,50,West,Standard,Web,6.4,3,68.7,5,83.69,0,Support promised a call back and never called. One of the parts was missing from the box and the finish was scratched. Please fix this.
+C0426,2025-02-21,38,West,Basic,Mobile,7.2,5,69.6,3,101.86,0,
+C0427,2025-03-18,63,South,Premium,Web,5.6,3,75.8,7,124.7,0,
+C0428,2025-06-10,30,West,Basic,Web,6.0,3,65.8,6,83.3,1,
+C0429,2025-09-09,44,North,Standard,Web,6.9,3,69.5,9,92.09,0,
+C0430,2025-06-01,41,West,Basic,Mobile,7.0,4,71.8,4,126.35,1,
+C0431,2025-07-17,40,Central,Standard,Mobile,6.5,3,72.1,8,117.91,1,"Overall, good value for money and a smooth experience overall."
+C0432,2025-07-10,40,West,Standard,Store,7.9,,66.8,1,137.01,0,"In my experience, the agent did not seem to understand my complaint and closed the ticket. Please fix this."
+C0433,2025-04-09,42,West,Standard,Mobile,6.2,3,80.0,4,175.91,0,"Honestly, great service, the support agent solved my issue in minutes. Package arrived damaged and a week after the promised date. Hope this improves."
+C0434,2025-04-13,51,West,Premium,Mobile,5.8,5,91.7,8,176.69,1,
+C0435,2025-06-05,58,North,Basic,Store,5.0,3,81.1,7,95.92,1,My order arrived 5 days late and nobody told me why. Thanks for asking.
+C0436,2025-01-12,41,North,Standard,Mobile,3.5,4,86.1,6,173.34,1,"Fast delivery and easy to track, no complaints at all. Please fix this."
+C0437,2025-09-08,51,North,Basic,Mobile,8.9,3,58.1,3,89.25,1,"Tracking information was missing for most of the journey, so I had no idea when it would come. The app logs me out all the time and the password reset email is slow. Not sure I will keep my account."
+C0438,2025-08-13,33,East,Basic,Store,8.4,2,56.0,1,156.3,0,"In my experience, express delivery was supposed to be 2 days, it took 8. Hope this improves."
+C0439,2025-04-22,50,West,Basic,Web,7.1,5,76.3,4,113.24,1,"In my experience, tracking information was missing for most of the journey, so I had no idea when it would come. Nobody answered the phone line, and the chat bot just kept repeating itself."
+C0440,2025-05-17,32,West,Basic,Mobile,7.8,3,58.2,2,95.41,0,"Shipping fees are expensive, they should be free over a reasonable amount. Not sure I will keep my account."
+C0441,2025-04-30,54,Central,Basic,Mobile,5.6,3,70.6,3,103.96,1,"In my experience, really friendly support team, they went out of their way to help. The parcel was delivered to the wrong address and it took days to get it sorted out. Not sure I will keep my account."
+C0442,2025-08-26,68,North,Standard,Web,6.7,4,74.7,2,110.47,1,
+C0443,2025-10-05,40,West,Standard,Mobile,6.4,3,68.2,3,97.18,1,My refund request was ignored until I complained on social media. The shipping was really slow compared with what was promised at checkout.
+C0444,2025-02-09,18,North,Standard,Web,4.3,3,67.0,8,111.63,0,"Honestly, my order arrived 4 days late and nobody told me why. Shipping fees are expensive, they should be free over a reasonable amount."
+C0445,2025-05-31,34,South,Basic,Web,7.5,3,75.3,8,118.51,0,"Fast delivery and easy to track, no complaints at all. Not sure I will keep my account."
+C0446,2025-01-06,56,West,Basic,Mobile,5.9,3,64.7,1,121.0,1,Just to say: the support team was polite but could not actually fix anything. Hope this improves.
+C0447,2025-06-15,48,Central,Basic,Web,3.9,4,79.9,5,118.69,1,"Honestly, good value for money and a smooth experience overall."
+C0448,2025-04-01,44,West,Standard,Mobile,7.9,5,71.9,4,96.33,0,"Express delivery was supposed to be 2 days, it took 8. Not sure I will keep my account."
+C0449,2025-05-03,53,North,Premium,Store,,4,85.6,4,134.0,1,Just to say: late delivery again. This is the second time this quarter. That is my feedback.
+C0450,2025-06-16,47,West,Basic,Store,6.3,1,73.5,5,68.98,0,Support promised a call back and never called. Hope this improves.
+C0451,2025-04-29,56,North,Standard,Web,5.2,4,80.0,3,192.66,0,"I waited 5 days for my package and the tracking page never updated. Fast delivery and easy to track, no complaints at all."
+C0452,2025-05-24,52,Central,Basic,Web,5.4,3,74.9,4,87.54,0,"Honestly, great service, the support agent solved my issue in minutes."
+C0453,2025-10-07,59,West,Basic,Web,5.6,3,82.7,9,147.87,0,
+C0454,2025-10-23,45,North,Basic,Web,6.5,4,65.7,4,96.14,0,"To be fair, express delivery was supposed to be 2 days, it took 6. Please fix this."
+C0455,2025-01-03,52,North,Basic,Store,5.4,3,85.1,6,126.45,1,Search results are poor and the filters do not work properly. Hope this improves.
+C0456,2025-05-18,37,North,Standard,Mobile,5.1,3,94.3,4,136.46,1,"Great service, the support agent solved my issue in minutes."
+C0457,2025-11-06,34,Central,Premium,Web,5.4,4,66.2,0,95.99,1,Shipping delays have made me think twice about ordering again.
+C0458,2025-07-13,61,East,Basic,Store,6.9,2,66.7,5,68.91,1,"In my experience, customer support took days to reply to my email and never solved the problem. Shipping delays have made me think twice about ordering again. That is my feedback."
+C0459,2025-03-16,44,West,Standard,Web,6.5,3,69.5,3,172.47,0,
+C0460,2025-08-05,51,West,Standard,Web,8.7,5,70.9,2,111.77,0,
+C0461,2025-02-22,,East,Premium,Web,3.6,2,,5,185.68,1,Quality control seems to have slipped; earlier orders were much better. Please fix this.
+C0462,2025-01-08,34,North,Standard,Mobile,8.0,3,75.0,3,168.0,0,"Just to say: fast delivery and easy to track, no complaints at all. Late delivery again. This is the second time this quarter."
+C0463,2025-08-19,41,Central,Basic,Mobile,6.5,2,67.8,2,81.93,1,I was transferred between three agents and had to explain my issue every time. Late delivery again. This is the second time this quarter. Not sure I will keep my account.
+C0464,2025-07-08,58,South,Standard,Web,10.4,4,57.1,4,100.14,0,"Overall, the app logs me out all the time and the password reset email is slow."
+C0465,2025-10-04,48,East,Basic,Store,4.8,2,64.5,4,88.41,1,"Honestly, the agent did not seem to understand my complaint and closed the ticket."
+C0466,2025-05-06,20,West,Premium,Store,6.0,4,77.3,5,97.8,0,Good value for money and a smooth experience overall. Not sure I will keep my account.
+C0467,2025-11-08,38,West,Basic,Store,8.5,4,63.8,4,81.95,0,
+C0468,2025-06-03,62,Central,Standard,Web,5.1,4,64.2,4,116.56,0,"Honestly, the shipping was really slow compared with what was promised at checkout."
+C0469,2025-09-27,38,North,Basic,Web,11.1,4,76.7,6,90.77,1,The parcel was delivered to the wrong address and it took days to get it sorted out.
+C0470,2025-02-06,19,East,Basic,Store,4.0,1,,1,83.29,0,"To be fair, i had to return the product because it stopped working within a month."
+C0471,2025-02-05,64,East,Premium,Web,6.6,5,83.8,3,137.48,0,"To be fair, really friendly support team, they went out of their way to help."
+C0472,2025-10-13,49,East,Standard,Mobile,6.7,1,62.0,6,173.03,1,"Package arrived damaged and a week after the promised date. Waiting time on the helpline is unacceptable, over 40 minutes."
+C0473,2025-11-01,40,North,Basic,Mobile,5.6,5,88.3,7,72.18,1,"Just to say: good value for money and a smooth experience overall. Express delivery was supposed to be 2 days, it took 6."
+C0474,2025-12-10,37,North,Premium,Web,6.7,5,91.9,7,179.13,1,"Really friendly support team, they went out of their way to help."
+C0475,2025-04-29,54,South,Premium,Mobile,5.0,4,88.8,8,140.96,1,"In my experience, tracking information was missing for most of the journey, so I had no idea when it would come. Loyalty discounts make this worth it. Very satisfied."
+C0476,2025-01-09,34,South,Basic,Store,4.4,3,69.4,4,78.7,0,Loyalty discounts make this worth it. Very satisfied.
+C0477,2025-12-24,,East,Standard,Mobile,4.1,3,72.4,6,102.1,1,"Just to say: excellent quality for the price, I will order again. Too many hidden charges at checkout. That is my feedback."
+C0478,2025-08-08,48,West,Basic,Mobile,8.7,3,60.8,9,98.99,0,"Great service, the support agent solved my issue in minutes. Please fix this."
+C0479,2025-04-01,44,West,Standard,Store,7.6,3,69.2,3,129.69,0,
+C0480,2025-10-06,43,East,Basic,Mobile,3.9,2,62.1,2,88.43,1,
+C0481,2025-11-26,39,East,Basic,Mobile,4.3,1,72.9,3,134.52,1,"In my experience, the support team was polite but could not actually fix anything."
+C0482,2025-04-14,54,North,Premium,Store,4.0,,85.4,5,209.08,0,
+C0483,2025-10-08,31,East,Premium,Mobile,5.9,3,83.5,4,180.86,1,The app is simple and checkout takes seconds.
+C0484,2025-10-15,22,South,Standard,Web,8.4,3,80.3,3,104.2,0,"To be fair, the subscription fee is too high for what is included in the Basic plan. That is my feedback."
+C0485,2025-07-03,48,North,Premium,Web,5.8,3,76.5,3,154.01,1,The app is simple and checkout takes seconds.
+C0486,2025-08-19,49,East,Standard,Web,7.3,3,74.7,8,130.62,0,"In my experience, the support team was polite but could not actually fix anything. Not sure I will keep my account."
+C0487,2025-04-09,47,East,Standard,Mobile,6.2,2,62.6,0,76.91,0,My refund request was ignored until I complained on social media. Thanks for asking.
+C0488,2025-12-06,46,South,Standard,Mobile,4.9,1,74.1,2,72.65,1,
+C0489,2025-12-25,37,East,Basic,Mobile,3.6,3,78.5,1,60.67,0,Product exactly as described and it came a day early. That is my feedback.
+C0490,2025-12-25,50,East,Basic,Web,6.4,3,66.2,6,91.45,0,"To be fair, support promised a call back and never called. Thanks for asking."
+C0491,2025-09-27,40,West,Basic,Mobile,7.6,3,67.8,4,99.92,0,"Overall, express delivery was supposed to be 2 days, it took 8. Support promised a call back and never called. Please fix this."
+C0492,2025-01-16,35,West,Standard,Store,9.1,2,58.9,2,65.69,1,
+C0493,2025-05-14,37,West,Basic,Web,6.0,3,69.4,1,126.2,0,The agent did not seem to understand my complaint and closed the ticket.
+C0494,2025-06-12,65,South,Basic,Mobile,4.0,2,78.2,5,111.12,1,The app logs me out all the time and the password reset email is slow.
+C0495,2025-12-17,20,West,Standard,Mobile,6.2,2,57.5,6,130.59,0,
+C0496,2025-07-19,47,East,Basic,Mobile,6.6,2,79.5,3,120.14,1,"In my experience, express delivery was supposed to be 2 days, it took 7. Thanks for asking."
+C0497,2025-07-15,21,East,Basic,Web,6.8,3,56.5,4,56.46,1,"In my experience, really friendly support team, they went out of their way to help. Premium is pricey, but at least you get faster delivery. Thanks for asking."
+C0498,2025-02-23,40,West,Standard,Mobile,7.4,3,79.0,2,135.98,0,"Just to say: nobody answered the phone line, and the chat bot just kept repeating itself. Excellent quality for the price, I will order again. That is my feedback."
+C0499,2025-10-17,36,South,Premium,Store,5.4,3,72.7,4,155.36,1,"Overall, delivery took far too long, the parcel sat in a depot for almost a week. Nobody answered the phone line, and the chat bot just kept repeating itself. Thanks for asking."
+C0500,2025-05-03,18,East,Basic,Mobile,7.7,4,73.9,4,86.18,0,
+C0501,2025-02-03,46,West,Basic,Store,,4,74.3,4,67.46,1,"Overall, delivery took far too long, the parcel sat in a depot for almost a week. Item looked nothing like the photos and the material feels cheap. Not sure I will keep my account."
+C0502,2025-12-27,36,Central,Basic,Store,5.0,4,76.8,6,107.5,0,"To be fair, delivery estimates are unreliable; what they say and what happens are very different. That is my feedback."
+C0503,2025-03-11,18,Central,Standard,Web,4.9,3,84.2,6,95.87,1,"Honestly, delivery took far too long, the parcel sat in a depot for almost a week. Thanks for asking."
+C0504,2025-01-06,51,East,Standard,Mobile,3.5,,85.4,1,175.96,1,"Honestly, competitors offer the same thing for less, hard to justify the cost."
+C0505,2025-01-29,58,East,Basic,Mobile,3.7,1,77.1,1,93.63,0,"Just to say: premium is pricey, but at least you get faster delivery. Not sure I will keep my account."
+C0506,2025-06-15,59,West,Standard,Store,6.7,4,75.5,1,185.9,1,"Honestly, the parcel was delivered to the wrong address and it took days to get it sorted out. Please fix this."
+C0507,2025-02-07,45,South,Basic,Web,5.7,4,81.1,2,60.98,1,"Fast delivery and easy to track, no complaints at all. Express delivery was supposed to be 2 days, it took 6. Thanks for asking."
+C0508,2025-11-04,42,West,Basic,Mobile,5.4,3,71.2,3,100.4,1,The agent did not seem to understand my complaint and closed the ticket. That is my feedback.
+C0509,2025-07-07,57,East,Premium,Store,9.8,3,56.7,3,158.74,0,"My order arrived 10 days late and nobody told me why. Competitors offer the same thing for less, hard to justify the cost. Not sure I will keep my account."
+C0510,2025-04-29,61,North,Basic,Web,5.3,4,70.6,5,74.69,1,I was transferred between three agents and had to explain my issue every time.
+C0511,2025-01-02,55,North,Basic,Mobile,4.6,,71.4,2,92.73,1,
+C0512,2025-06-25,30,West,Basic,Web,7.2,3,72.5,0,87.99,1,Package arrived damaged and a week after the promised date. The support team was polite but could not actually fix anything.
+C0513,2025-02-25,43,North,Standard,Store,4.1,2,64.5,6,82.0,0,Customer support took days to reply to my email and never solved the problem.
+C0514,2025-12-23,46,South,Premium,Store,5.3,5,88.3,6,161.3,1,
+C0515,2025-04-17,19,South,Premium,Web,5.5,5,94.9,4,111.23,1,I waited 6 days for my package and the tracking page never updated.
+C0516,2025-06-23,47,North,Basic,Mobile,6.5,1,71.3,5,93.86,0,"Really friendly support team, they went out of their way to help. I was transferred between three agents and had to explain my issue every time. Not sure I will keep my account."
+C0517,2025-01-07,68,South,Basic,Web,4.9,2,69.5,5,108.96,0,The support team was polite but could not actually fix anything. Not sure I will keep my account.
+C0518,2025-02-17,49,West,Standard,Mobile,5.6,3,63.8,1,92.57,0,I waited 6 days for my package and the tracking page never updated.
+C0519,2025-03-17,59,North,Basic,Mobile,3.9,3,72.8,3,74.76,0,"Overall, prices keep going up and the value for money is not there anymore. That is my feedback."
+C0520,2025-01-19,43,West,Premium,Store,6.4,3,61.2,2,150.36,1,"Overall, the courier missed the delivery window twice and I had to stay home for nothing. Thanks for asking."
+C0521,2025-09-22,40,Central,Standard,Web,5.6,5,89.1,4,164.08,0,"Overall, navigation is cluttered, I need too many taps just to reorder something."
+C0522,2025-12-12,46,South,Basic,Web,4.3,4,78.7,3,80.08,0,Checkout page froze twice and I was charged once without a confirmation. Please fix this.
+C0523,2025-12-26,31,North,Standard,Mobile,3.9,4,94.4,6,98.25,1,"In my experience, really friendly support team, they went out of their way to help. That is my feedback."
+C0524,2025-04-08,29,West,Basic,Mobile,6.3,3,62.4,4,64.62,1,"Overall, waiting time on the helpline is unacceptable, over 40 minutes."
+C0525,2025-10-15,56,North,Basic,Mobile,5.2,4,87.4,4,139.05,1,"To be fair, really friendly support team, they went out of their way to help. That is my feedback."
+C0526,2025-07-03,57,South,Standard,Web,6.8,3,72.6,4,119.52,0,"Honestly, everything arrived on time and the packaging was neat, very happy. Hope this improves."
+C0527,2025-01-17,29,Central,Standard,Web,5.3,3,75.6,3,143.27,1,"Honestly, the agent did not seem to understand my complaint and closed the ticket. Not sure I will keep my account."
+C0528,2025-02-03,53,Central,Standard,Store,4.6,4,75.5,8,104.69,0,"Excellent quality for the price, I will order again. Please fix this."
+C0529,2025-07-19,40,West,Standard,Web,7.8,,69.7,7,82.27,1,Shipping delays have made me think twice about ordering again. Not sure I will keep my account.
+C0530,2025-06-04,45,South,Premium,Web,5.5,5,92.4,5,202.24,1,"Overall, fast delivery and easy to track, no complaints at all."
+C0531,2025-01-04,47,West,Premium,Store,6.8,4,91.2,5,132.47,1,"Fast delivery and easy to track, no complaints at all."
+C0532,2025-12-06,53,West,Standard,Web,7.4,5,87.1,2,137.96,1,"In my experience, fast delivery and easy to track, no complaints at all. Package arrived damaged and a week after the promised date. That is my feedback."
+C0533,2025-09-24,42,South,Basic,Mobile,8.2,2,59.5,2,52.03,1,Just to say: package arrived damaged and a week after the promised date. Hope this improves.
+C0534,2025-07-03,58,West,Standard,Web,10.5,3,55.7,2,74.15,0,I waited 10 days for my package and the tracking page never updated. The agent did not seem to understand my complaint and closed the ticket.
+C0535,2025-12-27,45,North,Premium,Store,5.3,3,66.7,4,159.7,0,"To be fair, i waited 5 days for my package and the tracking page never updated. Please fix this."
+C0536,2025-12-21,48,North,Basic,Mobile,4.8,4,92.2,8,103.17,0,
+C0537,2025-12-22,31,East,Basic,Store,5.4,3,71.2,2,121.45,0,It was impossible to reach a real person about my refund. The courier missed the delivery window twice and I had to stay home for nothing.
+C0538,2025-04-05,67,North,Basic,Web,4.2,3,77.5,2,54.93,0,Just to say: the agent did not seem to understand my complaint and closed the ticket. Please fix this.
+C0539,2025-11-18,,North,Basic,Mobile,4.1,2,76.1,7,88.53,0,Just to say: too many hidden charges at checkout. Hope this improves.
+C0540,2025-07-04,50,West,Standard,Mobile,10.8,2,58.9,3,87.18,0,"Slow responses from support, I had to chase them repeatedly. Not sure I will keep my account."
+C0541,2025-09-23,22,Central,Basic,Web,6.1,3,69.2,1,152.92,0,Prices keep going up and the value for money is not there anymore.
+C0542,2025-11-10,31,East,Standard,Web,3.9,2,81.8,1,89.04,0,"Nobody answered the phone line, and the chat bot just kept repeating itself. Great idea but the interface is clumsy on small screens. Not sure I will keep my account."
+C0543,2025-03-01,56,West,Standard,Web,7.3,3,71.7,4,131.99,1,Just to say: support promised a call back and never called. That is my feedback.
+C0544,2025-06-13,44,Central,Standard,Store,4.2,5,83.7,6,169.64,0,"The mobile app keeps crashing when I try to check out. Really friendly support team, they went out of their way to help. Please fix this."
+C0545,2025-02-17,,North,Basic,Mobile,5.7,3,79.9,2,88.95,1,"Fast delivery and easy to track, no complaints at all. Not sure I will keep my account."
+C0546,2025-04-13,53,East,Basic,Mobile,6.4,,73.9,8,90.48,1,"To be fair, the shipping was really slow compared with what was promised at checkout. Hope this improves."
+C0547,2025-05-31,34,South,Standard,Mobile,4.5,3,75.0,3,118.61,0,"Waiting time on the helpline is unacceptable, over 40 minutes."
+C0548,2025-11-09,58,North,Standard,Mobile,5.5,4,85.6,4,85.09,0,Loyalty discounts make this worth it. Very satisfied. Hope this improves.
+C0549,2025-11-11,40,West,Basic,Mobile,6.1,3,70.8,3,84.62,1,"Slow responses from support, I had to chase them repeatedly. The courier missed the delivery window twice and I had to stay home for nothing. Thanks for asking."
+C0550,2025-05-23,43,East,Premium,Mobile,4.4,1,64.5,2,167.68,1,"Just to say: slow responses from support, I had to chase them repeatedly. Hope this improves."
+C0551,2025-05-01,,East,Basic,Mobile,5.0,4,75.0,5,118.07,0,The app is simple and checkout takes seconds.
+C0552,2025-07-13,30,North,Premium,Web,6.1,4,,3,124.72,1,"Overall, delivery took far too long, the parcel sat in a depot for almost a week."
+C0553,2025-11-29,29,North,Basic,Store,4.9,4,93.6,7,132.16,1,"To be fair, good value for money and a smooth experience overall. Thanks for asking."
+C0554,2025-12-23,39,Central,Basic,Store,4.5,3,81.1,5,130.06,0,"Just to say: really friendly support team, they went out of their way to help. Not sure I will keep my account."
+C0555,2025-03-24,51,North,Standard,Web,5.7,3,82.3,9,154.21,0,"In my experience, great service, the support agent solved my issue in minutes. Hope this improves."
+C0556,2025-03-10,25,South,Basic,Mobile,6.2,3,71.4,6,82.97,0,"Honestly, support promised a call back and never called. That is my feedback."
+C0557,2025-09-15,21,South,Basic,Web,6.6,5,75.7,2,158.26,0,"To be fair, late delivery again. This is the second time this quarter. Please fix this."
+C0558,2025-04-21,51,East,Basic,Store,5.0,3,82.5,3,162.64,1,"Just to say: delivery took far too long, the parcel sat in a depot for almost a week. Thanks for asking."
+C0559,2025-03-14,34,East,Basic,Store,6.0,3,69.2,1,113.48,1,"Honestly, support promised a call back and never called."
+C0560,2025-01-12,36,East,Standard,Store,3.8,4,82.7,7,98.55,0,"Just to say: express delivery was supposed to be 2 days, it took 4. That is my feedback."
+C0561,2025-05-28,19,North,Basic,Web,4.5,4,87.7,7,90.02,0,"To be fair, the product quality is lower than I expected, it broke after two weeks. That is my feedback."
+C0562,2025-05-24,33,South,Standard,Web,5.5,4,81.4,6,112.21,1,Just to say: the agent did not seem to understand my complaint and closed the ticket.
+C0563,2025-07-25,41,West,Standard,Web,7.8,2,77.3,5,119.23,1,Package arrived damaged and a week after the promised date. Thanks for asking.
+C0564,2025-03-15,52,West,Basic,Web,6.2,3,64.8,5,53.46,1,"To be fair, my order arrived 6 days late and nobody told me why. Thanks for asking."
+C0565,2025-09-18,32,West,Basic,Web,11.3,2,57.5,3,89.01,1,"To be fair, it was impossible to reach a real person about my refund. Please fix this."
+C0566,2025-09-06,61,West,Premium,Web,8.1,5,93.7,3,226.84,1,The app is simple and checkout takes seconds. Thanks for asking.
+C0567,2025-06-18,33,West,Standard,Store,6.2,,79.8,10,141.87,1,
+C0568,2025-03-08,33,North,Standard,Web,5.3,2,71.6,3,90.4,0,"Honestly, competitors offer the same thing for less, hard to justify the cost. Product exactly as described and it came a day early."
+C0569,2025-07-05,59,South,Standard,Web,6.2,3,67.5,5,82.86,1,"Overall, loyalty discounts make this worth it. Very satisfied. Not sure I will keep my account."
+C0570,2025-09-04,44,East,Basic,Store,6.5,1,71.0,2,104.84,0,"Honestly, the shipping was really slow compared with what was promised at checkout. Not sure I will keep my account."
+C0571,2025-05-17,34,South,Basic,Mobile,4.4,3,74.3,2,96.78,0,"Delivery took far too long, the parcel sat in a depot for almost a week. Hope this improves."
+C0572,2025-04-07,39,West,Standard,Mobile,6.9,2,59.9,2,105.12,0,"Honestly, the device overheats and the battery barely lasts a day."
+C0573,2025-07-04,57,East,Basic,Mobile,,3,60.9,3,97.36,0,Item looked nothing like the photos and the material feels cheap.
+C0574,2025-05-10,59,West,Standard,Store,6.7,4,88.2,5,179.86,1,"Overall, tracking information was missing for most of the journey, so I had no idea when it would come. Product exactly as described and it came a day early. Not sure I will keep my account."
+C0575,2025-05-27,31,Central,Standard,Mobile,5.0,5,95.2,3,103.63,1,"Great service, the support agent solved my issue in minutes."
+C0576,2025-05-08,40,East,Standard,Mobile,4.2,3,80.9,2,130.09,0,"Overall, it was impossible to reach a real person about my refund. Product exactly as described and it came a day early. Please fix this."
+C0577,2025-04-21,42,Central,Basic,Mobile,4.3,3,72.1,3,88.46,1,"Overall, the shipping was really slow compared with what was promised at checkout."
+C0578,2025-09-19,29,East,Basic,Mobile,6.1,3,84.2,3,111.75,1,Delivery estimates are unreliable; what they say and what happens are very different.
+C0579,2025-06-17,40,Central,Basic,Web,4.5,2,72.1,5,124.76,1,The support team was polite but could not actually fix anything. Please fix this.
+C0580,2025-06-20,41,South,Basic,Mobile,7.4,3,,3,112.07,0,"Overall, tracking information was missing for most of the journey, so I had no idea when it would come. Please fix this."
+C0581,2025-08-27,55,East,Standard,Web,7.8,3,54.8,5,126.8,1,My refund request was ignored until I complained on social media. Hope this improves.
+C0582,2025-05-12,55,East,Basic,Mobile,4.5,1,61.8,3,94.09,0,"Overall, navigation is cluttered, I need too many taps just to reorder something. Not sure I will keep my account."
+C0583,2025-02-06,37,North,Basic,Web,4.2,3,70.4,3,92.66,0,"Overall, nobody answered the phone line, and the chat bot just kept repeating itself. Please fix this."
+C0584,2025-11-08,38,South,Basic,Web,6.1,2,65.7,4,82.9,0,"Honestly, slow responses from support, I had to chase them repeatedly. Not sure I will keep my account."
+C0585,2025-01-21,49,Central,Basic,Web,4.8,3,82.9,1,69.56,1,"Fast delivery and easy to track, no complaints at all. That is my feedback."
+C0586,2025-07-28,34,West,Standard,Store,7.8,2,59.4,3,134.11,0,"Competitors offer the same thing for less, hard to justify the cost. Please fix this."
+C0587,2025-04-08,48,North,Basic,Web,4.4,4,78.1,4,97.17,0,"Really friendly support team, they went out of their way to help. That is my feedback."
+C0588,2025-03-20,40,South,Premium,Mobile,7.1,4,74.0,7,150.47,1,"Overall, package arrived damaged and a week after the promised date. Thanks for asking."
+C0589,2025-01-16,29,North,Basic,Store,5.2,5,86.3,6,142.49,1,"In my experience, tracking information was missing for most of the journey, so I had no idea when it would come. Not sure I will keep my account."
+C0590,2025-11-25,30,North,Standard,Web,4.2,3,85.6,1,90.91,0,The parcel was delivered to the wrong address and it took days to get it sorted out. Hope this improves.
+C0591,2025-06-06,58,Central,Basic,Mobile,3.6,3,71.4,0,74.87,0,"Honestly, packaging was fine but the item itself felt flimsy. Nobody answered the phone line, and the chat bot just kept repeating itself."
+C0592,2025-05-06,39,East,Basic,Web,4.9,2,75.8,4,159.02,1,
+C0593,2025-09-28,61,South,Premium,Web,7.1,3,64.0,3,126.48,0,"To be fair, delivery took far too long, the parcel sat in a depot for almost a week. Hope this improves."
+C0594,2025-01-15,35,East,Premium,Mobile,,3,92.2,6,132.66,1,"Just to say: fast delivery and easy to track, no complaints at all."
+C0595,2025-07-26,44,North,Premium,Store,7.6,4,70.1,4,120.79,1,"Overall, navigation is cluttered, I need too many taps just to reorder something. Hope this improves."
+C0596,2025-06-30,70,South,Basic,Web,5.7,5,91.2,6,169.0,1,"In my experience, everything arrived on time and the packaging was neat, very happy. Late delivery again. This is the second time this quarter. Hope this improves."
+C0597,2025-07-22,28,West,Basic,Mobile,7.6,3,68.9,0,121.41,1,I waited 8 days for my package and the tracking page never updated. Thanks for asking.
+C0598,2025-02-15,18,West,Standard,Web,6.6,3,77.9,4,78.31,1,"Honestly, late delivery again. This is the second time this quarter. Nobody answered the phone line, and the chat bot just kept repeating itself."
+C0599,2025-12-14,56,Central,Basic,Mobile,3.7,3,82.8,6,178.44,0,"Just to say: competitors offer the same thing for less, hard to justify the cost. Please fix this."
+C0600,2025-03-29,31,West,Standard,Mobile,6.2,4,76.7,8,152.53,0,
+C0111,2025-05-12,48,East,Premium,Web,3.3,2,80.7,5,137.44,0,"In my experience, my refund request was ignored until I complained on social media. That is my feedback."
+C0420,2025-09-08,48,Central,Basic,Web,7.9,3,68.1,1,87.19,0,"Overall, delivery estimates are unreliable; what they say and what happens are very different. It was impossible to reach a real person about my refund."
+C0566,2025-09-06,61,West,Premium,Web,8.1,5,93.7,3,226.84,1,The app is simple and checkout takes seconds. Thanks for asking.
+C0078,2025-10-08,69,West,Basic,Web,5.6,4,72.7,3,107.27,0,"In my experience, fast delivery and easy to track, no complaints at all. Please fix this."
+C0182,2025-03-25,28,Central,Premium,Web,6.0,4,69.2,11,119.06,0,
+C0285,2025-03-01,54,East,Basic,Mobile,4.0,4,91.6,4,104.28,0,Late delivery again. This is the second time this quarter.
+C0011,2025-07-24,37,South,Standard,Mobile,6.8,3,66.2,2,83.5,1,"In my experience, prices keep going up and the value for money is not there anymore. Search results are poor and the filters do not work properly."
+C0470,2025-02-06,19,East,Basic,Store,4.0,1,,1,83.29,0,"To be fair, i had to return the product because it stopped working within a month."
