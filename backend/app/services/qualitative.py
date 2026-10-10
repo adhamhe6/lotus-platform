@@ -394,6 +394,8 @@ async def list_themes(
     return themes_out, [
         {
             "id": str(r.id),
+            "dataset_version_id": str(r.dataset_version_id),
+            "column_name": r.column_name,
             "created_at": r.created_at.isoformat(),
             "k": r.stats.get("k"),
             "silhouette": r.stats.get("silhouette"),

@@ -321,3 +321,64 @@ async def test_cascade_delete_project_removes_files_and_rows(alice):
         for t in ("datasets", "dataset_versions", "dataset_columns", "analysis_jobs"):
             assert (await c.execute(text(f"select count(*) from {t}"))).scalar_one() == 0
     assert len(list((gs().storage_dir / "versions").glob("*.parquet"))) == before - 1
+
+
+async def test_cookie_endpoints_refuse_foreign_origins(client, alice):
+    r = await client.post("/api/v1/auth/refresh", headers={"Origin": "https://evil.example"})
+    assert r.status_code == 403 and r.json()["error"]["code"] == "CROSS_ORIGIN_REFUSED"
+    assert (
+        await client.post("/api/v1/auth/logout", headers={"Origin": "https://evil.example"})
+    ).status_code == 403
+    ok = await client.post("/api/v1/auth/refresh", headers={"Origin": "http://localhost:8080"})
+    assert ok.status_code in (200, 401)  # allowed origin reaches the handler (401 = no cookie in this client)
+
+
+async def test_rate_limit_ignores_spoofed_forwarded_for(client, monkeypatch):
+    s = get_settings()
+    monkeypatch.setattr(s, "rate_limit_enabled", True)
+    monkeypatch.setattr(s, "auth_rate_limit_per_minute", 2)
+    codes = [
+        (
+            await client.post(
+                "/api/v1/auth/login",
+                json={"email": "x@example.com", "password": "wrong-pass-123"},
+                headers={"X-Forwarded-For": f"10.0.0.{i}"},
+            )
+        ).status_code
+        for i in range(4)
+    ]
+    assert codes == [401, 401, 429, 429]
+
+
+async def test_hostile_dataset_values_cannot_inject_into_reports(alice):
+    evil = "<img src=x onerror=alert(1)>"
+    csv = (
+        "region,score,comment\n"
+        + "\n".join(f"{evil if i % 2 else 'ok'},{i % 7 + i / 10},Slow delivery {i}" for i in range(60))
+    ).encode()
+    p = (await alice.post("/projects", json={"name": "X"})).json()
+    ds = (
+        await alice.post(f"/projects/{p['id']}/datasets", files={"file": ("e.csv", csv, "text/csv")})
+    ).json()["dataset"]
+    vid = ds["latest_version"]["id"]
+    await alice.post(
+        f"/projects/{p['id']}/analyses",
+        json={
+            "dataset_version_id": vid,
+            "analysis_type": "group_comparison",
+            "config": {"outcome": "score", "group": "region"},
+        },
+    )
+    await alice.post(
+        f"/projects/{p['id']}/analyses",
+        json={"dataset_version_id": vid, "analysis_type": "frequency", "config": {"column": "region"}},
+    )
+    rep = (await alice.post(f"/projects/{p['id']}/reports/generate", json={})).json()
+    html = (await alice.get(f"/reports/{rep['result_ref']['report_id']}/render")).text
+    assert "<img src=x" not in html and "&lt;img src=x" in html
+    assert (
+        "script-src"
+        not in (await alice.get(f"/reports/{rep['result_ref']['report_id']}/render")).headers[
+            "content-security-policy"
+        ]
+    )

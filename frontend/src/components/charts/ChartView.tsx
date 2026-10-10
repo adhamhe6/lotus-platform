@@ -93,7 +93,7 @@ function StackedPlot({ spec, d }: { spec: ChartSpec; d: D }) {
         <XAxis dataKey="name" {...axisProps} interval={0} label={xLabel(spec.x_label)} />
         <YAxis {...axisProps} tickFormatter={(v) => (d.percent ? `${v}%` : tickFmt(v))} label={yLabel(spec.y_label)} domain={d.percent ? [0, 100] : undefined} />
         <RTooltip contentStyle={tooltipStyle} formatter={(v) => (d.percent ? `${fmtNumber(v as number, 1)}%` : fmtNumber(v as number))} />
-        <Legend wrapperStyle={{ fontSize: 12, color: "var(--chart-muted)" }} />
+        <Legend verticalAlign="top" height={28} wrapperStyle={{ fontSize: 12, color: "var(--chart-muted)" }} />
         {d.series.map((s: D, i: number) => <Bar key={s.name} dataKey={s.name} stackId="a" fill={seriesColor(i)} maxBarSize={56} isAnimationActive={false} {...GAP} />)}
       </BarChart>
     </ResponsiveContainer>

@@ -58,7 +58,12 @@ async def _detail(session, run: AnalysisRun) -> AnalysisDetail:
     d.result = await svc.cached_result(run)
     d.headline = _headline(run)
     if v and ds:
-        d.dataset_name, d.version_label, d.version_number = ds.name, v.label, v.version_number
+        d.dataset_name, d.version_label, d.version_number, d.dataset_id = (
+            ds.name,
+            v.label,
+            v.version_number,
+            ds.id,
+        )
     return d
 
 
@@ -141,10 +146,24 @@ async def list_analyses(
         .scalars()
         .all()
     )
+    vmap = (
+        dict(
+            (
+                await session.execute(
+                    select(DatasetVersion.id, DatasetVersion.dataset_id).where(
+                        DatasetVersion.id.in_({r.dataset_version_id for r in rows})
+                    )
+                )
+            ).all()
+        )
+        if rows
+        else {}
+    )
     items = []
     for r in rows:
         s = AnalysisSummary.model_validate(r)
         s.headline = _headline(r)
+        s.dataset_id = vmap.get(r.dataset_version_id)
         items.append(s)
     return Page(items=items, total=total, page=page, page_size=page_size)
 

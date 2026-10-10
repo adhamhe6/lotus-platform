@@ -8,7 +8,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.cache.redis import rate_limit_hit
 from app.core.config import get_settings
-from app.core.exceptions import AuthenticationError, RateLimited
+from app.core.exceptions import AuthenticationError, PermissionDeniedError, RateLimited
 from app.core.security import decode_access_token
 from app.datasets.storage import Storage
 from app.db.database import get_session
@@ -47,8 +47,22 @@ StorageDep = Annotated[Storage, Depends(get_storage)]
 
 
 def client_ip(request: Request) -> str:
-    fwd = request.headers.get("x-forwarded-for")
-    return fwd.split(",")[0].strip() if fwd else (request.client.host if request.client else "unknown")
+    """The peer address as resolved by the ASGI server (uvicorn applies X-Forwarded-For only for trusted proxies). The header is never read here:
+    doing so would let any client dodge rate limits by sending a made-up value."""
+    return request.client.host if request.client else "unknown"
+
+
+async def same_origin_only(request: Request) -> None:
+    """CSRF defence in depth for cookie-authenticated endpoints (refresh/logout): if the browser sent an Origin it must be ours."""
+    origin = request.headers.get("origin")
+    if not origin:
+        return
+    from urllib.parse import urlparse
+
+    allowed = {o.rstrip("/") for o in get_settings().cors_origin_list}
+    host = request.headers.get("host", "")
+    if origin.rstrip("/") not in allowed and urlparse(origin).netloc != host:
+        raise PermissionDeniedError("Cross-origin request refused.", code="CROSS_ORIGIN_REFUSED")
 
 
 async def auth_rate_limit(request: Request) -> None:

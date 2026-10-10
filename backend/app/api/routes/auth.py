@@ -4,7 +4,7 @@ from typing import Annotated
 
 from fastapi import APIRouter, Cookie, Depends, Request, Response, status
 
-from app.api.deps import CurrentUser, Session, auth_rate_limit
+from app.api.deps import CurrentUser, Session, auth_rate_limit, same_origin_only
 from app.core.config import get_settings
 from app.core.exceptions import AuthenticationError
 from app.schemas.common import ERRORS
@@ -61,7 +61,7 @@ async def login(body: LoginIn, request: Request, response: Response, session: Se
 @router.post(
     "/refresh",
     response_model=TokenOut,
-    dependencies=[Depends(auth_rate_limit)],
+    dependencies=[Depends(auth_rate_limit), Depends(same_origin_only)],
     summary="Rotate the refresh token and get a new access token",
     responses={401: ERRORS[401]},
 )
@@ -84,7 +84,12 @@ async def refresh(
     return TokenOut(access_token=access, expires_in=ttl, user=UserOut.model_validate(user))
 
 
-@router.post("/logout", status_code=status.HTTP_204_NO_CONTENT, summary="Revoke the current refresh token")
+@router.post(
+    "/logout",
+    dependencies=[Depends(same_origin_only)],
+    status_code=status.HTTP_204_NO_CONTENT,
+    summary="Revoke the current refresh token",
+)
 async def logout(
     response: Response, session: Session, lotus_refresh: Annotated[str | None, Cookie()] = None
 ) -> Response:

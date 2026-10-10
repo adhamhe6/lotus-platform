@@ -307,8 +307,7 @@ async def seed_customer_study(s: Seeder) -> str:
             "dataset_version_id": vid,
             "text_column": "comment",
             "outcome": "satisfaction_score",
-            "group": "region",
-            "source": "codes",
+            "source": "themes",
         },
     )
     await s.call(
@@ -318,7 +317,8 @@ async def seed_customer_study(s: Seeder) -> str:
             "dataset_version_id": vid,
             "text_column": "comment",
             "outcome": "satisfaction_score",
-            "source": "themes",
+            "group": "region",
+            "source": "codes",
         },
     )
     for m in await s.call("GET", f"/projects/{pid}/mixed"):

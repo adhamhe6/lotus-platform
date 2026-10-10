@@ -99,6 +99,18 @@
             "title": "Created By",
             "type": "string"
           },
+          "dataset_id": {
+            "anyOf": [
+              {
+                "format": "uuid",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Dataset Id"
+          },
           "dataset_name": {
             "anyOf": [
               {
@@ -276,6 +288,18 @@
             "format": "uuid",
             "title": "Created By",
             "type": "string"
+          },
+          "dataset_id": {
+            "anyOf": [
+              {
+                "format": "uuid",
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Dataset Id"
           },
           "dataset_version_id": {
             "format": "uuid",

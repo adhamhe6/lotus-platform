@@ -37,6 +37,7 @@ class AnalysisSummary(ORM):
     created_at: datetime
     completed_at: datetime | None
     headline: dict[str, Any] | None = None
+    dataset_id: uuid.UUID | None = None
 
 
 class AnalysisDetail(AnalysisSummary):

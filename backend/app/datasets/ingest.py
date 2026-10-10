@@ -259,8 +259,7 @@ def _infer_series(s: pd.Series, name: str) -> tuple[pd.Series, list[dict[str, An
         return low.reindex(st.index).map(
             lambda v: pd.NA if v is pd.NA or pd.isna(v) else v in TRUE_TOKENS
         ).astype("boolean"), warns
-    cleaned = nn.str.replace(_NUM_CLEAN, "", regex=True).str.replace(r"%$", "", regex=True)
-    num = pd.to_numeric(cleaned, errors="coerce")
+    num = _to_numeric_fast(nn)
     ok = num.notna().mean()
     if ok == 1.0 and not nn.str.contains(r"^0\d+$", regex=True).any():
         full = pd.Series(np.nan, index=st.index, dtype="float64")
@@ -285,6 +284,23 @@ def _infer_series(s: pd.Series, name: str) -> tuple[pd.Series, list[dict[str, An
             full.loc[nn.index] = parsed.values
             return full, warns
     return st, warns
+
+
+def _to_numeric_fast(nn: pd.Series) -> pd.Series:
+    """Vectorised numeric parse; the (slow) separator/percent clean-up only runs on values that failed AND only if a sample suggests the column is numeric."""
+    num = pd.to_numeric(nn, errors="coerce")
+    bad = num.isna()
+    if not bad.any():
+        return num
+    sample = nn[bad].head(300).str.replace(_NUM_CLEAN, "", regex=True).str.replace(r"%$", "", regex=True)
+    if pd.to_numeric(sample, errors="coerce").notna().mean() < 0.5:
+        return num
+    fixed = pd.to_numeric(
+        nn[bad].str.replace(_NUM_CLEAN, "", regex=True).str.replace(r"%$", "", regex=True), errors="coerce"
+    )
+    num = num.copy()
+    num[bad] = fixed
+    return num
 
 
 def _numeric_series(f: pd.Series) -> pd.Series:

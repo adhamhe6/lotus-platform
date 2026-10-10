@@ -1277,6 +1277,8 @@ export interface components {
              * Format: uuid
              */
             created_by: string;
+            /** Dataset Id */
+            dataset_id?: string | null;
             /** Dataset Name */
             dataset_name?: string | null;
             /**
@@ -1347,6 +1349,8 @@ export interface components {
              * Format: uuid
              */
             created_by: string;
+            /** Dataset Id */
+            dataset_id?: string | null;
             /**
              * Dataset Version Id
              * Format: uuid
