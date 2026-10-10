@@ -70,6 +70,12 @@ async def auth_rate_limit(request: Request) -> None:
         raise RateLimited("Too many attempts. Please wait a minute and try again.")
 
 
+async def refresh_rate_limit(request: Request) -> None:
+    """Refresh runs on every page load, so it gets a separate, roomier window than credential endpoints."""
+    if not await rate_limit_hit("refresh", client_ip(request), get_settings().auth_rate_limit_per_minute * 3):
+        raise RateLimited("Too many attempts. Please wait a minute and try again.")
+
+
 async def ai_rate_limit(request: Request, user: CurrentUser) -> None:
     if not await rate_limit_hit("ai", str(user.id), get_settings().ai_rate_limit_per_minute):
         raise RateLimited("You are sending AI requests too quickly. Please wait a moment.")

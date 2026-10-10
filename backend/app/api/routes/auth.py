@@ -4,7 +4,7 @@ from typing import Annotated
 
 from fastapi import APIRouter, Cookie, Depends, Request, Response, status
 
-from app.api.deps import CurrentUser, Session, auth_rate_limit, same_origin_only
+from app.api.deps import CurrentUser, Session, auth_rate_limit, refresh_rate_limit, same_origin_only
 from app.core.config import get_settings
 from app.core.exceptions import AuthenticationError
 from app.schemas.common import ERRORS
@@ -61,7 +61,7 @@ async def login(body: LoginIn, request: Request, response: Response, session: Se
 @router.post(
     "/refresh",
     response_model=TokenOut,
-    dependencies=[Depends(auth_rate_limit), Depends(same_origin_only)],
+    dependencies=[Depends(refresh_rate_limit), Depends(same_origin_only)],
     summary="Rotate the refresh token and get a new access token",
     responses={401: ERRORS[401]},
 )

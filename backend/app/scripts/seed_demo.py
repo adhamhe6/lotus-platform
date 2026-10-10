@@ -385,6 +385,7 @@ async def seed_employee_study(s: Seeder) -> str:
 
 async def main() -> None:
     s = get_settings()
+    s.job_backend = "inline"  # settings may already be cached by the caller (bootstrap): force in-process jobs for the one-off seed
     configure_logging("WARNING", False)
     from app.main import create_app
 
