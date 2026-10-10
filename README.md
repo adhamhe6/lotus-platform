@@ -11,6 +11,16 @@ Upload a dataset, understand it, analyse it with statistics you can defend, code
 
 Researchers and analysts juggle spreadsheets, a stats package, a qualitative-coding tool and a chat assistant — and the hand-offs lose provenance. Worse, generic AI assistants happily state statistics they never computed. Lotus keeps one project, one data lineage and one standard of evidence from raw file to report, and labels every piece of content as **Computed**, **Qualitative**, **AI interpretation** or **Rule-based summary**.
 
+## Screenshots
+
+Captured from the Docker stack with the seeded demo project (`frontend/e2e/tour.mjs` regenerates the full set).
+
+| | |
+|---|---|
+| ![Overview](docs/screenshots/01-overview.jpg) | ![Data quality](docs/screenshots/02-dataset-quality.jpg) |
+| ![Analysis result](docs/screenshots/03-analysis-result.jpg) | ![Qualitative workspace](docs/screenshots/04-qualitative-workspace.jpg) |
+| ![Mixed methods](docs/screenshots/05-mixed-methods.jpg) | ![AI assistant](docs/screenshots/06-ai-assistant.jpg) |
+
 ## Core capabilities
 
 | Area | What you get |
@@ -130,6 +140,7 @@ See `docs/architecture.md`. In short: FastAPI + async SQLAlchemy + arq; Parquet 
 * The offline TF-IDF/LSA embedding groups text by shared vocabulary; for heavily paraphrased text enable the sentence-transformers provider or rely on codes. (`docs/ai-architecture.md`)
 * UI is English-only (text processing handles Arabic; full RTL translation is future work).
 * Not included: Monte-Carlo decision simulation and PDF-reading from the legacy app, forecasting, mixed-effects models, real-time collaboration.
+* The sentence-transformers embedding path and real LLM providers (OpenAI-compatible, Anthropic) are implemented but were not exercised in the build sandbox; see `docs/verification.md`.
 * Access tokens are not individually revocable before their 30-minute expiry.
 
 ## Repository layout
