@@ -1,0 +1,5 @@
+import * as SeparatorPrimitive from "@radix-ui/react-separator";
+import { cn } from "@/lib/utils";
+export const Separator = ({ className, orientation = "horizontal", ...p }: React.ComponentProps<typeof SeparatorPrimitive.Root>) => (
+  <SeparatorPrimitive.Root decorative orientation={orientation} className={cn("shrink-0 bg-border", orientation === "horizontal" ? "h-px w-full" : "h-full w-px", className)} {...p} />
+);

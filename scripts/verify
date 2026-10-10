@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# Run every automated check CI runs (needs PostgreSQL with pgvector + Redis; see README → Testing).
+set -euo pipefail
+cd "$(dirname "$0")/.."
+echo "── backend: lint / format / types"; (cd backend && ruff check app tests && ruff format --check app tests && mypy app)
+echo "── backend: migrations";           (cd backend && alembic upgrade head && alembic check)
+echo "── backend: tests";                (cd backend && pytest -q)
+echo "── frontend: types / lint / tests / build"; (cd frontend && npm run typecheck && npm run lint && npm test && npm run build)
+echo "all checks passed"

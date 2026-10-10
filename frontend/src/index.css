@@ -1,0 +1,163 @@
+@import "tailwindcss";
+@import "@fontsource-variable/inter";
+@import "@fontsource-variable/fraunces";
+@import "@fontsource-variable/jetbrains-mono";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ── Lotus design tokens ───────────────────────────────────────────────────────────────
+   Papyrus surfaces, deep-Nile ink, lotus-teal actions. Provenance colours are semantic:
+   computed = teal · qualitative = lapis · AI interpretation = terracotta · rule-based = slate.
+   Chart series use a validated colour-blind-safe palette (see src/components/charts/palette.ts). */
+:root {
+  --background: #f6f4ee;
+  --foreground: #14303a;
+  --card: #ffffff;
+  --card-foreground: #14303a;
+  --muted: #ecebe3;
+  --muted-foreground: #5b6e76;
+  --border: #dde1d9;
+  --input: #cfd5cc;
+  --ring: #1d6f6a;
+  --primary: #1d6f6a;
+  --primary-hover: #175a56;
+  --primary-foreground: #ffffff;
+  --accent: #e6f0ee;
+  --accent-foreground: #134b48;
+  --destructive: #b3372f;
+  --warning: #9a6a10;
+  --warning-bg: #fbf3e0;
+  --success: #2f7a45;
+  --sidebar: #0f2a30;
+  --sidebar-foreground: #c8d6d4;
+  --sidebar-muted: #7f9a98;
+  --sidebar-active: #173b42;
+  --lotus: #c4587a;
+  --computed: #1d6f6a;
+  --computed-bg: #e2f0ee;
+  --qual: #2b4c8c;
+  --qual-bg: #e7ecf6;
+  --ai: #a8501f;
+  --ai-bg: #f8e9de;
+  --rule: #5b6e76;
+  --rule-bg: #eceeed;
+  --chart-surface: #ffffff;
+  --chart-grid: #e6e9e4;
+  --chart-axis: #8a9aa0;
+  --chart-text: #14303a;
+  --chart-muted: #5b6e76;
+  --s1: #2a78d6; --s2: #eb6834; --s3: #1baf7a; --s4: #eda100; --s5: #e87ba4; --s6: #008300; --s7: #6250d6; --s8: #e34948;
+  --seq-0: #eef4fb; --seq-1: #cfe0f5; --seq-2: #9fc2ec; --seq-3: #6aa0e0; --seq-4: #2a78d6; --seq-5: #1d57a0; --seq-6: #153f75;
+  --div-neg: #2a78d6; --div-mid: #f1f1ee; --div-pos: #eb6834;
+  --radius: 10px;
+  color-scheme: light;
+}
+.dark {
+  --background: #0c1c20;
+  --foreground: #e6ece9;
+  --card: #122a30;
+  --card-foreground: #e6ece9;
+  --muted: #173238;
+  --muted-foreground: #93aaaa;
+  --border: #23424a;
+  --input: #2d505a;
+  --ring: #4fb3aa;
+  --primary: #3aa59c;
+  --primary-hover: #4fb8ae;
+  --primary-foreground: #06201f;
+  --accent: #173b42;
+  --accent-foreground: #bfe3df;
+  --destructive: #ef7b72;
+  --warning: #e0b34d;
+  --warning-bg: #2d2711;
+  --success: #6dc287;
+  --sidebar: #08171b;
+  --sidebar-foreground: #c8d6d4;
+  --sidebar-muted: #6d8887;
+  --sidebar-active: #123037;
+  --lotus: #e07a9a;
+  --computed: #5cc4ba;
+  --computed-bg: #123835;
+  --qual: #8fb0ee;
+  --qual-bg: #172846;
+  --ai: #f0a070;
+  --ai-bg: #3a2416;
+  --rule: #9fb2b8;
+  --rule-bg: #1d3238;
+  --chart-surface: #122a30;
+  --chart-grid: #234048;
+  --chart-axis: #6f8b92;
+  --chart-text: #e6ece9;
+  --chart-muted: #93aaaa;
+  --s1: #3987e5; --s2: #d95926; --s3: #199e70; --s4: #c98500; --s5: #d55181; --s6: #008300; --s7: #9085e9; --s8: #e66767;
+  --seq-0: #12283a; --seq-1: #163f66; --seq-2: #1d57a0; --seq-3: #2a78d6; --seq-4: #5a9be6; --seq-5: #8fbcee; --seq-6: #c4dcf6;
+  --div-neg: #3987e5; --div-mid: #26363a; --div-pos: #d95926;
+  color-scheme: dark;
+}
+
+@theme inline {
+  --font-sans: "Inter Variable", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: "Fraunces Variable", Georgia, "Times New Roman", serif;
+  --font-mono: "JetBrains Mono Variable", ui-monospace, SFMono-Regular, monospace;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-warning: var(--warning);
+  --color-warning-bg: var(--warning-bg);
+  --color-success: var(--success);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-muted: var(--sidebar-muted);
+  --color-sidebar-active: var(--sidebar-active);
+  --color-lotus: var(--lotus);
+  --color-computed: var(--computed);
+  --color-computed-bg: var(--computed-bg);
+  --color-qual: var(--qual);
+  --color-qual-bg: var(--qual-bg);
+  --color-ai: var(--ai);
+  --color-ai-bg: var(--ai-bg);
+  --color-rule: var(--rule);
+  --color-rule-bg: var(--rule-bg);
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+  --animate-shimmer: shimmer 1.6s linear infinite;
+  --animate-fade-in: fade-in 0.2s ease-out;
+  --animate-pop: pop 0.16s ease-out;
+}
+
+@keyframes shimmer { 0% { background-position: 200% 0; } 100% { background-position: -200% 0; } }
+@keyframes fade-in { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+@keyframes pop { from { opacity: 0; transform: scale(0.97); } to { opacity: 1; transform: none; } }
+
+@layer base {
+  * { border-color: var(--border); }
+  html { -webkit-text-size-adjust: 100%; }
+  body { background: var(--background); color: var(--foreground); font-family: var(--font-sans); font-feature-settings: "cv11", "ss01"; -webkit-font-smoothing: antialiased; }
+  h1, h2, h3 { font-family: var(--font-display); letter-spacing: -0.01em; font-variation-settings: "SOFT" 50, "WONK" 0; }
+  :focus-visible { outline: 2px solid var(--ring); outline-offset: 2px; border-radius: 4px; }
+  ::selection { background: color-mix(in oklab, var(--primary) 28%, transparent); }
+  .tabular { font-variant-numeric: tabular-nums; }
+  @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; } }
+}
+
+@layer utilities {
+  /* the lotus "petal" corner: the only decorative shape in the UI */
+  .petal { border-radius: 4px 20px 4px 20px; }
+  .petal-sm { border-radius: 3px 12px 3px 12px; }
+  .skeleton { background: linear-gradient(90deg, var(--muted) 25%, color-mix(in oklab, var(--muted) 60%, var(--card)) 50%, var(--muted) 75%); background-size: 200% 100%; animation: shimmer 1.6s linear infinite; border-radius: 6px; }
+  .scroll-thin { scrollbar-width: thin; scrollbar-color: var(--input) transparent; }
+  .papyrus { background-image: radial-gradient(circle at 1px 1px, color-mix(in oklab, var(--foreground) 7%, transparent) 1px, transparent 0); background-size: 18px 18px; }
+}

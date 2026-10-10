@@ -1,0 +1,161 @@
+respondent_id,department,tenure_years,comment
+E001,Sales,9.7,I would like a clear career path and training budget.
+E002,Support,1.3,I would like a clear career path and training budget.
+E003,Support,1.7,Deadlines are unrealistic and the team is understaffed.
+E004,Engineering,0.8,"New software rollout was smooth and saved me time. The culture is friendly, but silos between departments slow things down."
+E005,Operations,2.0,"The culture is friendly, but silos between departments slow things down."
+E006,Support,5.6,Bonuses are unclear and feel arbitrary.
+E007,Engineering,3.5,No development plan was ever discussed in my reviews. Laptops are old and the VPN disconnects constantly.
+E008,Support,4.7,"Benefits are good, especially the health insurance and flexible leave."
+E009,Support,3.0,"The workload is unsustainable, I regularly work evenings to keep up."
+E010,Operations,1.1,"No development plan was ever discussed in my reviews. I feel burned out, there is always another urgent request."
+E011,Operations,2.2,Leadership communicates poorly about the direction of the company.
+E012,Engineering,3.2,"Laptops are old and the VPN disconnects constantly. I appreciate my manager, who supports the team and listens."
+E013,Engineering,2.2,New software rollout was smooth and saved me time. Salary is below market and raises do not reflect performance.
+E014,Operations,2.6,"Good manager, clear goals and fair treatment."
+E015,Operations,3.4,Leadership communicates poorly about the direction of the company.
+E016,Sales,5.4,Salary is below market and raises do not reflect performance.
+E017,Support,2.1,"The workload is unsustainable, I regularly work evenings to keep up."
+E018,Support,6.4,Salary is below market and raises do not reflect performance.
+E019,Sales,3.0,"The culture is friendly, but silos between departments slow things down."
+E020,Support,5.8,Pay has not kept up with inflation.
+E021,Engineering,6.3,I would like a clear career path and training budget.
+E022,Engineering,9.0,"The ticketing system keeps crashing and nobody owns the fix. I appreciate my manager, who supports the team and listens."
+E023,Sales,6.1,The ticketing system keeps crashing and nobody owns the fix. Deadlines are unrealistic and the team is understaffed.
+E024,Engineering,6.1,There are few opportunities for promotion or learning new skills.
+E025,Engineering,8.8,"The workload is unsustainable, I regularly work evenings to keep up. Good manager, clear goals and fair treatment."
+E026,Operations,0.6,Too many meetings leave no time for focused work.
+E027,Operations,1.3,"The workload is unsustainable, I regularly work evenings to keep up."
+E028,Support,6.0,Deadlines are unrealistic and the team is understaffed.
+E029,Sales,0.3,Opportunities to move between teams are limited.
+E030,Operations,3.4,Too many meetings leave no time for focused work.
+E031,Operations,3.4,"I value the flexibility to work from home. Our internal tools are slow and outdated, they waste hours each week."
+E032,Engineering,0.8,Laptops are old and the VPN disconnects constantly.
+E033,Engineering,1.4,My manager rarely gives feedback and decisions change without explanation.
+E034,Engineering,4.8,"Good manager, clear goals and fair treatment."
+E035,Sales,4.5,Overtime has become the norm rather than the exception.
+E036,Engineering,1.9,"Inclusive and respectful environment, I feel I belong."
+E037,Operations,1.5,New software rollout was smooth and saved me time.
+E038,Engineering,1.7,I value the flexibility to work from home.
+E039,Support,4.3,Leadership communicates poorly about the direction of the company. The ticketing system keeps crashing and nobody owns the fix.
+E040,Engineering,0.9,Pay has not kept up with inflation.
+E041,Engineering,3.1,"Inclusive and respectful environment, I feel I belong."
+E042,Support,0.8,"I feel burned out, there is always another urgent request. Our internal tools are slow and outdated, they waste hours each week."
+E043,Operations,5.6,"Good manager, clear goals and fair treatment."
+E044,Support,3.5,"I appreciate my manager, who supports the team and listens."
+E045,Sales,7.3,"Benefits are good, especially the health insurance and flexible leave."
+E046,Sales,0.3,Overtime has become the norm rather than the exception.
+E047,Engineering,0.4,My manager rarely gives feedback and decisions change without explanation.
+E048,Operations,1.9,Salary is below market and raises do not reflect performance. Leadership communicates poorly about the direction of the company.
+E049,Operations,8.1,"Inclusive and respectful environment, I feel I belong."
+E050,Support,1.1,Deadlines are unrealistic and the team is understaffed.
+E051,Operations,7.2,Overtime has become the norm rather than the exception. Laptops are old and the VPN disconnects constantly.
+E052,Sales,3.5,I value the flexibility to work from home. Deadlines are unrealistic and the team is understaffed.
+E053,Engineering,3.4,Bonuses are unclear and feel arbitrary.
+E054,Operations,5.0,Laptops are old and the VPN disconnects constantly.
+E055,Operations,1.3,"Inclusive and respectful environment, I feel I belong."
+E056,Engineering,1.9,The ticketing system keeps crashing and nobody owns the fix.
+E057,Support,1.0,"I appreciate my manager, who supports the team and listens."
+E058,Operations,3.3,There is a lack of transparency from senior management. Opportunities to move between teams are limited.
+E059,Support,10.0,Salary is below market and raises do not reflect performance.
+E060,Sales,2.3,Leadership communicates poorly about the direction of the company.
+E061,Sales,4.4,"The culture is friendly, but silos between departments slow things down. No development plan was ever discussed in my reviews."
+E062,Sales,4.0,"Deadlines are unrealistic and the team is understaffed. Benefits are good, especially the health insurance and flexible leave."
+E063,Sales,3.6,There is a lack of transparency from senior management.
+E064,Engineering,2.7,My manager rarely gives feedback and decisions change without explanation.
+E065,Operations,7.4,I value the flexibility to work from home.
+E066,Engineering,3.3,The ticketing system keeps crashing and nobody owns the fix. My manager rarely gives feedback and decisions change without explanation.
+E067,Operations,2.1,"Inclusive and respectful environment, I feel I belong."
+E068,Engineering,6.5,Too many meetings leave no time for focused work.
+E069,Support,5.4,"Inclusive and respectful environment, I feel I belong. Benefits are good, especially the health insurance and flexible leave."
+E070,Engineering,3.9,The mentoring programme helped me grow a lot this year.
+E071,Sales,2.8,Deadlines are unrealistic and the team is understaffed.
+E072,Operations,9.0,I would like a clear career path and training budget.
+E073,Support,3.2,"Inclusive and respectful environment, I feel I belong. There is a lack of transparency from senior management."
+E074,Sales,1.9,Leadership communicates poorly about the direction of the company. Too many meetings leave no time for focused work.
+E075,Engineering,4.8,I value the flexibility to work from home.
+E076,Support,2.5,"I appreciate my manager, who supports the team and listens."
+E077,Support,3.2,Bonuses are unclear and feel arbitrary.
+E078,Support,2.4,The mentoring programme helped me grow a lot this year. Laptops are old and the VPN disconnects constantly.
+E079,Sales,2.8,There are few opportunities for promotion or learning new skills.
+E080,Engineering,0.7,Salary is below market and raises do not reflect performance. I value the flexibility to work from home.
+E081,Engineering,1.6,"Benefits are good, especially the health insurance and flexible leave. No development plan was ever discussed in my reviews."
+E082,Support,1.7,I would like a clear career path and training budget.
+E083,Sales,2.6,"Our internal tools are slow and outdated, they waste hours each week."
+E084,Engineering,3.9,"Great team spirit, colleagues genuinely help each other. Leadership communicates poorly about the direction of the company."
+E085,Support,1.4,"I feel burned out, there is always another urgent request."
+E086,Sales,11.7,Overtime has become the norm rather than the exception.
+E087,Sales,2.8,"I appreciate my manager, who supports the team and listens."
+E088,Operations,4.2,"Too many meetings leave no time for focused work. I appreciate my manager, who supports the team and listens."
+E089,Operations,1.2,The mentoring programme helped me grow a lot this year.
+E090,Engineering,1.5,There is a lack of transparency from senior management.
+E091,Engineering,9.0,"Inclusive and respectful environment, I feel I belong. The ticketing system keeps crashing and nobody owns the fix."
+E092,Support,5.0,"Good manager, clear goals and fair treatment."
+E093,Operations,2.9,"Too many meetings leave no time for focused work. The culture is friendly, but silos between departments slow things down."
+E094,Operations,0.9,The ticketing system keeps crashing and nobody owns the fix.
+E095,Operations,8.8,"Too many meetings leave no time for focused work. Good manager, clear goals and fair treatment."
+E096,Support,1.4,"The workload is unsustainable, I regularly work evenings to keep up. Benefits are good, especially the health insurance and flexible leave."
+E097,Engineering,2.2,The mentoring programme helped me grow a lot this year. The ticketing system keeps crashing and nobody owns the fix.
+E098,Operations,2.8,My manager rarely gives feedback and decisions change without explanation.
+E099,Engineering,4.2,Leadership communicates poorly about the direction of the company.
+E100,Engineering,3.2,The mentoring programme helped me grow a lot this year.
+E101,Support,3.1,"The culture is friendly, but silos between departments slow things down."
+E102,Sales,10.9,"Leadership communicates poorly about the direction of the company. The culture is friendly, but silos between departments slow things down."
+E103,Operations,3.5,"New software rollout was smooth and saved me time. The culture is friendly, but silos between departments slow things down."
+E104,Operations,4.4,"No development plan was ever discussed in my reviews. Good manager, clear goals and fair treatment."
+E105,Support,5.5,Salary is below market and raises do not reflect performance.
+E106,Operations,0.6,"The workload is unsustainable, I regularly work evenings to keep up. The culture is friendly, but silos between departments slow things down."
+E107,Sales,1.9,"Inclusive and respectful environment, I feel I belong."
+E108,Sales,13.2,"Our internal tools are slow and outdated, they waste hours each week. The mentoring programme helped me grow a lot this year."
+E109,Operations,1.7,Opportunities to move between teams are limited.
+E110,Operations,3.2,Pay has not kept up with inflation.
+E111,Support,1.2,Overtime has become the norm rather than the exception.
+E112,Support,1.2,Bonuses are unclear and feel arbitrary.
+E113,Engineering,6.9,"The culture is friendly, but silos between departments slow things down."
+E114,Support,2.3,"The culture is friendly, but silos between departments slow things down."
+E115,Engineering,3.0,The mentoring programme helped me grow a lot this year.
+E116,Support,2.5,"Good manager, clear goals and fair treatment."
+E117,Support,0.8,The mentoring programme helped me grow a lot this year.
+E118,Engineering,2.9,"The ticketing system keeps crashing and nobody owns the fix. The workload is unsustainable, I regularly work evenings to keep up."
+E119,Operations,6.6,Salary is below market and raises do not reflect performance.
+E120,Support,1.7,Pay has not kept up with inflation. I would like a clear career path and training budget.
+E121,Engineering,4.5,The mentoring programme helped me grow a lot this year.
+E122,Sales,6.8,I would like a clear career path and training budget.
+E123,Support,1.1,New software rollout was smooth and saved me time. Overtime has become the norm rather than the exception.
+E124,Operations,5.9,Pay has not kept up with inflation. No development plan was ever discussed in my reviews.
+E125,Sales,0.4,"I feel burned out, there is always another urgent request."
+E126,Engineering,5.1,"I appreciate my manager, who supports the team and listens."
+E127,Engineering,2.4,New software rollout was smooth and saved me time. I would like a clear career path and training budget.
+E128,Operations,1.2,"I feel burned out, there is always another urgent request."
+E129,Engineering,2.9,There is a lack of transparency from senior management. There are few opportunities for promotion or learning new skills.
+E130,Operations,1.9,"Good manager, clear goals and fair treatment."
+E131,Support,0.6,"The culture is friendly, but silos between departments slow things down. Bonuses are unclear and feel arbitrary."
+E132,Sales,6.6,Laptops are old and the VPN disconnects constantly.
+E133,Operations,6.9,"I appreciate my manager, who supports the team and listens. I would like a clear career path and training budget."
+E134,Engineering,1.3,"Our internal tools are slow and outdated, they waste hours each week. Salary is below market and raises do not reflect performance."
+E135,Support,2.3,"I appreciate my manager, who supports the team and listens. Deadlines are unrealistic and the team is understaffed."
+E136,Operations,2.1,Opportunities to move between teams are limited. Laptops are old and the VPN disconnects constantly.
+E137,Support,2.6,Too many meetings leave no time for focused work.
+E138,Operations,1.0,"Great team spirit, colleagues genuinely help each other."
+E139,Operations,6.2,Overtime has become the norm rather than the exception. Opportunities to move between teams are limited.
+E140,Support,3.3,Deadlines are unrealistic and the team is understaffed. Pay has not kept up with inflation.
+E141,Sales,1.4,Deadlines are unrealistic and the team is understaffed.
+E142,Sales,2.2,My manager rarely gives feedback and decisions change without explanation.
+E143,Operations,1.7,"I feel burned out, there is always another urgent request."
+E144,Support,2.8,No development plan was ever discussed in my reviews.
+E145,Operations,5.1,Overtime has become the norm rather than the exception.
+E146,Support,5.1,"The culture is friendly, but silos between departments slow things down."
+E147,Engineering,1.2,Laptops are old and the VPN disconnects constantly. There are few opportunities for promotion or learning new skills.
+E148,Operations,3.5,Overtime has become the norm rather than the exception. No development plan was ever discussed in my reviews.
+E149,Operations,1.5,Bonuses are unclear and feel arbitrary.
+E150,Support,0.6,"I feel burned out, there is always another urgent request. Opportunities to move between teams are limited."
+E151,Engineering,1.2,"Inclusive and respectful environment, I feel I belong."
+E152,Support,3.2,Leadership communicates poorly about the direction of the company.
+E153,Sales,0.7,The ticketing system keeps crashing and nobody owns the fix.
+E154,Sales,1.8,My manager rarely gives feedback and decisions change without explanation.
+E155,Sales,4.4,No development plan was ever discussed in my reviews.
+E156,Support,1.8,"Good manager, clear goals and fair treatment. Inclusive and respectful environment, I feel I belong."
+E157,Operations,1.7,There are few opportunities for promotion or learning new skills. Deadlines are unrealistic and the team is understaffed.
+E158,Operations,1.4,New software rollout was smooth and saved me time. Pay has not kept up with inflation.
+E159,Engineering,0.5,Laptops are old and the VPN disconnects constantly.
+E160,Engineering,2.6,"The culture is friendly, but silos between departments slow things down. Our internal tools are slow and outdated, they waste hours each week."

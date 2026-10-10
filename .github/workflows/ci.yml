@@ -1,0 +1,121 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  backend:
+    name: Backend · lint, types, migrations, tests
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: backend
+    services:
+      postgres:
+        image: pgvector/pgvector:pg16
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: lotus_test
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd "pg_isready -U postgres" --health-interval 5s --health-timeout 3s --health-retries 20
+      redis:
+        image: redis:7-alpine
+        ports: ["6379:6379"]
+        options: >-
+          --health-cmd "redis-cli ping" --health-interval 5s --health-timeout 3s --health-retries 20
+    env:
+      SECRET_KEY: ci-secret-ci-secret-ci-secret-ci-secret-0123
+      TEST_DATABASE_URL: postgresql+asyncpg://postgres:postgres@localhost:5432/lotus_test
+      DATABASE_URL: postgresql+asyncpg://postgres:postgres@localhost:5432/lotus_test
+      TEST_REDIS_URL: redis://localhost:6379/15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+          cache: pip
+          cache-dependency-path: |
+            backend/requirements.lock
+            backend/pyproject.toml
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.lock
+          pip install --no-deps -e .
+          pip install "pytest>=8" "pytest-asyncio>=0.24" "pytest-cov>=5" "ruff>=0.6" "mypy>=1.11" pandas-stubs
+      - name: Ruff (lint)
+        run: ruff check app tests
+      - name: Ruff (format)
+        run: ruff format --check app tests
+      - name: Mypy
+        run: mypy app
+      - name: Migrations apply cleanly and match the models
+        run: alembic upgrade head && alembic check
+      - name: OpenAPI snapshot is current
+        run: python -m app.scripts.export_openapi /tmp/openapi.json && diff -q /tmp/openapi.json ../docs/openapi.json
+      - name: Tests (unit + integration + e2e, real PostgreSQL + Redis)
+        run: pytest --cov=app --cov-report=term-missing:skip-covered --cov-report=xml -q
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: backend-coverage
+          path: backend/coverage.xml
+      - name: Dependency audit
+        run: pip install pip-audit && pip-audit -r requirements.lock --progress-spinner off
+
+  frontend:
+    name: Frontend · types, lint, tests, build
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: frontend
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+      - run: npm ci --no-audit --no-fund
+      - name: Generated API types are current
+        run: npm run gen:api && git diff --exit-code src/api/schema.d.ts
+      - run: npm run typecheck
+      - run: npm run lint
+      - run: npm test
+      - run: npm run build
+      - name: Dependency audit (production)
+        run: npm audit --omit=dev --audit-level=high
+
+  docker:
+    name: Docker · build images and smoke-test the stack
+    runs-on: ubuntu-latest
+    needs: [backend, frontend]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build images
+        run: |
+          printf 'SECRET_KEY=%s\nPOSTGRES_PASSWORD=ci-postgres-password\nSEED_DEMO_DATA=true\nDEMO_USER_PASSWORD=CiDemoPassw0rd!\n' "$(python3 -c 'import secrets;print(secrets.token_urlsafe(48))')" > .env
+          docker compose build
+      - name: Start the stack
+        run: docker compose up -d --wait --wait-timeout 240
+      - name: Smoke test (UI, API, readiness, login, seeded analysis)
+        run: |
+          curl -fsS http://localhost:8080/ | grep -q "Lotus"
+          curl -fsS http://localhost:8080/api/v1/health/ready
+          TOKEN=$(curl -fsS -X POST http://localhost:8080/api/v1/auth/login -H 'content-type: application/json' -d '{"email":"demo@lotus-demo.org","password":"CiDemoPassw0rd!"}' | python3 -c 'import sys,json;print(json.load(sys.stdin)["access_token"])')
+          curl -fsS http://localhost:8080/api/v1/projects -H "authorization: Bearer $TOKEN" | python3 -c 'import sys,json;d=json.load(sys.stdin);assert any(p["counts"].get("analyses",0)>0 for p in d), d'
+      - name: Logs on failure
+        if: failure()
+        run: docker compose logs --no-color --tail=200
+      - run: docker compose down -v
